@@ -46,8 +46,10 @@
     <Compile Include="Flags\OrigemMercadoria.cs" />
     <Compile Include="Flags\TipoDesconto.cs" />
     <Compile Include="Impostos\Csosns\Base\CsosnBase.cs" />
+    <Compile Include="Impostos\Csosns\Componentes\BaseCalculoCofins.cs" />
     <Compile Include="Impostos\Csosns\Componentes\BaseCalculoIcms.cs" />
     <Compile Include="Impostos\Csosns\Componentes\BaseCalculoIpi.cs" />
+    <Compile Include="Impostos\Csosns\Componentes\BaseCalculoPis.cs" />
     <Compile Include="Impostos\Csosns\Csosn201.cs" />
     <Compile Include="Impostos\Csosns\Csosn101.cs" />
     <Compile Include="Impostos\Csosns\Csosn102.cs" />
