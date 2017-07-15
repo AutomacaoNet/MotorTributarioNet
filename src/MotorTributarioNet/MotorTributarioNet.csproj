@@ -61,7 +61,9 @@
     <Compile Include="Impostos\Csosns\Csosn400.cs" />
     <Compile Include="Impostos\Csosns\Csosn500.cs" />
     <Compile Include="Impostos\Csosns\Csosn900.cs" />
-    <Compile Include="Impostos\ITributacao.cs" />
+    <Compile Include="Impostos\Implementacoes\ResultadoCalculoIcms.cs" />
+    <Compile Include="Impostos\IResultadoCalculoIcms.cs" />
+    <Compile Include="Impostos\ITributavel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

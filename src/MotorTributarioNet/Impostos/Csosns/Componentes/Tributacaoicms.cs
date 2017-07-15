@@ -1,61 +1,52 @@
 ﻿using System;
 using MotorTributarioNet.Flags;
+using MotorTributarioNet.Impostos.Implementacoes;
 
 namespace MotorTributarioNet.Impostos.Csosns.Componentes
 {
     public class TributacaoIcms
     {
         private readonly TipoDesconto _tipoDesconto;
-        private readonly ITributacao _tributacao;
+        private readonly ITributavel _tributavel;
 
-        public TributacaoIcms(ITributacao tributacao, TipoDesconto tipoDesconto)
+        public TributacaoIcms(ITributavel tributavel, TipoDesconto tipoDesconto)
         {
-            _tributacao = tributacao ?? throw new ArgumentNullException(nameof(tributacao));
+            _tributavel = tributavel ?? throw new ArgumentNullException(nameof(tributavel));
             _tipoDesconto = tipoDesconto;
         }
 
-        public void Calcula()
+        public IResultadoCalculoIcms Calcula()
         {
-            var baseCalculo = _tributacao.ValorProduto * _tributacao.QuantidadeProduto + _tributacao.ValorIpi + _tributacao.Frete + _tributacao.Seguro + _tributacao.OutrasDespesas;
+            var baseCalculo = _tributavel.ValorProduto * _tributavel.QuantidadeProduto + _tributavel.ValorIpi + _tributavel.Frete + _tributavel.Seguro + _tributavel.OutrasDespesas;
 
-            if (_tipoDesconto == TipoDesconto.Condincional)
-            {
-                CalculaIcmsComDescontoCondicional(baseCalculo);
-                return;
-            }
-
-            CalculaIcmsComDescontoIncondicional(baseCalculo);
+            return _tipoDesconto == TipoDesconto.Condincional ? CalculaIcmsComDescontoCondicional(baseCalculo) : CalculaIcmsComDescontoIncondicional(baseCalculo);
         }
 
-        private void CalculaIcmsComDescontoCondicional(decimal baseCalculo)
+        private IResultadoCalculoIcms CalculaIcmsComDescontoCondicional(decimal baseCalculoInicial)
         {
-            var baseCalculoDescontoCondicional = baseCalculo + _tributacao.Desconto;
+            var baseCalulo = baseCalculoInicial + _tributavel.Desconto;
 
-            var baseCalculoFinalCondicional = baseCalculoDescontoCondicional -
-                                              baseCalculoDescontoCondicional * _tributacao.PercentualReducao / 100;
+            baseCalulo = baseCalulo - baseCalulo * _tributavel.PercentualReducao / 100;
 
-            var valorIcmsCondicional = CalculaIcms(baseCalculoFinalCondicional);
+            var valorIcms = CalculaIcms(baseCalulo);
 
-            _tributacao.BaseCalculoIcms = baseCalculoFinalCondicional;
-            _tributacao.ValorIcms = valorIcmsCondicional;
+            return new ResultadoCalculoIcms(baseCalulo, valorIcms);
         }
 
-        private void CalculaIcmsComDescontoIncondicional(decimal baseCalculo)
+        private IResultadoCalculoIcms CalculaIcmsComDescontoIncondicional(decimal baseCalculoInicial)
         {
-            var baseCalculoDescontoIncondicional = baseCalculo - _tributacao.Desconto;
+            var baseCalculo = baseCalculoInicial - _tributavel.Desconto;
 
-            var baseCalculoFinalIncondicional = baseCalculoDescontoIncondicional -
-                                                baseCalculoDescontoIncondicional * _tributacao.PercentualReducao / 100;
+            baseCalculo = baseCalculo - baseCalculo * _tributavel.PercentualReducao / 100;
 
-            var valorIcmsIncondicional = CalculaIcms(baseCalculoFinalIncondicional);
+            var valorIcms = CalculaIcms(baseCalculo);
 
-            _tributacao.BaseCalculoIcms = baseCalculoFinalIncondicional;
-            _tributacao.ValorIcms = valorIcmsIncondicional;
+            return new ResultadoCalculoIcms(baseCalculo, valorIcms);
         }
 
         private decimal CalculaIcms(decimal baseCalculo)
         {
-            return baseCalculo*_tributacao.PercentualIcms / 100;
+            return baseCalculo*_tributavel.PercentualIcms / 100;
         }
     }
 }

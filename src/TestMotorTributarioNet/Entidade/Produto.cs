@@ -2,7 +2,7 @@
 
 namespace TestCalculosTributarios.Entidade
 {
-    public class Produto :  ITributacao
+    public class Produto : ITributavel
     {
         public decimal ValorProduto { get; set; }
         public decimal Frete { get; set; }
@@ -12,8 +12,6 @@ namespace TestCalculosTributarios.Entidade
         public decimal ValorIpi { get; set; }
         public decimal PercentualReducao { get; set; }
         public decimal QuantidadeProduto { get; set; }
-        public decimal BaseCalculoIcms { get; set; }
         public decimal PercentualIcms { get; set; }
-        public decimal ValorIcms { get; set; }
     }
 }

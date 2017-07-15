@@ -21,10 +21,10 @@ namespace TestCalculosTributarios
                 QuantidadeProduto = 1
             };
 
-            FacadeCalculadoraTributacao.ProcessamentoDeIcms(new TributacaoIcms(produto, TipoDesconto.Incondicional));
+            var resultadoCalculoIcms = FacadeCalculadoraTributacao.ProcessamentoDeIcms(new TributacaoIcms(produto, TipoDesconto.Incondicional));
 
-            Assert.AreEqual(1000, produto.BaseCalculoIcms);
-            Assert.AreEqual(170, produto.ValorIcms);
+            Assert.AreEqual(1000, resultadoCalculoIcms.BaseCalculo);
+            Assert.AreEqual(170, resultadoCalculoIcms.Valor);
         }
 
         [TestMethod]
@@ -37,10 +37,10 @@ namespace TestCalculosTributarios
                 QuantidadeProduto = 2
             };
 
-            FacadeCalculadoraTributacao.ProcessamentoDeIcms(new TributacaoIcms(produto, TipoDesconto.Incondicional));
+            var resultadoCalculoIcms = FacadeCalculadoraTributacao.ProcessamentoDeIcms(new TributacaoIcms(produto, TipoDesconto.Incondicional));
 
-            Assert.AreEqual(4000, produto.BaseCalculoIcms);
-            Assert.AreEqual(680, produto.ValorIcms);
+            Assert.AreEqual(4000, resultadoCalculoIcms.BaseCalculo);
+            Assert.AreEqual(680, resultadoCalculoIcms.Valor);
         }
 
         [TestMethod]
@@ -54,10 +54,10 @@ namespace TestCalculosTributarios
                 Desconto = 1000
             };
 
-            FacadeCalculadoraTributacao.ProcessamentoDeIcms(new TributacaoIcms(produto, TipoDesconto.Condincional));
+            var resultadoCalculoIcms = FacadeCalculadoraTributacao.ProcessamentoDeIcms(new TributacaoIcms(produto, TipoDesconto.Condincional));
 
-            Assert.AreEqual(5000, produto.BaseCalculoIcms);
-            Assert.AreEqual(600, produto.ValorIcms);
+            Assert.AreEqual(5000, resultadoCalculoIcms.BaseCalculo);
+            Assert.AreEqual(600, resultadoCalculoIcms.Valor);
         }
     }
 }
