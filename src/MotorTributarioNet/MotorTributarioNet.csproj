@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facade\FacadeCalculadoraTributacao.cs" />
     <Compile Include="Flags\Csosn.cs" />
     <Compile Include="Flags\ModalidadeDeterminacaoBcIcms.cs" />
     <Compile Include="Flags\ModalidadeDeterminacaoBcIcmsSt.cs" />
@@ -47,7 +48,7 @@
     <Compile Include="Flags\TipoDesconto.cs" />
     <Compile Include="Impostos\Csosns\Base\CsosnBase.cs" />
     <Compile Include="Impostos\Csosns\Componentes\BaseCalculoCofins.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\BaseCalculoIcms.cs" />
+    <Compile Include="Impostos\Csosns\Componentes\Tributacaoicms.cs" />
     <Compile Include="Impostos\Csosns\Componentes\BaseCalculoIpi.cs" />
     <Compile Include="Impostos\Csosns\Componentes\BaseCalculoPis.cs" />
     <Compile Include="Impostos\Csosns\Csosn201.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Impostos\Csosns\Csosn400.cs" />
     <Compile Include="Impostos\Csosns\Csosn500.cs" />
     <Compile Include="Impostos\Csosns\Csosn900.cs" />
+    <Compile Include="Impostos\ITributacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
