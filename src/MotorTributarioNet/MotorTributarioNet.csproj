@@ -65,8 +65,10 @@
     <Compile Include="Impostos\Csosns\Csosn400.cs" />
     <Compile Include="Impostos\Csosns\Csosn500.cs" />
     <Compile Include="Impostos\Csosns\Csosn900.cs" />
+    <Compile Include="Impostos\Implementacoes\ResultadoCalculoCredito.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIcms.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIpi.cs" />
+    <Compile Include="Impostos\IResultadoCalculoCredito.cs" />
     <Compile Include="Impostos\IResultadoCalculoIcms.cs" />
     <Compile Include="Impostos\IResultadoCalculoIpi.cs" />
     <Compile Include="Impostos\ITributavel.cs" />

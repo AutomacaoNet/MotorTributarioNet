@@ -24,5 +24,10 @@ namespace MotorTributarioNet.Facade
         {
             return new TributacaoIpi(_tributavel, _tipoDesconto).Calcula();
         }
+
+        public IResultadoCalculoCredito CalculaCredito()
+        {
+            return new TributacaoCreditoIcms(_tributavel, _tipoDesconto).Calcula();
+        }
     }
 }
