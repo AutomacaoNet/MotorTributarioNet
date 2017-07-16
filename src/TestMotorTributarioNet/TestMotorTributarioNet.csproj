@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculoCofinsTest.cs" />
     <Compile Include="CalculoIcmsCreditoTest.cs" />
     <Compile Include="CalculoIcmsTest.cs" />
     <Compile Include="CalculoIpiTest.cs" />
