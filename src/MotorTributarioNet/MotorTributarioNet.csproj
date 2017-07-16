@@ -50,6 +50,7 @@
     <Compile Include="Impostos\Csosns\Base\CsosnBase.cs" />
     <Compile Include="Impostos\Csosns\Componentes\BaseCalculoCofins.cs" />
     <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoIcms.cs" />
+    <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoIpi.cs" />
     <Compile Include="Impostos\Csosns\Componentes\TributacaoCreditoIcms.cs" />
     <Compile Include="Impostos\Csosns\Componentes\TributacaoIcms.cs" />
     <Compile Include="Impostos\Csosns\Componentes\TributacaoIpi.cs" />

@@ -7,29 +7,29 @@ namespace MotorTributarioNet.Impostos.Csosns.Componentes
     public class TributacaoIpi
     {
         private readonly ITributavel _tributavel;
-        private readonly CalculaBaseCalculoIcms _calculaBaseCalculoIcms;
+        private readonly CalculaBaseCalculoIpi _calculaBaseCalculoIpi;
 
         public TributacaoIpi(ITributavel tributavel, TipoDesconto tipoDesconto)
         {
             _tributavel = tributavel ?? throw new ArgumentNullException(nameof(tributavel));
-            _calculaBaseCalculoIcms = new CalculaBaseCalculoIcms(_tributavel, tipoDesconto);
+            _calculaBaseCalculoIpi = new CalculaBaseCalculoIpi(_tributavel, tipoDesconto);
         }
 
         public IResultadoCalculoIpi Calcula()
         {
-            return CalculaIcms();
+            return CalculaIpi();
         }
 
-        private IResultadoCalculoIpi CalculaIcms()
+        private IResultadoCalculoIpi CalculaIpi()
         {
-            var baseCalculo = _calculaBaseCalculoIcms.CalculaIcms();
+            var baseCalculo = _calculaBaseCalculoIpi.CalculaBaseCalculo();
 
-            var valorIcms = CalculaIcms(baseCalculo);
+            var valorIcms = CalculaIpi(baseCalculo);
 
             return new ResultadoCalculoIpi(baseCalculo, valorIcms);
         }
 
-        private decimal CalculaIcms(decimal baseCalculo)
+        private decimal CalculaIpi(decimal baseCalculo)
         {
             return baseCalculo * _tributavel.PercentualIcms / 100;
         }

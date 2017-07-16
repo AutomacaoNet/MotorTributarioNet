@@ -22,7 +22,7 @@ namespace MotorTributarioNet.Impostos.Csosns.Componentes
 
         private IResultadoCalculoIcms CalculaIcms()
         {
-            var baseCalculo = _calculaBaseCalculoIcms.CalculaIcms();
+            var baseCalculo = _calculaBaseCalculoIcms.CalculaBaseCalculo();
 
             var valorIcms = CalculaIcms(baseCalculo);
 

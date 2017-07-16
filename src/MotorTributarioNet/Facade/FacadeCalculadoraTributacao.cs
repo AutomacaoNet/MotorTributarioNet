@@ -4,11 +4,25 @@ using MotorTributarioNet.Impostos.Csosns.Componentes;
 
 namespace MotorTributarioNet.Facade
 {
-    public static class FacadeCalculadoraTributacao
+    public class FacadeCalculadoraTributacao
     {
-        public static IResultadoCalculoIcms CalculaIcms(ITributavel tributavel, TipoDesconto tipoDesconto)
+        private readonly ITributavel _tributavel;
+        private readonly TipoDesconto _tipoDesconto;
+
+        public FacadeCalculadoraTributacao(ITributavel tributavel, TipoDesconto tipoDesconto)
         {
-            return new TributacaoIcms(tributavel, tipoDesconto).Calcula();
+            _tributavel = tributavel;
+            _tipoDesconto = tipoDesconto;
+        }
+
+        public IResultadoCalculoIcms CalculaIcms()
+        {
+            return new TributacaoIcms(_tributavel, _tipoDesconto).Calcula();
+        }
+
+        public IResultadoCalculoIpi CalculaIpi()
+        {
+            return new TributacaoIpi(_tributavel, _tipoDesconto).Calcula();
         }
     }
 }
