@@ -1,13 +1,14 @@
-﻿using MotorTributarioNet.Impostos;
+﻿using MotorTributarioNet.Flags;
+using MotorTributarioNet.Impostos;
 using MotorTributarioNet.Impostos.Csosns.Componentes;
 
 namespace MotorTributarioNet.Facade
 {
-    public class FacadeCalculadoraTributacao
+    public static class FacadeCalculadoraTributacao
     {
-        public static IResultadoCalculoIcms ProcessamentoDeIcms(TributacaoIcms tributacaoIcms)
+        public static IResultadoCalculoIcms CalculaIcms(ITributavel tributavel, TipoDesconto tipoDesconto)
         {
-            return tributacaoIcms.Calcula();
+            return new TributacaoIcms(tributavel, tipoDesconto).Calcula();
         }
     }
 }
