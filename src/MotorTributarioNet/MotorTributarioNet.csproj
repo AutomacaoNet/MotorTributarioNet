@@ -48,15 +48,15 @@
     <Compile Include="Flags\TipoDesconto.cs" />
     <Compile Include="Impostos\Csosns\Base\CalculaBaseCalculoBase.cs" />
     <Compile Include="Impostos\Csosns\Base\CsosnBase.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\BaseCalculoCofins.cs" />
     <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoCofins.cs" />
     <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoIcms.cs" />
     <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoIpi.cs" />
+    <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoPis.cs" />
     <Compile Include="Impostos\Csosns\Componentes\TributacaoCofins.cs" />
     <Compile Include="Impostos\Csosns\Componentes\TributacaoCreditoIcms.cs" />
     <Compile Include="Impostos\Csosns\Componentes\TributacaoIcms.cs" />
     <Compile Include="Impostos\Csosns\Componentes\TributacaoIpi.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\BaseCalculoPis.cs" />
+    <Compile Include="Impostos\Csosns\Componentes\TributacaoPis.cs" />
     <Compile Include="Impostos\Csosns\Csosn201.cs" />
     <Compile Include="Impostos\Csosns\Csosn101.cs" />
     <Compile Include="Impostos\Csosns\Csosn102.cs" />
@@ -71,10 +71,12 @@
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoCredito.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIcms.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIpi.cs" />
+    <Compile Include="Impostos\Implementacoes\ResultadoCalculoPis.cs" />
     <Compile Include="Impostos\IResultadoCalculoCofins.cs" />
     <Compile Include="Impostos\IResultadoCalculoCredito.cs" />
     <Compile Include="Impostos\IResultadoCalculoIcms.cs" />
     <Compile Include="Impostos\IResultadoCalculoIpi.cs" />
+    <Compile Include="Impostos\IResultadoCalculoPis.cs" />
     <Compile Include="Impostos\ITributavel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

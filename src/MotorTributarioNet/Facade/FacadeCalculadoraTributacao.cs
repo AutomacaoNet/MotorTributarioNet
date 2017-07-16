@@ -1,7 +1,6 @@
 ﻿using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos;
 using MotorTributarioNet.Impostos.Csosns.Componentes;
-using MotorTributarioNet.Impostos.Implementacoes;
 
 namespace MotorTributarioNet.Facade
 {
@@ -34,6 +33,11 @@ namespace MotorTributarioNet.Facade
         public IResultadoCalculoCofins CalculaCofins()
         {
             return new TributacaoCofins(_tributavel, _tipoDesconto).Calcula();
+        }
+
+        public IResultadoCalculoPis CalculaPis()
+        {
+            return new TributacaoPis(_tributavel, _tipoDesconto).Calcula();
         }
     }
 }

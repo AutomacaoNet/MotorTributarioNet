@@ -52,6 +52,7 @@
     <Compile Include="CalculoIcmsCreditoTest.cs" />
     <Compile Include="CalculoIcmsTest.cs" />
     <Compile Include="CalculoIpiTest.cs" />
+    <Compile Include="CalculoPisTest.cs" />
     <Compile Include="Entidade\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
