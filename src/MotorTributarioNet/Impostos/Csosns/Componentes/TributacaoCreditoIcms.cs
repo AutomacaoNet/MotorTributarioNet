@@ -17,10 +17,10 @@ namespace MotorTributarioNet.Impostos.Csosns.Componentes
 
         public IResultadoCalculoCredito Calcula()
         {
-            return CalculaIcms();
+            return CalculaIcmsCredito();
         }
 
-        private IResultadoCalculoCredito CalculaIcms()
+        private IResultadoCalculoCredito CalculaIcmsCredito()
         {
             var baseCalculo = _calculaBaseCalculoIcms.CalculaBaseCalculo();
 
@@ -31,7 +31,7 @@ namespace MotorTributarioNet.Impostos.Csosns.Componentes
 
         private decimal CalculaCredito(decimal baseCalculo)
         {
-            return baseCalculo * _tributavel.PercentualIcms / 100;
+            return baseCalculo * _tributavel.PercentualCredito / 100;
         }
     }
 }

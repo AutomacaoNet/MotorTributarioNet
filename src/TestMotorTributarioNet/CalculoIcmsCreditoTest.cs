@@ -13,7 +13,7 @@ namespace TestCalculosTributarios
         {
             var produto = new Produto
             {
-                PercentualIcms = 17.00m,
+                PercentualCredito = 17.00m,
                 ValorProduto = 1000.00m,
                 QuantidadeProduto = 1.000m
             };
@@ -31,7 +31,7 @@ namespace TestCalculosTributarios
         {
             var produto = new Produto
             {
-                PercentualIcms = 17.00m,
+                PercentualCredito = 17.00m,
                 ValorProduto = 2000.00m,
                 QuantidadeProduto = 2.000m
             };
@@ -49,7 +49,7 @@ namespace TestCalculosTributarios
         {
             var produto = new Produto
             {
-                PercentualIcms = 12.00m,
+                PercentualCredito = 12.00m,
                 ValorProduto = 2000.00m,
                 QuantidadeProduto = 2.000m,
                 Desconto = 1000.00m
@@ -68,7 +68,7 @@ namespace TestCalculosTributarios
         {
             var produto = new Produto
             {
-                PercentualIcms = 7.00m,
+                PercentualCredito = 7.00m,
                 ValorProduto = 2000.00m,
                 QuantidadeProduto = 2.000m,
                 Desconto = 1000.00m,
@@ -88,7 +88,7 @@ namespace TestCalculosTributarios
         {
             var produto = new Produto
             {
-                PercentualIcms = 15.00m,
+                PercentualCredito = 15.00m,
                 ValorProduto = 2000m,
                 QuantidadeProduto = 2.000m,
                 Desconto = 1000.00m,
@@ -109,7 +109,7 @@ namespace TestCalculosTributarios
         {
             var produto = new Produto
             {
-                PercentualIcms = 12.00m,
+                PercentualCredito = 12.00m,
                 ValorProduto = 2000m,
                 QuantidadeProduto = 2.000m,
                 Desconto = 1000.00m,
