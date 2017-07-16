@@ -11,5 +11,6 @@
         decimal PercentualReducao { get; set; }
         decimal QuantidadeProduto { get; set; }
         decimal PercentualIcms { get; set; }
+        decimal PercentualCredito { get; set; }
     }
 }

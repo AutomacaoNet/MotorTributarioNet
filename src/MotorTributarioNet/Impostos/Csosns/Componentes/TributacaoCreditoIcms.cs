@@ -31,7 +31,7 @@ namespace MotorTributarioNet.Impostos.Csosns.Componentes
 
         private decimal CalculaCredito(decimal baseCalculo)
         {
-            return baseCalculo * _tributavel.PercentualIcms / 100;
+            return baseCalculo * _tributavel.PercentualCredito / 100;
         }
     }
 }

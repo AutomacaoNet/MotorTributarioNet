@@ -13,5 +13,6 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualReducao { get; set; }
         public decimal QuantidadeProduto { get; set; }
         public decimal PercentualIcms { get; set; }
+        public decimal PercentualCredito { get; set; }
     }
 }
