@@ -1,14 +1,14 @@
 ﻿using MotorTributarioNet.Flags;
-using MotorTributarioNet.Impostos.Csosns.Base;
+using MotorTributarioNet.Impostos.CalulosDeBC.Base;
 
-namespace MotorTributarioNet.Impostos.Csosns.Componentes
+namespace MotorTributarioNet.Impostos.CalulosDeBC
 {
-    public class CalculaBaseCalculoCofins : CalculaBaseCalculoBase
+    public class CalculaBaseCalculoPis : CalculaBaseCalculoBase
     {
         private readonly ITributavel _tributavel;
         private readonly TipoDesconto _tipoDesconto;
 
-        public CalculaBaseCalculoCofins(ITributavel tributavel, TipoDesconto tipoDesconto) : base(tributavel)
+        public CalculaBaseCalculoPis(ITributavel tributavel, TipoDesconto tipoDesconto) : base(tributavel)
         {
             _tributavel = tributavel;
             _tipoDesconto = tipoDesconto;

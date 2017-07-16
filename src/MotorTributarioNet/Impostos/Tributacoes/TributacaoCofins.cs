@@ -1,8 +1,9 @@
 ﻿using System;
 using MotorTributarioNet.Flags;
+using MotorTributarioNet.Impostos.CalulosDeBC;
 using MotorTributarioNet.Impostos.Implementacoes;
 
-namespace MotorTributarioNet.Impostos.Csosns.Componentes
+namespace MotorTributarioNet.Impostos.Tributacoes
 {
     public class TributacaoCofins
     {

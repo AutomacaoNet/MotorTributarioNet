@@ -1,4 +1,4 @@
-﻿namespace MotorTributarioNet.Impostos.Csosns.Base
+﻿namespace MotorTributarioNet.Impostos.CalulosDeBC.Base
 {
     public class CalculaBaseCalculoBase
     {

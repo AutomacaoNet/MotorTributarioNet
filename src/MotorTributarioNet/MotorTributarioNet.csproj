@@ -46,17 +46,17 @@
     <Compile Include="Flags\ModalidadeDeterminacaoBcIcmsSt.cs" />
     <Compile Include="Flags\OrigemMercadoria.cs" />
     <Compile Include="Flags\TipoDesconto.cs" />
-    <Compile Include="Impostos\Csosns\Base\CalculaBaseCalculoBase.cs" />
+    <Compile Include="Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" />
     <Compile Include="Impostos\Csosns\Base\CsosnBase.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoCofins.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoIcms.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoIpi.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\CalculaBaseCalculoPis.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\TributacaoCofins.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\TributacaoCreditoIcms.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\TributacaoIcms.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\TributacaoIpi.cs" />
-    <Compile Include="Impostos\Csosns\Componentes\TributacaoPis.cs" />
+    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoCofins.cs" />
+    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIcms.cs" />
+    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIpi.cs" />
+    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoPis.cs" />
+    <Compile Include="Impostos\Tributacoes\TributacaoCofins.cs" />
+    <Compile Include="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
+    <Compile Include="Impostos\Tributacoes\TributacaoIcms.cs" />
+    <Compile Include="Impostos\Tributacoes\TributacaoIpi.cs" />
+    <Compile Include="Impostos\Tributacoes\TributacaoPis.cs" />
     <Compile Include="Impostos\Csosns\Csosn201.cs" />
     <Compile Include="Impostos\Csosns\Csosn101.cs" />
     <Compile Include="Impostos\Csosns\Csosn102.cs" />
@@ -80,5 +80,6 @@
     <Compile Include="Impostos\ITributavel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

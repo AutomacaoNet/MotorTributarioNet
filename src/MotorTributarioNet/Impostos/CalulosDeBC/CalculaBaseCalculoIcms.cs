@@ -1,7 +1,7 @@
 ﻿using MotorTributarioNet.Flags;
-using MotorTributarioNet.Impostos.Csosns.Base;
+using MotorTributarioNet.Impostos.CalulosDeBC.Base;
 
-namespace MotorTributarioNet.Impostos.Csosns.Componentes
+namespace MotorTributarioNet.Impostos.CalulosDeBC
 {
     public class CalculaBaseCalculoIcms : CalculaBaseCalculoBase
     {

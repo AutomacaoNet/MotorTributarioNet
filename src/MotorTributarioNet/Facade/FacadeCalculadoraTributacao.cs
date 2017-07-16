@@ -1,6 +1,6 @@
 ﻿using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos;
-using MotorTributarioNet.Impostos.Csosns.Componentes;
+using MotorTributarioNet.Impostos.Tributacoes;
 
 namespace MotorTributarioNet.Facade
 {
