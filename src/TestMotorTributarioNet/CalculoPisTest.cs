@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MotorTributarioNet.Facade;
-using MotorTributarioNet.Flags;
 using TestCalculosTributarios.Entidade;
 
 namespace TestCalculosTributarios
@@ -20,7 +19,7 @@ namespace TestCalculosTributarios
                 QuantidadeProduto = 1.000m
             };
 
-            var facade = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var facade = new FacadeCalculadoraTributacao(produto);
 
             var resultadoCalculoPis = facade.CalculaPis();
 

@@ -18,7 +18,7 @@ namespace TestCalculosTributarios
                 QuantidadeProduto = 1.000m
             };
 
-            var facade = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var facade = new FacadeCalculadoraTributacao(produto);
 
             var resultadoCalculoIpi = facade.CalculaIpi();
 
@@ -36,7 +36,7 @@ namespace TestCalculosTributarios
                 QuantidadeProduto = 2.000m
             };
 
-            var facade = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var facade = new FacadeCalculadoraTributacao(produto);
 
             var resultadoCalculoIpi = facade.CalculaIpi();
 

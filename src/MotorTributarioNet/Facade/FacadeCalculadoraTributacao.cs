@@ -9,7 +9,7 @@ namespace MotorTributarioNet.Facade
         private readonly ITributavel _tributavel;
         private readonly TipoDesconto _tipoDesconto;
 
-        public FacadeCalculadoraTributacao(ITributavel tributavel, TipoDesconto tipoDesconto)
+        public FacadeCalculadoraTributacao(ITributavel tributavel, TipoDesconto tipoDesconto = TipoDesconto.Incondicional)
         {
             _tributavel = tributavel;
             _tipoDesconto = tipoDesconto;
