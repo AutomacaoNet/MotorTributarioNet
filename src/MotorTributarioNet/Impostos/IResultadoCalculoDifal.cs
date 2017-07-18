@@ -7,5 +7,6 @@
         decimal ValorIcmsDestino { get; }
         decimal ValorIcmsOrigem { get; }
         decimal Difal { get; }
+        string Observacao { get; }
     }
 }

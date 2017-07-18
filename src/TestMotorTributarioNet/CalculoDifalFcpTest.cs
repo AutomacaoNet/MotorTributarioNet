@@ -33,6 +33,8 @@ namespace TestCalculosTributarios
             Assert.AreEqual(60.00m, resultadoCalculoDifal.Difal);
             Assert.AreEqual(24.00m, resultadoCalculoDifal.ValorIcmsOrigem);
             Assert.AreEqual(36.00m, resultadoCalculoDifal.ValorIcmsDestino);
+            Assert.AreEqual("Valores totais do ICMS interstadual: DIFAL da UF destino 36,00000000 + FCP 20,0000000; DIFAL da UF Origem 24,00000000",
+                resultadoCalculoDifal.Observacao);
 
             // pequeno tutorial que ajuda muito http://www.asseinfo.com.br/blog/difal-diferencial-de-aliquota-icms/
         }
