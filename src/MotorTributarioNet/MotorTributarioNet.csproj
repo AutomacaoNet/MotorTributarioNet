@@ -52,8 +52,11 @@
     <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIcms.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIpi.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoPis.cs" />
+    <Compile Include="Impostos\Implementacoes\ResultadoCalculoDifal.cs" />
+    <Compile Include="Impostos\IResultadoCalculoDifal.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCofins.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
+    <Compile Include="Impostos\Tributacoes\TributacaoDifal.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoIcms.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoIpi.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoPis.cs" />

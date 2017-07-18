@@ -39,5 +39,10 @@ namespace MotorTributarioNet.Facade
         {
             return new TributacaoPis(_tributavel, _tipoDesconto).Calcula();
         }
+
+        public IResultadoCalculoDifal CalculaDifalFcp()
+        {
+            return new TributacaoDifal(_tributavel, _tipoDesconto).Calcula();
+        }
     }
 }
