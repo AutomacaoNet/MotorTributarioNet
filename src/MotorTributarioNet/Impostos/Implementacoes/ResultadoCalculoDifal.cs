@@ -7,7 +7,6 @@
         public decimal ValorIcmsDestino { get; }
         public decimal ValorIcmsOrigem { get; }
         public decimal Difal { get; }
-        public string Observacao => GetObservacao();
 
         public ResultadoCalculoDifal(decimal baseCalculo, decimal difal, decimal fcp, decimal valorIcmsDestino, decimal valorIcmsOrigem)
         {
@@ -18,9 +17,9 @@
             ValorIcmsOrigem = valorIcmsOrigem;
         }
 
-        private string GetObservacao()
+        public string GetObservacao(IDadosMensagemDifal dadosMensagemDifal)
         {
-            return $"Valores totais do ICMS interstadual: DIFAL da UF destino {ValorIcmsDestino} + FCP {Fcp}; DIFAL da UF Origem {ValorIcmsOrigem}";
+            return $"Valores totais do ICMS interstadual: DIFAL da UF destino {dadosMensagemDifal.ValorIcmsDestino} + FCP {dadosMensagemDifal.Fcp}; DIFAL da UF Origem {dadosMensagemDifal.ValorIcmsOrigem}";
         }
     }
 }
