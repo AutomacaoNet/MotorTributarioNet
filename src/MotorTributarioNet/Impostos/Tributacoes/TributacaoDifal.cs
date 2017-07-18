@@ -38,7 +38,7 @@ namespace MotorTributarioNet.Impostos.Tributacoes
                 percentualReteoDestino = 80;
             }
 
-            if (DateTime.Now.Year == 2019)
+            if (DateTime.Now.Year >= 2019)
             {
                 percentualRateoOrigem = 0;
                 percentualReteoDestino = 100;
