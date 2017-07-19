@@ -22,5 +22,6 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualIpi { get; set; }
         public decimal PercentualCofins { get; set; }
         public decimal PercentualPis { get; set; }
+        public decimal PercentualReducaoSt { get; set; }
     }
 }

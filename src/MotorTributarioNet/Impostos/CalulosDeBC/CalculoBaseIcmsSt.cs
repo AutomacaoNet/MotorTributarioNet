@@ -29,7 +29,7 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
         {
             var baseCalculo = baseCalculoInicial - _tributavel.Desconto;
 
-            baseCalculo = baseCalculo - baseCalculo * _tributavel.PercentualReducao / 100;
+            baseCalculo = baseCalculo - baseCalculo * _tributavel.PercentualReducaoSt / 100;
 
             return baseCalculo;
         }
@@ -38,7 +38,7 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
         {
             var baseCalulo = baseCalculoInicial + _tributavel.Desconto;
 
-            baseCalulo = baseCalulo - baseCalulo * _tributavel.PercentualReducao / 100;
+            baseCalulo = baseCalulo - baseCalulo * _tributavel.PercentualReducaoSt / 100;
 
             return baseCalulo;
         }

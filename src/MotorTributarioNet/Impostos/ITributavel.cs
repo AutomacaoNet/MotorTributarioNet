@@ -20,5 +20,6 @@
         decimal PercentualIpi { get; set; }
         decimal PercentualCofins { get; set; }
         decimal PercentualPis { get; set; }
+        decimal PercentualReducaoSt { get; set; }
     }
 }
