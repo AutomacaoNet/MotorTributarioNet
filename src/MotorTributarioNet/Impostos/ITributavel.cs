@@ -7,7 +7,7 @@
         decimal Seguro { get; set; }
         decimal OutrasDespesas { get; set; }
         decimal Desconto { get; set; }
-        decimal ValorIpi { get; }
+        decimal ValorIpi { get; set; }
         decimal PercentualReducao { get; set; }
         decimal QuantidadeProduto { get; set; }
         decimal PercentualIcms { get; set; }
