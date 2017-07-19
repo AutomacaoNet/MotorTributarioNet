@@ -20,7 +20,7 @@ namespace TestCalculosTributarios
 
             var facade = new FacadeCalculadoraTributacao(produto);
 
-            var resultadoCalculoCredito = facade.CalculaCredito();
+            var resultadoCalculoCredito = facade.CalculaIcmsCredito();
 
             Assert.AreEqual(1000.00m, resultadoCalculoCredito.BaseCalculo);
             Assert.AreEqual(170.00m, resultadoCalculoCredito.Valor);
@@ -38,7 +38,7 @@ namespace TestCalculosTributarios
 
             var facade = new FacadeCalculadoraTributacao(produto);
 
-            var resultadoCalculoCredito = facade.CalculaCredito();
+            var resultadoCalculoCredito = facade.CalculaIcmsCredito();
 
             Assert.AreEqual(4000.00m, resultadoCalculoCredito.BaseCalculo);
             Assert.AreEqual(680.00m, resultadoCalculoCredito.Valor);
@@ -57,7 +57,7 @@ namespace TestCalculosTributarios
 
             var facade = new FacadeCalculadoraTributacao(produto, TipoDesconto.Condincional);
 
-            var resultadoCalculoCredito = facade.CalculaCredito();
+            var resultadoCalculoCredito = facade.CalculaIcmsCredito();
 
             Assert.AreEqual(5000.00m, resultadoCalculoCredito.BaseCalculo);
             Assert.AreEqual(600.00m, resultadoCalculoCredito.Valor);
@@ -77,7 +77,7 @@ namespace TestCalculosTributarios
 
             var facade = new FacadeCalculadoraTributacao(produto, TipoDesconto.Condincional);
 
-            var resultadoCalculoCredito = facade.CalculaCredito();
+            var resultadoCalculoCredito = facade.CalculaIcmsCredito();
 
             Assert.AreEqual(3750.00m, resultadoCalculoCredito.BaseCalculo);
             Assert.AreEqual(262.5m, resultadoCalculoCredito.Valor);
@@ -98,7 +98,7 @@ namespace TestCalculosTributarios
 
             var facade = new FacadeCalculadoraTributacao(produto, TipoDesconto.Condincional);
 
-            var resultadoCalculoCredito = facade.CalculaCredito();
+            var resultadoCalculoCredito = facade.CalculaIcmsCredito();
 
             Assert.AreEqual(4030.12m, decimal.Round(resultadoCalculoCredito.BaseCalculo, 2));
             Assert.AreEqual(604.52m, decimal.Round(resultadoCalculoCredito.Valor, 2));
@@ -121,7 +121,7 @@ namespace TestCalculosTributarios
 
             var facade = new FacadeCalculadoraTributacao(produto, TipoDesconto.Condincional);
 
-            var resultadoCalculoCredito = facade.CalculaCredito();
+            var resultadoCalculoCredito = facade.CalculaIcmsCredito();
 
             Assert.AreEqual(4209.25m, decimal.Round(resultadoCalculoCredito.BaseCalculo, 2));
             Assert.AreEqual(505.11m, decimal.Round(resultadoCalculoCredito.Valor, 2));
