@@ -54,7 +54,7 @@ namespace MotorTributarioNet.Impostos.Tributacoes
 
         private decimal CalcularDifal(decimal baseCalculo)
         {
-            return baseCalculo * ((_tributavel.PercentualInterna - _tributavel.PercentualInterestadual) / 100);
+            return baseCalculo * ((_tributavel.PercentualDifalInterna - _tributavel.PercentualDifalInterestadual) / 100);
         }
     }
 }

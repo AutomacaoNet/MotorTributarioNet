@@ -21,8 +21,8 @@ namespace TestCalculosTributarios
                 Desconto = 10.00m,
                 ValorIpi = 50.00m,
                 PercentualFcp = 02.00m,
-                PercentualInterna = 18.00m,
-                PercentualInterestadual = 12.00m
+                PercentualDifalInterna = 18.00m,
+                PercentualDifalInterestadual = 12.00m
             };
 
             var facade = new FacadeCalculadoraTributacao(produto);
