@@ -32,7 +32,7 @@ namespace MotorTributarioNet.Impostos.Tributacoes
 
         private decimal CalculaCofins(decimal baseCalculo)
         {
-            return baseCalculo * _tributavel.PercentualIcms / 100;
+            return baseCalculo * _tributavel.PercentualCofins / 100;
         }
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="CalculoCofinsTest.cs" />
     <Compile Include="CalculoDifalFcpTest.cs" />
     <Compile Include="CalculoIcmsCreditoTest.cs" />
+    <Compile Include="CalculoIcmsStTest.cs" />
     <Compile Include="CalculoIcmsTest.cs" />
     <Compile Include="CalculoIpiTest.cs" />
     <Compile Include="CalculoPisTest.cs" />

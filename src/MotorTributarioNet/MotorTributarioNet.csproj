@@ -47,6 +47,8 @@
     <Compile Include="Flags\OrigemMercadoria.cs" />
     <Compile Include="Flags\TipoDesconto.cs" />
     <Compile Include="Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" />
+    <Compile Include="Impostos\CalulosDeBC\CalculoBaseIcmsSemIpi.cs" />
+    <Compile Include="Impostos\CalulosDeBC\CalculoBaseIcmsSt.cs" />
     <Compile Include="Impostos\Csosns\Base\CsosnBase.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoCofins.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIcms.cs" />
@@ -55,11 +57,14 @@
     <Compile Include="Impostos\IDadosMensagemDifal.cs" />
     <Compile Include="Impostos\Implementacoes\DadosMensagemDifal.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoDifal.cs" />
+    <Compile Include="Impostos\Implementacoes\ResultadoCalculoIcmsSt.cs" />
     <Compile Include="Impostos\IResultadoCalculoDifal.cs" />
+    <Compile Include="Impostos\IResultadoCalculoIcmsSt.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCofins.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoDifal.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoIcms.cs" />
+    <Compile Include="Impostos\Tributacoes\TributacaoIcmsSt.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoIpi.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoPis.cs" />
     <Compile Include="Impostos\Csosns\Csosn201.cs" />

@@ -13,7 +13,7 @@ namespace TestCalculosTributarios
         {
             var produto = new Produto
             {
-                PercentualIcms = 0.65m,
+                PercentualCofins = 0.65m,
                 ValorProduto = 1000.00m,
                 QuantidadeProduto = 1.000m
             };

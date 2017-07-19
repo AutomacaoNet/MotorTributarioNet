@@ -15,5 +15,10 @@
         decimal PercentualInterna { get; set; }
         decimal PercentualInterestadual { get; set; }
         decimal PercentualFcp { get; set; }
+        decimal PercentualMva { get; set; }
+        decimal PercentualIcmsSt { get; set; }
+        decimal PercentualIpi { get; set; }
+        decimal PercentualCofins { get; set; }
+        decimal PercentualPis { get; set; }
     }
 }

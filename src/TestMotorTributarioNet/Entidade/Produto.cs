@@ -17,5 +17,10 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualInterna { get; set; }
         public decimal PercentualInterestadual { get; set; }
         public decimal PercentualFcp { get; set; }
+        public decimal PercentualMva { get; set; }
+        public decimal PercentualIcmsSt { get; set; }
+        public decimal PercentualIpi { get; set; }
+        public decimal PercentualCofins { get; set; }
+        public decimal PercentualPis { get; set; }
     }
 }

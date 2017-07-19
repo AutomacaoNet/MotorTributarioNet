@@ -44,5 +44,10 @@ namespace MotorTributarioNet.Facade
         {
             return new TributacaoDifal(_tributavel, _tipoDesconto).Calcula();
         }
+
+        public IResultadoCalculoIcmsSt CalculaIcmsSt()
+        {
+            return new TributacaoIcmsSt(_tributavel, _tipoDesconto).Calcula();
+        }
     }
 }
