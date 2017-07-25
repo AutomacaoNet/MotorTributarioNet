@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="CalculoCofinsTest.cs" />
     <Compile Include="CalculoDifalFcpTest.cs" />
+    <Compile Include="CalculoIbptTest.cs" />
     <Compile Include="CalculoIcmsCreditoTest.cs" />
     <Compile Include="CalculoIcmsStTest.cs" />
     <Compile Include="CalculoIcmsTest.cs" />
