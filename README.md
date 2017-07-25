@@ -1,3 +1,5 @@
+Duvidas poderão ser solucionadas aqui também grupo Telegram https://t.me/joinchat/DyE_jQ6FJFkE0nAMTIL3tA
+
 [![Nuget count](http://img.shields.io/nuget/v/MotorTributarioNet.svg)](https://www.nuget.org/packages/MotorTributarioNet/)
 
 [![GitHub issues](https://img.shields.io/github/issues/AutomacaoNet/MotorTributarioNet.svg)](https://github.com/AutomacaoNet/MotorTributarioNet/issues)
@@ -25,3 +27,6 @@ Partilha (Difal)
 
 Ipi
 
+
+Deseja um Sac Fiscal de um desenvolvedor para outro desenvolvedor?
+http://sacfiscal.com.br/ (Não é meu, mas utilizo o mesmo também)
