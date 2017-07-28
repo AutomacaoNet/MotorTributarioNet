@@ -8,6 +8,8 @@ namespace TestCalculosTributarios.Csosn
     [TestClass]
     public class Csosn101Test
     {
+
+        [TestMethod]
         public void TestaCalculoCsosn101()
         {
             var produto = new Produto
@@ -20,7 +22,6 @@ namespace TestCalculosTributarios.Csosn
 
             csosn101.Calcula(produto);
 
-            Assert.AreEqual(170.00m, produto.ValorProduto);
             Assert.AreEqual(170.00m, csosn101.ValorCredito);
         }
     }
