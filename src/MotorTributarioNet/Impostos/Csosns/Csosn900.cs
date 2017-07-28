@@ -5,9 +5,11 @@ namespace MotorTributarioNet.Impostos.Csosns
 {
     public class Csosn900 : CsosnBase
     {
-        public Csosn900(OrigemMercadoria origemMercadoria) : base(origemMercadoria)
+        public Csosn900(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional) : base(origemMercadoria)
         {
             Csosn = Csosn.Csosn900;
+            ModalidadeDeterminacaoBcIcmsSt = ModalidadeDeterminacaoBcIcmsSt.MargemValorAgregado;
+            ModalidadeDeterminacaoBcIcms = ModalidadeDeterminacaoBcIcms.MargemValorAgregado;
         }
 
         public ModalidadeDeterminacaoBcIcms ModalidadeDeterminacaoBcIcms { get; set; }

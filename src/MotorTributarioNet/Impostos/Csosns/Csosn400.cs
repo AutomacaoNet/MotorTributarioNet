@@ -5,7 +5,7 @@ namespace MotorTributarioNet.Impostos.Csosns
 {
     public class Csosn400 : CsosnBase
     {
-        public Csosn400(OrigemMercadoria origemMercadoria) : base(origemMercadoria)
+        public Csosn400(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional) : base(origemMercadoria)
         {
             Csosn = Csosn.Csosn400;
         }

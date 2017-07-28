@@ -7,7 +7,7 @@ namespace MotorTributarioNet.Impostos.Csosns.Base
         public OrigemMercadoria OrigemMercadoria { get; }
         public Csosn Csosn { get; protected set; }
 
-        public CsosnBase(OrigemMercadoria origemMercadoria)
+        public CsosnBase(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional)
         {
             OrigemMercadoria = origemMercadoria;
         }

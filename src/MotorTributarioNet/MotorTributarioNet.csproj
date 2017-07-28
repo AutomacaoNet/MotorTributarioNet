@@ -55,6 +55,7 @@
     <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIcms.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIpi.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoPis.cs" />
+    <Compile Include="Impostos\Csosns\Extensao\ExtCsosn101.cs" />
     <Compile Include="Impostos\IDadosMensagemDifal.cs" />
     <Compile Include="Impostos\IIbpt.cs" />
     <Compile Include="Impostos\Implementacoes\DadosMensagemDifal.cs" />
