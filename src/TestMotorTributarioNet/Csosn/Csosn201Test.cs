@@ -27,7 +27,7 @@ namespace TestCalculosTributarios.Csosn
 
             Assert.AreEqual(18.00m, csosn201.PercentualIcmsSt);
             Assert.AreEqual(5.00m, csosn201.PercentualCredito);
-            Assert.AreEqual(40.00m, csosn201.PercentualMvaSt);
+            Assert.AreEqual(40.00m, csosn201.PercentualMva);
             Assert.AreEqual(0.00m, csosn201.PercentualReducaoSt);
             Assert.AreEqual(3220.00m, csosn201.ValorBcIcmsSt);
             Assert.AreEqual(219.60m, csosn201.ValorIcmsSt);

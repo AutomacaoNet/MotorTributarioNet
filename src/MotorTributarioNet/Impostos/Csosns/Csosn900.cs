@@ -1,4 +1,5 @@
-﻿using MotorTributarioNet.Flags;
+﻿using MotorTributarioNet.Facade;
+using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.Csosns.Base;
 
 namespace MotorTributarioNet.Impostos.Csosns
@@ -14,7 +15,9 @@ namespace MotorTributarioNet.Impostos.Csosns
 
         public ModalidadeDeterminacaoBcIcms ModalidadeDeterminacaoBcIcms { get; set; }
 
-        public decimal ValorBcIcms { get; set; }
+        public decimal ValorBcIcms { get; private set; }
+
+        public decimal PercentualReducaoIcmsBc { get; private set; }
 
         public decimal PercentualIcms { get; set; }
 
@@ -22,14 +25,64 @@ namespace MotorTributarioNet.Impostos.Csosns
 
         public ModalidadeDeterminacaoBcIcmsSt ModalidadeDeterminacaoBcIcmsSt { get; set; }
 
-        public decimal ValorBcIcmsSt { get; set; }
+        public decimal PercentualMva { get; private set; }
 
-        public decimal PercentualIcmsSt { get; set; }
+        public decimal PercentualReducaoSt { get; private set; }
 
-        public decimal ValorIcmsSt { get; set; }
+        public decimal ValorBcIcmsSt { get; private set; }
 
-        public decimal PercentualCredito { get; set; }
+        public decimal PercentualIcmsSt { get; private set; }
 
-        public decimal ValorCredito { get; set; }
+        public decimal ValorIcmsSt { get; private set; }
+
+        public decimal PercentualCredito { get; private set; }
+
+        public decimal ValorCredito { get; private set; }
+
+        public override void Calcula(ITributavel tributavel)
+        {
+            CalculaIcms(tributavel);
+
+            CalculaIcmsSt(tributavel);
+
+            CalculaCredito(tributavel);
+        }
+
+        private void CalculaCredito(ITributavel tributavel)
+        {
+            PercentualCredito = tributavel.PercentualCredito;
+
+            var facade = new FacadeCalculadoraTributacao(tributavel);
+            var resultadoCalculaCredito = facade.CalculaIcmsCredito();
+            ValorCredito = resultadoCalculaCredito.Valor;
+        }
+
+        private void CalculaIcmsSt(ITributavel tributavel)
+        {
+            PercentualMva = tributavel.PercentualMva;
+            PercentualReducaoSt = tributavel.PercentualReducaoSt;
+            PercentualIcmsSt = tributavel.PercentualIcmsSt;
+
+            var facade = new FacadeCalculadoraTributacao(tributavel);
+
+            tributavel.ValorIpi = facade.CalculaIpi().Valor;
+
+            var resultadoCalculoIcmsSt = facade.CalculaIcmsSt();
+
+            ValorBcIcmsSt = resultadoCalculoIcmsSt.BaseCalculoIcmsSt;
+            ValorIcmsSt = resultadoCalculoIcmsSt.ValorIcmsSt;
+        }
+
+        private void CalculaIcms(ITributavel tributavel)
+        {
+            PercentualReducaoIcmsBc = tributavel.PercentualReducao;
+            PercentualIcms = tributavel.PercentualIcms;
+
+            var facade = new FacadeCalculadoraTributacao(tributavel);
+
+            var resultadoCalculoIcms = facade.CalculaIcms();
+            ValorBcIcms = resultadoCalculoIcms.BaseCalculo;
+            ValorIcms = resultadoCalculoIcms.Valor;
+        }
     }
 }

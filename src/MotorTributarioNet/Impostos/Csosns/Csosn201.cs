@@ -12,7 +12,7 @@ namespace MotorTributarioNet.Impostos.Csosns
         }
 
         public ModalidadeDeterminacaoBcIcmsSt ModalidadeDeterminacaoBcIcmsSt { get; set; }
-        public decimal PercentualMvaSt { get; private set; }
+        public decimal PercentualMva { get; private set; }
         public decimal PercentualReducaoSt { get; private set; }
         public decimal ValorBcIcmsSt { get; private set; }
         public decimal PercentualIcmsSt { get; private set; }
@@ -23,7 +23,7 @@ namespace MotorTributarioNet.Impostos.Csosns
         {
             base.Calcula(tributavel);
 
-            PercentualMvaSt = tributavel.PercentualMva;
+            PercentualMva = tributavel.PercentualMva;
             PercentualReducaoSt = tributavel.PercentualReducaoSt;
             PercentualIcmsSt = tributavel.PercentualIcmsSt;
 
