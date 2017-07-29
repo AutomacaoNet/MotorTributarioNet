@@ -80,6 +80,8 @@ namespace MotorTributarioNet.Impostos.Csosns
 
             var facade = new FacadeCalculadoraTributacao(tributavel);
 
+            tributavel.ValorIpi = facade.CalculaIpi().Valor;
+
             var resultadoCalculoIcms = facade.CalculaIcms();
             ValorBcIcms = resultadoCalculoIcms.BaseCalculo;
             ValorIcms = resultadoCalculoIcms.Valor;
