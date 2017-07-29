@@ -1,4 +1,5 @@
-﻿using MotorTributarioNet.Flags;
+﻿using System;
+using MotorTributarioNet.Flags;
 
 namespace MotorTributarioNet.Impostos.Csosns.Base
 {
@@ -10,6 +11,11 @@ namespace MotorTributarioNet.Impostos.Csosns.Base
         public CsosnBase(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional)
         {
             OrigemMercadoria = origemMercadoria;
+        }
+
+        public virtual void Calcula(ITributavel tributavel)
+        {
+            throw new ArgumentException("Não existe calculo!");
         }
     }
 }

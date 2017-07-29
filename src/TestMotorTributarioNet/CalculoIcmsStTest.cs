@@ -25,12 +25,12 @@ namespace TestCalculosTributarios
 
             produto.ValorIpi = facade.CalculaIpi().Valor;
 
-            var resultadoCalculoCofins = facade.CalculaIcmsSt();
+            var resultadoCalculoIcmsSt = facade.CalculaIcmsSt();
 
-            Assert.AreEqual(2000.00m, resultadoCalculoCofins.BaseCalculoOperacaoPropria);
-            Assert.AreEqual(360.00m, resultadoCalculoCofins.ValorIcmsProprio);
-            Assert.AreEqual(3220.00m, resultadoCalculoCofins.BaseCalculoIcmsSt);
-            Assert.AreEqual(219.60m, resultadoCalculoCofins.ValorIcmsSt);
+            Assert.AreEqual(2000.00m, resultadoCalculoIcmsSt.BaseCalculoOperacaoPropria);
+            Assert.AreEqual(360.00m, resultadoCalculoIcmsSt.ValorIcmsProprio);
+            Assert.AreEqual(3220.00m, resultadoCalculoIcmsSt.BaseCalculoIcmsSt);
+            Assert.AreEqual(219.60m, resultadoCalculoIcmsSt.ValorIcmsSt);
         }
 
     }
