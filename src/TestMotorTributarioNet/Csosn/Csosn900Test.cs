@@ -32,6 +32,8 @@ namespace TestCalculosTributarios.Csosn
             Assert.AreEqual(0.00m, csosn900.PercentualReducaoSt);
             Assert.AreEqual(3220.00m, csosn900.ValorBcIcmsSt);
             Assert.AreEqual(219.60m, csosn900.ValorIcmsSt);
+            Assert.AreEqual(414.00m, csosn900.ValorIcms);
+            Assert.AreEqual(2300.00m, csosn900.ValorBcIcms);
         }
 
         [TestMethod]
