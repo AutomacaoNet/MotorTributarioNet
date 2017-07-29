@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MotorTributarioNet.Facade;
 using MotorTributarioNet.Impostos.Csosns;
 using TestCalculosTributarios.Entidade;
 

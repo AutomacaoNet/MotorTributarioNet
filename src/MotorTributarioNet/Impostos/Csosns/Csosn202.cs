@@ -1,4 +1,5 @@
-﻿using MotorTributarioNet.Flags;
+﻿using MotorTributarioNet.Facade;
+using MotorTributarioNet.Flags;
 
 namespace MotorTributarioNet.Impostos.Csosns
 {
@@ -11,8 +12,27 @@ namespace MotorTributarioNet.Impostos.Csosns
         }
 
         public ModalidadeDeterminacaoBcIcmsSt ModalidadeDeterminacaoBcIcmsSt { get; set; }
-        public decimal ValorBcIcmsSt { get; set; }
-        public decimal PercentualIcmsSt { get; set; }
-        public decimal ValorIcmsSt { get; set; }
+
+        public decimal PercentualMvaSt { get; private set; }
+        public decimal PercentualReducaoSt { get; private set; }
+        public decimal ValorBcIcmsSt { get; private set; }
+        public decimal PercentualIcmsSt { get; private set; }
+        public decimal ValorIcmsSt { get; private set; }
+
+        public override void Calcula(ITributavel tributavel)
+        {
+            PercentualMvaSt = tributavel.PercentualMva;
+            PercentualReducaoSt = tributavel.PercentualReducaoSt;
+            PercentualIcmsSt = tributavel.PercentualIcmsSt;
+
+            var facade = new FacadeCalculadoraTributacao(tributavel);
+
+            tributavel.ValorIpi = facade.CalculaIpi().Valor;
+
+            var resultadoCalculoCofins = facade.CalculaIcmsSt();
+
+            ValorBcIcmsSt = resultadoCalculoCofins.BaseCalculoIcmsSt;
+            ValorIcmsSt = resultadoCalculoCofins.ValorIcmsSt;
+        }
     }
 }

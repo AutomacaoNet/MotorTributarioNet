@@ -58,6 +58,7 @@
     <Compile Include="CalculoPisTest.cs" />
     <Compile Include="Csosn\Csosn101Test.cs" />
     <Compile Include="Csosn\Csosn201Test.cs" />
+    <Compile Include="Csosn\Csosn202Test.cs" />
     <Compile Include="Entidade\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
