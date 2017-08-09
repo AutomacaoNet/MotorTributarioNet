@@ -5,7 +5,7 @@ namespace MotorTributarioNet.Impostos.Csosns
 {
     public class Csosn202 : Csosn102
     {
-        public Csosn202(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional) : base(origemMercadoria)
+        public Csosn202(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Csosn = Csosn.Csosn202;
             ModalidadeDeterminacaoBcIcmsSt = ModalidadeDeterminacaoBcIcmsSt.MargemValorAgregado;
@@ -25,7 +25,7 @@ namespace MotorTributarioNet.Impostos.Csosns
             PercentualReducaoSt = tributavel.PercentualReducaoSt;
             PercentualIcmsSt = tributavel.PercentualIcmsSt;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel);
+            var facade = new FacadeCalculadoraTributacao(tributavel,TipoDesconto);
 
             tributavel.ValorIpi = facade.CalculaIpi().Valor;
 

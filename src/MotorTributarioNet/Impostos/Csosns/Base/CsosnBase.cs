@@ -7,10 +7,12 @@ namespace MotorTributarioNet.Impostos.Csosns.Base
     {
         public OrigemMercadoria OrigemMercadoria { get; }
         public Csosn Csosn { get; protected set; }
+        public TipoDesconto TipoDesconto { get; set; }
 
-        public CsosnBase(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional)
+        public CsosnBase(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional)
         {
             OrigemMercadoria = origemMercadoria;
+            TipoDesconto = tipoDesconto;
         }
 
         public virtual void Calcula(ITributavel tributavel)
