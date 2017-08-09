@@ -40,7 +40,7 @@ namespace TestCalculosTributarios.Cst
 
             var cst = new Cst00();
             cst.Calcula(produto);
-            Assert.AreEqual(1100.00m, cst.ValorBCIcms);
+            Assert.AreEqual(1100.00m, cst.ValorBcIcms);
             Assert.AreEqual(198.00m, cst.ValorIcms);
             Assert.AreEqual(18.00m, cst.PercentualIcms);
         }
@@ -58,7 +58,7 @@ namespace TestCalculosTributarios.Cst
 
             var cst = new Cst00();
             cst.Calcula(produto);
-            Assert.AreEqual(1100.00m, cst.ValorBCIcms);
+            Assert.AreEqual(1100.00m, cst.ValorBcIcms);
             Assert.AreEqual(198.00m, cst.ValorIcms);
             Assert.AreEqual(18.00m, cst.PercentualIcms);
         }
@@ -78,7 +78,7 @@ namespace TestCalculosTributarios.Cst
 
             var cst = new Cst00();
             cst.Calcula(produto);
-            Assert.AreEqual(1120.00m, cst.ValorBCIcms);
+            Assert.AreEqual(1120.00m, cst.ValorBcIcms);
             Assert.AreEqual(201.60m, cst.ValorIcms);
             Assert.AreEqual(18.00m, cst.PercentualIcms);
         }

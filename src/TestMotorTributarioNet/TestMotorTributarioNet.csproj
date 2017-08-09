@@ -62,6 +62,7 @@
     <Compile Include="Csosn\Csosn203Test.cs" />
     <Compile Include="Csosn\Csosn900Test.cs" />
     <Compile Include="Cst\Cst00Test.cs" />
+    <Compile Include="Cst\Cst10Test.cs" />
     <Compile Include="Entidade\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
