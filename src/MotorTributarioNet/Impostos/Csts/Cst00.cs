@@ -9,7 +9,7 @@ namespace MotorTributarioNet.Impostos.Csts
         public ModalidadeDeterminacaoBcIcms ModalidadeDeterminacaoBcIcms { get; set; }
         public decimal ValorBcIcms { get; private set; }
         public decimal PercentualIcms { get; private set; }
-        public decimal ValorIcms { get; set; }
+        public decimal ValorIcms { get; private set; }
 
         public Cst00(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
