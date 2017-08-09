@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Facade\FacadeCalculadoraTributacao.cs" />
     <Compile Include="Flags\Csosn.cs" />
+    <Compile Include="Flags\Cst.cs" />
     <Compile Include="Flags\ModalidadeDeterminacaoBcIcms.cs" />
     <Compile Include="Flags\ModalidadeDeterminacaoBcIcmsSt.cs" />
     <Compile Include="Flags\OrigemMercadoria.cs" />
