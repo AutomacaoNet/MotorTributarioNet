@@ -16,6 +16,7 @@ namespace MotorTributarioNet.Impostos.Csts
         public Cst10(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Cst = Cst.Cst10;
+            ModalidadeDeterminacaoBcIcmsSt = ModalidadeDeterminacaoBcIcmsSt.MargemValorAgregado;
         }
 
         public override void Calcula(ITributavel tributavel)

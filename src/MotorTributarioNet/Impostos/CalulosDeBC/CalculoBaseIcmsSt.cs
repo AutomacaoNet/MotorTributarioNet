@@ -14,16 +14,34 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
             _tipoDesconto = tipoDesconto;
         }
 
+        public decimal CalculaBaseCalculo(decimal percetualReducaoIcms)
+        {
+            var baseCalculo = CalculaBaseDeCalculo() + _tributavel.ValorIpi; ;
+
+            baseCalculo = baseCalculo - (baseCalculo * percetualReducaoIcms / 100);
+            var baseCalculoSt = CalculaBaseCalculoST(baseCalculo);
+            return baseCalculoSt;
+        }
+
         public decimal CalculaBaseCalculo()
         {
-            var baseCalculoSt = CalculaBaseDeCalculo() + _tributavel.ValorIpi;
+            var baseCalculo = CalculaBaseDeCalculo() + _tributavel.ValorIpi;
 
-            baseCalculoSt = _tipoDesconto == TipoDesconto.Condincional ? CalculaIcmsComDescontoCondicional(baseCalculoSt) : CalculaIcmsComDescontoIncondicional(baseCalculoSt);
+            var baseCalculoSt = CalculaBaseCalculoST(baseCalculo);
+            return baseCalculoSt;
+        }
+
+
+        public decimal CalculaBaseCalculoST(decimal baseCalculoIcms)
+        {
+            var baseCalculoSt = _tipoDesconto == TipoDesconto.Condincional ? CalculaIcmsComDescontoCondicional(baseCalculoIcms) : CalculaIcmsComDescontoIncondicional(baseCalculoIcms);
 
             baseCalculoSt = baseCalculoSt * (1.00m + _tributavel.PercentualMva / 100.00m);
 
             return baseCalculoSt;
         }
+
+
 
         private decimal CalculaIcmsComDescontoIncondicional(decimal baseCalculoInicial)
         {
