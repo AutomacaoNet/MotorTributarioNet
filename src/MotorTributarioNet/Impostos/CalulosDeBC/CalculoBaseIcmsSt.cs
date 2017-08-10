@@ -14,19 +14,11 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
             _tipoDesconto = tipoDesconto;
         }
 
-        public decimal CalculaBaseCalculo(decimal percetualReducaoIcms)
-        {
-            var baseCalculo = CalculaBaseDeCalculo() + _tributavel.ValorIpi; ;
-
-            baseCalculo = baseCalculo - (baseCalculo * percetualReducaoIcms / 100);
-            var baseCalculoSt = CalculaBaseCalculoST(baseCalculo);
-            return baseCalculoSt;
-        }
-
+  
         public decimal CalculaBaseCalculo()
         {
             var baseCalculo = CalculaBaseDeCalculo() + _tributavel.ValorIpi;
-
+            baseCalculo = baseCalculo - (baseCalculo * _tributavel.PercentualReducao / 100);
             var baseCalculoSt = CalculaBaseCalculoST(baseCalculo);
             return baseCalculoSt;
         }

@@ -30,7 +30,7 @@ namespace MotorTributarioNet.Impostos.Tributacoes
 
             //var baseCalculoIcmsSt  = _baseIcmsSt.CalculaBaseCalculo();
 
-            var baseCalculoIcmsSt = _baseIcmsSt.CalculaBaseCalculo(_tributavel.PercentualReducao);
+            var baseCalculoIcmsSt = _baseIcmsSt.CalculaBaseCalculo();
 
             var valorIcmsSt = (baseCalculoIcmsSt * (_tributavel.PercentualIcmsSt / 100)) - valorIcmsProprio;
 

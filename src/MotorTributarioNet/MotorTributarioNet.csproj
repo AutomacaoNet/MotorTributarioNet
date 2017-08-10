@@ -68,6 +68,7 @@
     <Compile Include="Impostos\Csts\Cst51.cs" />
     <Compile Include="Impostos\Csts\Cst60.cs" />
     <Compile Include="Impostos\Csts\Cst70.cs" />
+    <Compile Include="Impostos\Csts\Cst90.cs" />
     <Compile Include="Impostos\IDadosMensagemDifal.cs" />
     <Compile Include="Impostos\IIbpt.cs" />
     <Compile Include="Impostos\Implementacoes\DadosMensagemDifal.cs" />
