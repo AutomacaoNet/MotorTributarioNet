@@ -1,10 +1,6 @@
-﻿using MotorTributarioNet.Impostos.Csts.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
-using MotorTributarioNet.Facade;
+using MotorTributarioNet.Impostos.Csts.Base;
 
 namespace MotorTributarioNet.Impostos.Csts
 {

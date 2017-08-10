@@ -65,6 +65,7 @@
     <Compile Include="Cst\Cst10Test.cs" />
     <Compile Include="Cst\Cst20Test.cs" />
     <Compile Include="Cst\Cst30Test.cs" />
+    <Compile Include="Cst\Cst51Test.cs" />
     <Compile Include="Entidade\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

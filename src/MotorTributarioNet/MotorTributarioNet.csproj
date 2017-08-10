@@ -46,6 +46,7 @@
     <Compile Include="Flags\Cst.cs" />
     <Compile Include="Flags\ModalidadeDeterminacaoBcIcms.cs" />
     <Compile Include="Flags\ModalidadeDeterminacaoBcIcmsSt.cs" />
+    <Compile Include="Flags\MotivoDesoneracao.cs" />
     <Compile Include="Flags\OrigemMercadoria.cs" />
     <Compile Include="Flags\TipoDesconto.cs" />
     <Compile Include="Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" />
@@ -61,6 +62,10 @@
     <Compile Include="Impostos\Csts\Cst10.cs" />
     <Compile Include="Impostos\Csts\Cst20.cs" />
     <Compile Include="Impostos\Csts\Cst30.cs" />
+    <Compile Include="Impostos\Csts\Cst40.cs" />
+    <Compile Include="Impostos\Csts\Cst41.cs" />
+    <Compile Include="Impostos\Csts\Cst50.cs" />
+    <Compile Include="Impostos\Csts\Cst51.cs" />
     <Compile Include="Impostos\IDadosMensagemDifal.cs" />
     <Compile Include="Impostos\IIbpt.cs" />
     <Compile Include="Impostos\Implementacoes\DadosMensagemDifal.cs" />
@@ -100,6 +105,7 @@
     <Compile Include="Impostos\IResultadoCalculoPis.cs" />
     <Compile Include="Impostos\ITributavel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\DecimalExt.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
