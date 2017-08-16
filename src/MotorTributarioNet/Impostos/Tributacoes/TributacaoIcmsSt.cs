@@ -28,6 +28,8 @@ namespace MotorTributarioNet.Impostos.Tributacoes
             var baseCalculoOperacaoPropria = _calculaBaseCalculoIcmsSemIpi.CalculaBaseCalculo();
             var valorIcmsProprio = CalculaIcmsSt(baseCalculoOperacaoPropria);
 
+            //var baseCalculoIcmsSt  = _baseIcmsSt.CalculaBaseCalculo();
+
             var baseCalculoIcmsSt = _baseIcmsSt.CalculaBaseCalculo();
 
             var valorIcmsSt = (baseCalculoIcmsSt * (_tributavel.PercentualIcmsSt / 100)) - valorIcmsProprio;

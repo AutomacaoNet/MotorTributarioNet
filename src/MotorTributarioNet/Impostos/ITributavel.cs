@@ -12,6 +12,7 @@
         decimal QuantidadeProduto { get; set; }
         decimal PercentualIcms { get; set; }
         decimal PercentualCredito { get; set; }
+        decimal PercentualDiferimento { get; set; }
         decimal PercentualDifalInterna { get; set; }
         decimal PercentualDifalInterestadual { get; set; }
         decimal PercentualFcp { get; set; }

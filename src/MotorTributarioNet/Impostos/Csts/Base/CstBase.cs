@@ -1,15 +1,15 @@
-﻿using System;
-using MotorTributarioNet.Flags;
+﻿using MotorTributarioNet.Flags;
+using System;
 
-namespace MotorTributarioNet.Impostos.Csosns.Base
+namespace MotorTributarioNet.Impostos.Csts.Base
 {
-    public abstract class CsosnBase
+    public abstract class CstBase
     {
         public OrigemMercadoria OrigemMercadoria { get; }
-        public Csosn Csosn { get; protected set; }
+        public Cst Cst { get; protected set; }
         public TipoDesconto TipoDesconto { get; set; }
 
-        public CsosnBase(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional)
+        public CstBase(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional)
         {
             OrigemMercadoria = origemMercadoria;
             TipoDesconto = tipoDesconto;

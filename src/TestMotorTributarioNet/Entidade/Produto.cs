@@ -1,4 +1,5 @@
-﻿using MotorTributarioNet.Impostos;
+﻿using System;
+using MotorTributarioNet.Impostos;
 
 namespace TestCalculosTributarios.Entidade
 {
@@ -27,5 +28,6 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualFederalImportados { get; set; }
         public decimal PercentualEstadual { get; set; }
         public decimal PercentualMunicipal { get; set; }
+        public decimal PercentualDiferimento { get ; set ; }
     }
 }

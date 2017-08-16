@@ -1,43 +1,37 @@
 ﻿using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
-using MotorTributarioNet.Impostos.Csosns.Base;
+using MotorTributarioNet.Impostos.Csts.Base;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace MotorTributarioNet.Impostos.Csosns
+namespace MotorTributarioNet.Impostos.Csts
 {
-    public class Csosn900 : CsosnBase
+    public class Cst90 : CstBase
     {
-        public Csosn900(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
+       
+
+        public ModalidadeDeterminacaoBcIcms ModalidadeDeterminacaoBcIcms { get; set; }
+        public ModalidadeDeterminacaoBcIcmsSt ModalidadeDeterminacaoBcIcmsSt { get; set; }
+        public decimal ValorBcIcms { get; private set; }
+        public decimal PercentualReducaoIcmsBc { get; private set; }
+        public decimal PercentualIcms { get; set; }
+        public decimal ValorIcms { get; set; }
+        public decimal PercentualMva { get; private set; }
+        public decimal PercentualReducaoSt { get; private set; }
+        public decimal ValorBcIcmsSt { get; private set; }
+        public decimal PercentualIcmsSt { get; private set; }
+        public decimal ValorIcmsSt { get; private set; }
+        public decimal PercentualCredito { get; private set; }
+        public decimal ValorCredito { get; private set; }
+
+        public Cst90(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
-            Csosn = Csosn.Csosn900;
+            Cst = Cst.Cst90;
             ModalidadeDeterminacaoBcIcmsSt = ModalidadeDeterminacaoBcIcmsSt.MargemValorAgregado;
             ModalidadeDeterminacaoBcIcms = ModalidadeDeterminacaoBcIcms.ValorOperacao;
         }
-
-        public ModalidadeDeterminacaoBcIcms ModalidadeDeterminacaoBcIcms { get; set; }
-
-        public decimal ValorBcIcms { get; private set; }
-
-        public decimal PercentualReducaoIcmsBc { get; private set; }
-
-        public decimal PercentualIcms { get; set; }
-
-        public decimal ValorIcms { get; set; }
-
-        public ModalidadeDeterminacaoBcIcmsSt ModalidadeDeterminacaoBcIcmsSt { get; set; }
-
-        public decimal PercentualMva { get; private set; }
-
-        public decimal PercentualReducaoSt { get; private set; }
-
-        public decimal ValorBcIcmsSt { get; private set; }
-
-        public decimal PercentualIcmsSt { get; private set; }
-
-        public decimal ValorIcmsSt { get; private set; }
-
-        public decimal PercentualCredito { get; private set; }
-
-        public decimal ValorCredito { get; private set; }
 
         public override void Calcula(ITributavel tributavel)
         {
@@ -48,11 +42,12 @@ namespace MotorTributarioNet.Impostos.Csosns
             CalculaCredito(tributavel);
         }
 
+
         private void CalculaCredito(ITributavel tributavel)
         {
             PercentualCredito = tributavel.PercentualCredito;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel,TipoDesconto);
+            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
             var resultadoCalculaCredito = facade.CalculaIcmsCredito();
             ValorCredito = resultadoCalculaCredito.Valor;
         }
@@ -63,7 +58,7 @@ namespace MotorTributarioNet.Impostos.Csosns
             PercentualReducaoSt = tributavel.PercentualReducaoSt;
             PercentualIcmsSt = tributavel.PercentualIcmsSt;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel,TipoDesconto);
+            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
 
             tributavel.ValorIpi = facade.CalculaIpi().Valor;
 
@@ -78,7 +73,7 @@ namespace MotorTributarioNet.Impostos.Csosns
             PercentualReducaoIcmsBc = tributavel.PercentualReducao;
             PercentualIcms = tributavel.PercentualIcms;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel,TipoDesconto);
+            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
 
             tributavel.ValorIpi = facade.CalculaIpi().Valor;
 
@@ -86,5 +81,6 @@ namespace MotorTributarioNet.Impostos.Csosns
             ValorBcIcms = resultadoCalculoIcms.BaseCalculo;
             ValorIcms = resultadoCalculoIcms.Valor;
         }
+
     }
 }

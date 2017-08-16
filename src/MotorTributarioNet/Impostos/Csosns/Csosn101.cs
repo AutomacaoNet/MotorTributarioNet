@@ -6,7 +6,7 @@ namespace MotorTributarioNet.Impostos.Csosns
 {
     public class Csosn101 : CsosnBase
     {
-        public Csosn101(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional) : base(origemMercadoria)
+        public Csosn101(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional,TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Csosn = Csosn.Csosn101;
         }
@@ -17,7 +17,7 @@ namespace MotorTributarioNet.Impostos.Csosns
 
         public override void Calcula(ITributavel tributavel)
         {
-            var resultadoCalculoIcmsCredito = new FacadeCalculadoraTributacao(tributavel).CalculaIcmsCredito();
+            var resultadoCalculoIcmsCredito = new FacadeCalculadoraTributacao(tributavel,TipoDesconto).CalculaIcmsCredito();
 
             PercentualCredito = tributavel.PercentualCredito;
             ValorCredito = resultadoCalculoIcmsCredito.Valor;
