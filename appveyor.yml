@@ -14,9 +14,12 @@ environment:
   project_name: MotorTributarioNetStandard2
 before_build:
 - cmd: >-
-    cd src\MotorTributarioNetStandard2 
+    cd src\MotorTributarioNetStandard2
+
     dotnet restore
+
     cd ..
+
     cd ..
 build:
   project: MotorTributarioNetStandard2.csproj
