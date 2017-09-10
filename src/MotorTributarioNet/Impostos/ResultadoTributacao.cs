@@ -1,24 +1,41 @@
-﻿using MotorTributarioNet.Flags;
+﻿//                      Projeto: Motor Tributario                                                  
+//          Biblioteca C# para Cálculos Tributários Do Brasil
+//                    NF-e, NFC-e, CT-e, SAT-Fiscal     
+//                                                                                                                                           
+//  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la 
+// sob os termos da Licença Pública Geral Menor do GNU conforme publicada pela  
+// Free Software Foundation; tanto a versão 2.1 da Licença, ou (a seu critério) 
+// qualquer versão posterior.                                                   
+//                                                                              
+//  Esta biblioteca é distribuída na expectativa de que seja útil, porém, SEM   
+// NENHUMA GARANTIA; nem mesmo a garantia implícita de COMERCIABILIDADE OU      
+// ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA. Consulte a Licença Pública Geral Menor
+// do GNU para mais detalhes. (Arquivo LICENÇA.TXT ou LICENSE.TXT)              
+//                                                                              
+//  Você deve ter recebido uma cópia da Licença Pública Geral Menor do GNU junto
+// com esta biblioteca; se não, escreva para a Free Software Foundation, Inc.,  
+// no endereço 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          
+// Você também pode obter uma copia da licença em:                              
+// https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE                       
+
+
+using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.Csts;
+using MotorTributarioNet.Impostos.Csts.Base;
+using MotorTributarioNet.Impostos.Tributacoes;
 
 namespace MotorTributarioNet.Impostos
 {
     public class ResultadoTributacao
     {
-        #region Impostos Privados
+        #region Impostos Privados  
 
-        private Cst00 Cst00 { get; set; }
-        private Cst10 Cst10 { get; set; }
-        private Cst20 Cst20 { get; set; }
-        private Cst30 Cst30 { get; set; }
-        private Cst40 Cst40 { get; set; }
-        private Cst41 Cst41 { get; set; }
-        private Cst50 Cst50 { get; set; }
-        private Cst51 Cst51 { get; set; }
-        private Cst60 Cst60 { get; set; }
-        private Cst70 Cst70 { get; set; }
-        private Cst90 Cst90 { get; set; }
-
+        private TipoContribuinte TipoContribuinte { get; set; }
+        private Crt CrtEmpresa { get; set; }
+        private CstBase Icms { get; set; }
+        private TributacaoPis Pis { get; set; }
+        private TributacaoCofins Cofins { get; set; }
+        private TributacaoIpi Ipi { get; set; }
         #endregion
 
         #region Retorno/Cálculo Público
@@ -32,9 +49,9 @@ namespace MotorTributarioNet.Impostos
         public decimal PercentualReducaoIcmsBc { get; private set; }
         public decimal PercentualBcStRetido { get; private set; }
         public decimal PercentualDiferimento { get; private set; }
+
         public decimal ValorIcmsDiferido { get; private set; }
         public decimal ValorIcmsOperacao { get; private set; }
-
         public decimal ValorBcIcms { get; private set; }
         public decimal ValorIcms { get; private set; }
         public decimal ValorBcIcmsSt { get; private set; }
@@ -42,72 +59,137 @@ namespace MotorTributarioNet.Impostos
         public decimal ValorCredito { get; private set; }
         public decimal ValorBcStRetido { get; private set; }
         public decimal ValorIcmsDesonerado { get; set; }
+        public decimal ValorPis { get; private set; }
+        public decimal ValorCofins { get; private set; }
+        public decimal ValorIpi { get; private set; }
 
         #endregion
 
-        private readonly Cst _cst;
         private readonly ITributavel _produtoTributavel;
 
-        public ResultadoTributacao(ITributavel produtoTributavel, Cst cst)
+        public ResultadoTributacao(ITributavel produtoTributavel, Crt crtEmpresa, TipoContribuinte tipoContribuinte)
         {
-            _cst = cst;
             _produtoTributavel = produtoTributavel;
+            CrtEmpresa = crtEmpresa;
+            TipoContribuinte = tipoContribuinte;
         }
 
         public ResultadoTributacao Calcular()
         {
-            switch (_cst)
+
+            #region Calcular ICMS
+
+            switch (_produtoTributavel.Cst)
             {
                 case Cst.Cst00:
-                    Cst00 = new Cst00();
-                    Cst00.Calcula(_produtoTributavel);
-                    ValorBcIcms = Cst00.ValorBcIcms;
-                    PercentualIcms = Cst00.PercentualIcms;
-                    ValorIcms = Cst00.ValorIcms;
+                    Icms = new Cst00();
+                    Icms.Calcula(_produtoTributavel);
+                    ValorBcIcms = ((Cst00)Icms).ValorBcIcms;
+                    PercentualIcms = ((Cst00)Icms).PercentualIcms;
+                    ValorIcms = ((Cst00)Icms).ValorIcms;
                     break;
                 case Cst.Cst10:
-                    Cst10 = new Cst10();
-                    Cst10.Calcula(_produtoTributavel);
+                    Icms = new Cst10();
+                    Icms.Calcula(_produtoTributavel);
+                    ValorBcIcms = ((Cst10)Icms).ValorBcIcms;
+                    PercentualIcms = ((Cst10)Icms).PercentualIcms;
+                    ValorIcms = ((Cst10)Icms).ValorIcms;
+                    PercentualMva = ((Cst10)Icms).PercentualMva;
+                    PercentualReducaoSt = ((Cst10)Icms).PercentualReducaoSt;
+                    ValorBcIcmsSt = ((Cst10)Icms).ValorBcIcmsSt;
+                    PercentualIcmsSt = ((Cst10)Icms).PercentualIcmsSt;
+                    ValorIcmsSt = ((Cst10)Icms).ValorIcmsSt;
                     break;
                 case Cst.Cst20:
-                    Cst20 = new Cst20();
-                    Cst20.Calcula(_produtoTributavel);
+                    Icms = new Cst20();
+                    Icms.Calcula(_produtoTributavel);
+                    ValorBcIcms = ((Cst20)Icms).ValorBcIcms;
+                    PercentualIcms = ((Cst20)Icms).PercentualIcms;
+                    ValorIcms = ((Cst20)Icms).ValorIcms;
+                    PercentualReducao = ((Cst20)Icms).PercentualReducao;
                     break;
                 case Cst.Cst30:
-                    Cst30 = new Cst30();
-                    Cst30.Calcula(_produtoTributavel);
+                    Icms = new Cst30();
+                    Icms.Calcula(_produtoTributavel);
+                    PercentualMva = ((Cst30)Icms).PercentualMva;
+                    PercentualReducaoSt = ((Cst30)Icms).PercentualReducaoSt;
+                    ValorBcIcmsSt = ((Cst30)Icms).ValorBcIcmsSt;
+                    PercentualIcmsSt = ((Cst30)Icms).PercentualIcmsSt;
+                    ValorIcmsSt = ((Cst30)Icms).ValorIcmsSt;
                     break;
                 case Cst.Cst40:
-                    Cst40 = new Cst40();
-                    Cst40.Calcula(_produtoTributavel);
+                    Icms = new Cst40();
+                    Icms.Calcula(_produtoTributavel);
+                    ValorIcmsDesonerado = ((Cst40)Icms).ValorIcmsDesonerado;
                     break;
                 case Cst.Cst41:
-                    Cst41 = new Cst41();
-                    Cst41.Calcula(_produtoTributavel);
+                    Icms = new Cst41();
+                    Icms.Calcula(_produtoTributavel);
                     break;
                 case Cst.Cst50:
-                    Cst50 = new Cst50();
-                    Cst50.Calcula(_produtoTributavel);
+                    Icms = new Cst50();
+                    Icms.Calcula(_produtoTributavel);
                     break;
                 case Cst.Cst51:
-                    Cst51 = new Cst51();
-                    Cst51.Calcula(_produtoTributavel);
+                    Icms = new Cst51();
+                    Icms.Calcula(_produtoTributavel);
+                    ValorBcIcms = ((Cst51)Icms).ValorBcIcms;
+                    PercentualIcms = ((Cst51)Icms).PercentualIcms;
+                    ValorIcms = ((Cst51)Icms).ValorIcms;
+                    PercentualReducao = ((Cst51)Icms).PercentualReducao;
+                    PercentualDiferimento = ((Cst51)Icms).PercentualDiferimento;
+                    ValorIcmsDiferido = ((Cst51)Icms).ValorIcmsDiferido;
+                    ValorIcmsOperacao = ((Cst51)Icms).ValorIcmsOperacao;
+                    PercentualReducao = ((Cst51)Icms).PercentualReducao;
                     break;
                 case Cst.Cst60:
-                    Cst60 = new Cst60();
-                    Cst60.Calcula(_produtoTributavel);
+                    Icms = new Cst60();
+                    Icms.Calcula(_produtoTributavel);
+                    PercentualBcStRetido = ((Cst60)Icms).PercentualBcStRetido;
+                    ValorBcStRetido = ((Cst60)Icms).ValorBcStRetido;
                     break;
                 case Cst.Cst70:
-                    Cst70 = new Cst70();
-                    Cst70.Calcula(_produtoTributavel);
+                    Icms = new Cst70();
+                    Icms.Calcula(_produtoTributavel);
+                    PercentualReducao = ((Cst70)Icms).PercentualReducao;
                     break;
                 case Cst.Cst90:
-                    Cst90 = new Cst90();
-                    Cst90.Calcula(_produtoTributavel);
+                    Icms = new Cst90();
+                    Icms.Calcula(_produtoTributavel);
+                    ValorBcIcms = ((Cst90)Icms).ValorBcIcms;
+                    PercentualIcms = ((Cst90)Icms).PercentualIcms;
+                    ValorIcms = ((Cst90)Icms).ValorIcms;
+                    PercentualMva = ((Cst90)Icms).PercentualMva;
+                    PercentualReducaoSt = ((Cst90)Icms).PercentualReducaoSt;
+                    ValorBcIcmsSt = ((Cst90)Icms).ValorBcIcmsSt;
+                    PercentualIcmsSt = ((Cst90)Icms).PercentualIcmsSt;
+                    ValorIcmsSt = ((Cst90)Icms).ValorIcmsSt;
+                    PercentualReducaoIcmsBc = ((Cst90)Icms).PercentualReducaoIcmsBc;
+                    PercentualCredito = ((Cst90)Icms).PercentualCredito;
+                    ValorCredito = ((Cst90)Icms).ValorCredito;
                     break;
-                default:
-                    return this;
+                    default:
+                    break;
             }
+           
+            #endregion
+
+            #region Calcular Pis/Cofins
+
+            Pis=new TributacaoPis(_produtoTributavel,TipoDesconto.Condincional);
+            ValorPis = Pis.Calcula().Valor;
+            Cofins = new TributacaoCofins(_produtoTributavel, TipoDesconto.Condincional);
+            ValorCofins = Cofins.Calcula().Valor;
+
+            #endregion
+
+            #region Calcular Ipi 
+
+            Ipi = new TributacaoIpi(_produtoTributavel, TipoDesconto.Condincional);
+            ValorIpi = Ipi.Calcula().Valor; 
+
+            #endregion
+
             return this;
         }
     }
