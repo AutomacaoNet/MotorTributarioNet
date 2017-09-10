@@ -1,12 +1,17 @@
 version: 1.0.{build}
 skip_non_tags: true
+image: Visual Studio 2017
 configuration: Debug
 platform: Any CPU
+init:
+- cmd: 
 dotnet_csproj:
   patch: true
-  file: 'MotorTributarioNetStandard2.csproj'
+  file: '**\MotorTributarioNetStandard2.csproj'
   version: 2.0
   package_version: 2.0
+environment:
+  project_name: MotorTributarioNetStandard2
 before_build:
 - cmd: >-
     cd src\MotorTributarioNetStandard2
