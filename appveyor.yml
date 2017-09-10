@@ -8,5 +8,5 @@ dotnet_csproj:
   version: 2.0
   package_version: 2.0
 build:
-  project: MotorTributarioNetStandard2.csproj
+  project: src\MotorTributarioNetStandard2\MotorTributarioNetStandard2.csproj
   verbosity: normal
