@@ -27,14 +27,14 @@ namespace MotorTributarioNet.Flags
     {
         //Neste caso, deverá ser informada a Inscrição Estadual do destinatário.
         [Description("1 - Contribuinte de ICMS.")]
-        SimplesNacional = 1,
+        Contribuinte = 1,
 
         [Description("2 - Contribuinte isento")]
-        SimplesNacionalExecesso = 2,
+        Isento = 2,
 
         //Que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS.
         [Description("9 - Não Contribuinte")]
-        RegimeNormal = 9 
+        NaoContribuinte = 9 
 
     }
 }
