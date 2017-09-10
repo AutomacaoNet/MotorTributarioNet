@@ -8,6 +8,8 @@ dotnet_csproj:
   file: '**\MotorTributarioNetStandard2.csproj'
   version: 2.0
   package_version: 2.0
+before_build:
+- cmd: dotnet restore
 build:
-  project: src\MotorTributarioNetStandard2\MotorTributarioNetStandard2.csproj
+  project: MotorTributarioNetStandard2\MotorTributarioNetStandard2.csproj
   verbosity: minimal
