@@ -22,5 +22,5 @@ before_build:
 
     cd ..
 build:
-  project: MotorTributarioNetStandard2.csproj
+  project: src\MotorTributarioNetStandard2\MotorTributarioNetStandard2.csproj
   verbosity: minimal
