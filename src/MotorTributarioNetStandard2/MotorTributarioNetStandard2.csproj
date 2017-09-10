@@ -63,6 +63,7 @@
     <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoIpi.cs" Link="Impostos\IResultadoCalculoIpi.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoPis.cs" Link="Impostos\IResultadoCalculoPis.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\ITributavel.cs" Link="Impostos\ITributavel.cs" />
+    <Compile Include="..\MotorTributarioNet\Impostos\ResultadoTributacao.cs" Link="Impostos\ResultadoTributacao.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoCofins.cs" Link="Impostos\Tributacoes\TributacaoCofins.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoCreditoIcms.cs" Link="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoDifal.cs" Link="Impostos\Tributacoes\TributacaoDifal.cs" />
