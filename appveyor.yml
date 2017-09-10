@@ -1,5 +1,4 @@
 version: 1.0.{build}
-image: Visual Studio 2017
 skip_non_tags: true
 configuration: Debug
 platform: Any CPU
@@ -9,7 +8,10 @@ dotnet_csproj:
   version: 2.0
   package_version: 2.0
 before_build:
-- cmd: dotnet restore
+- cmd: >-
+    cd src\MotorTributarioNetStandard2
+
+    dotnet restore
 build:
-  project: MotorTributarioNetStandard2\MotorTributarioNetStandard2.csproj
+  project: MotorTributarioNetStandard2.csproj
   verbosity: minimal
