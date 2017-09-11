@@ -1,7 +1,10 @@
-﻿namespace MotorTributarioNet.Impostos
+﻿using MotorTributarioNet.Flags;
+
+namespace MotorTributarioNet.Impostos
 {
     public interface ITributavel
     {
+        Cst Cst { get; set; }
         decimal ValorProduto { get; set; }
         decimal Frete { get; set; }
         decimal Seguro { get; set; }

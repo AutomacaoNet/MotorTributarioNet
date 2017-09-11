@@ -6,12 +6,14 @@
 
   <ItemGroup>
     <Compile Include="..\MotorTributarioNet\Facade\FacadeCalculadoraTributacao.cs" Link="Facede\FacadeCalculadoraTributacao.cs" />
+    <Compile Include="..\MotorTributarioNet\Flags\Crt .cs" Link="Flags\Crt .cs" />
     <Compile Include="..\MotorTributarioNet\Flags\Csosn.cs" Link="Flags\Csosn.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\Cst.cs" Link="Flags\Cst.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\ModalidadeDeterminacaoBcIcms.cs" Link="Flags\ModalidadeDeterminacaoBcIcms.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\ModalidadeDeterminacaoBcIcmsSt.cs" Link="Flags\ModalidadeDeterminacaoBcIcmsSt.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\MotivoDesoneracao.cs" Link="Flags\MotivoDesoneracao.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\OrigemMercadoria.cs" Link="Flags\OrigemMercadoria.cs" />
+    <Compile Include="..\MotorTributarioNet\Flags\TipoContribuinte.cs" Link="Flags\TipoContribuinte.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\TipoDesconto.cs" Link="Flags\TipoDesconto.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" Link="Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\CalculaBaseCalculoCofins.cs" Link="Impostos\CalulosDeBC\CalculaBaseCalculoCofins.cs" />
