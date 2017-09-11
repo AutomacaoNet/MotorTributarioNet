@@ -1,10 +1,10 @@
-﻿using System;
-using MotorTributarioNet.Impostos;
+﻿using MotorTributarioNet.Impostos;
 
 namespace TestCalculosTributarios.Entidade
 {
     public class Produto : ITributavel, IIbpt
     {
+        public MotorTributarioNet.Flags.Cst Cst { get; set; }
         public decimal ValorProduto { get; set; }
         public decimal Frete { get; set; }
         public decimal Seguro { get; set; }
