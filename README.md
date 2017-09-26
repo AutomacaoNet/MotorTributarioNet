@@ -9,6 +9,8 @@ Duvidas poderão ser solucionadas aqui também grupo Telegram https://t.me/joinc
 
 [![GitHub license](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/AutomacaoNet/MotorTributarioNet/master/LICENSE)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/4lrcj87c5n4pveg9?svg=true)](https://ci.appveyor.com/project/AutomacaoNet/motortributarionet)
+
 
 # MotorTributarioNet
 
