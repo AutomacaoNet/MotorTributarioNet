@@ -43,10 +43,10 @@ namespace MotorTributarioNet.Impostos.Csts
         public override void Calcula(ITributavel tributavel)
         {
             var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
-            var resultadoCalculoIcms = facade.CalculaIcms();
-            PercentualBcStRetido = tributavel.PercentualIcms;
-            ValorBcStRetido = resultadoCalculoIcms.BaseCalculo;
-            ValorIcmsStRetido = resultadoCalculoIcms.Valor;
+            var resultadoCalculoIcms = facade.CalculaIcmsSt();
+            PercentualBcStRetido = tributavel.PercentualIcmsSt;
+            ValorBcStRetido = resultadoCalculoIcms.BaseCalculoIcmsSt;
+            ValorIcmsStRetido = resultadoCalculoIcms.ValorIcmsSt;
 
             ValorCreditoOutorgadoOuPresumido = facade.CalculaIcmsCredito().Valor;
         }

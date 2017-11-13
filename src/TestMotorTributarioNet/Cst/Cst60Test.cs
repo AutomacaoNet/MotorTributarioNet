@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.Csts;
 using TestCalculosTributarios.Entidade;
@@ -10,7 +9,7 @@ namespace TestCalculosTributarios.Cst
     public class Cst60Test
     {
         [TestMethod]
-        public void CalculaCST60()
+        public void CalculaCst60()
         {
             var produto = new Produto
             {
@@ -34,7 +33,7 @@ namespace TestCalculosTributarios.Cst
                 Documento = Documento.CTe,
                 QuantidadeProduto = 1.000m,
                 ValorProduto = 1000.00m,
-                PercentualIcms = 18.00m,
+                PercentualIcmsSt = 18.00m,
                 PercentualCredito = 20.00m
             };
 

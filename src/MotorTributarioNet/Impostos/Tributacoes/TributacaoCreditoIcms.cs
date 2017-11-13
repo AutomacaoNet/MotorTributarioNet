@@ -60,8 +60,8 @@ namespace MotorTributarioNet.Impostos.Tributacoes
                 case Documento.NFe:
                     return baseCalculo * _tributavel.PercentualCredito / 100;
                 case Documento.CTe:
-                    var resultadoIcms = new FacadeCalculadoraTributacao(_tributavel, _tipoDesconto).CalculaIcms();
-                    return resultadoIcms.Valor * _tributavel.PercentualCredito / 100;
+                    var resultadoIcms = new FacadeCalculadoraTributacao(_tributavel, _tipoDesconto).CalculaIcmsSt();
+                    return resultadoIcms.ValorIcmsSt * _tributavel.PercentualCredito / 100;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
