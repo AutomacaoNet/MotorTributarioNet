@@ -18,6 +18,7 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using System;
 using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.Csts.Base;
@@ -26,8 +27,6 @@ namespace MotorTributarioNet.Impostos.Csts
 {
     public class Cst90 : CstBase
     {
-       
-
         public ModalidadeDeterminacaoBcIcms ModalidadeDeterminacaoBcIcms { get; set; }
         public ModalidadeDeterminacaoBcIcmsSt ModalidadeDeterminacaoBcIcmsSt { get; set; }
         public decimal ValorBcIcms { get; private set; }
@@ -63,9 +62,22 @@ namespace MotorTributarioNet.Impostos.Csts
         {
             PercentualCredito = tributavel.PercentualCredito;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
-            var resultadoCalculaCredito = facade.CalculaIcmsCredito();
-            ValorCredito = resultadoCalculaCredito.Valor;
+            switch (tributavel.Documento)
+            {
+                case Documento.NFe:
+                    var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+                    var resultadoCalculaCredito = facade.CalculaIcmsCredito();
+                    ValorCredito = resultadoCalculaCredito.Valor;
+                break;
+
+                case Documento.CTe:
+                    var resultadoIcms = new FacadeCalculadoraTributacao(tributavel, TipoDesconto).CalculaIcms();
+                    ValorCredito = resultadoIcms.Valor * tributavel.PercentualCredito / 100;
+                break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void CalculaIcmsSt(ITributavel tributavel)

@@ -29,6 +29,7 @@ namespace TestCalculosTributarios.Cst
             Assert.AreEqual(18.00m, cst.PercentualIcms);
             Assert.AreEqual(16.20m, cst.ValorIcms);
         }
+
         [TestMethod]
         public void CalculoCst90ICMSST()
         {
@@ -56,6 +57,26 @@ namespace TestCalculosTributarios.Cst
             Assert.AreEqual(162.00m, cst.ValorBcIcmsSt);
             Assert.AreEqual(18.00m, cst.PercentualIcmsSt);
             Assert.AreEqual(12.96m, cst.ValorIcmsSt);
+        }
+
+        [TestMethod]
+        public void CalculaCST90_CTe()
+        {
+            var produtoFrete = new Produto
+            {
+                Documento = Documento.CTe,
+                QuantidadeProduto = 1.000m,
+                ValorProduto = 1000.00m,
+                PercentualIcms = 18.00m,
+                PercentualCredito = 20.00m
+            };
+
+            var cst = new Cst90();
+            cst.Calcula(produtoFrete);
+
+            Assert.AreEqual(18.00m, cst.PercentualIcms);
+            Assert.AreEqual(1000.00m, cst.ValorBcIcms);
+            Assert.AreEqual(36.00m, cst.ValorCredito);
         }
     }
 }

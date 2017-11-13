@@ -13,9 +13,10 @@ namespace TestCalculosTributarios.Cst
         {
             var produto = new Produto
             {
+                Documento = Documento.NFe,
                 QuantidadeProduto = 1.000m,
                 ValorProduto = 1000.00m,
-                PercentualIcms = 18.00m,
+                PercentualIcmsSt = 18.00m,
             };
 
             var cst = new Cst60();
