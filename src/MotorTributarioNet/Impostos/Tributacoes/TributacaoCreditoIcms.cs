@@ -19,6 +19,7 @@
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
 using System;
+using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.CalulosDeBC;
 using MotorTributarioNet.Impostos.Implementacoes;
@@ -27,13 +28,15 @@ namespace MotorTributarioNet.Impostos.Tributacoes
 {
     public class TributacaoCreditoIcms
     {
+        private readonly TipoDesconto _tipoDesconto;
         private readonly ITributavel _tributavel;
         private readonly CalculaBaseCalculoIcms _calculaBaseCalculoIcms;
 
         public TributacaoCreditoIcms(ITributavel tributavel, TipoDesconto tipoDesconto)
         {
+            _tipoDesconto = tipoDesconto;
             _tributavel = tributavel ?? throw new ArgumentNullException(nameof(tributavel));
-            _calculaBaseCalculoIcms = new CalculaBaseCalculoIcms(_tributavel, tipoDesconto);
+            _calculaBaseCalculoIcms = new CalculaBaseCalculoIcms(_tributavel, _tipoDesconto);
         }
 
         public IResultadoCalculoCredito Calcula()
@@ -52,7 +55,16 @@ namespace MotorTributarioNet.Impostos.Tributacoes
 
         private decimal CalculaCredito(decimal baseCalculo)
         {
-            return baseCalculo * _tributavel.PercentualCredito / 100;
+            switch (_tributavel.Documento)
+            {
+                case Documento.NFe:
+                    return baseCalculo * _tributavel.PercentualCredito / 100;
+                case Documento.CTe:
+                    var resultadoIcms = new FacadeCalculadoraTributacao(_tributavel, _tipoDesconto).CalculaIcms();
+                    return resultadoIcms.Valor * _tributavel.PercentualCredito / 100;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

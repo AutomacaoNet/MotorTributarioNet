@@ -24,6 +24,7 @@ namespace MotorTributarioNet.Impostos
 {
     public interface ITributavel
     {
+        Documento Documento { get; set; }
         Cst Cst { get; set; }
         decimal ValorProduto { get; set; }
         decimal Frete { get; set; }

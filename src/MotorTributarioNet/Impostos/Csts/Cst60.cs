@@ -18,6 +18,7 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.Csts.Base;
 
@@ -28,11 +29,26 @@ namespace MotorTributarioNet.Impostos.Csts
         public decimal PercentualBcStRetido { get; set; }
         public decimal ValorBcStRetido { get; set; }
 
+        // Manual CT-e v3.00 - Pag. 165
+        public decimal ValorCreditoOutorgadoOuPresumido { get; set; }
+
+        // Manual CT-e v3.00 - Pag. 165
+        public decimal ValorIcmsStRetido { get; set; }
+
         public Cst60(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Cst = Cst.Cst60;
         }
 
-        
+        public override void Calcula(ITributavel tributavel)
+        {
+            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+            var resultadoCalculoIcms = facade.CalculaIcms();
+            PercentualBcStRetido = tributavel.PercentualIcms;
+            ValorBcStRetido = resultadoCalculoIcms.BaseCalculo;
+            ValorIcmsStRetido = resultadoCalculoIcms.Valor;
+
+            ValorCreditoOutorgadoOuPresumido = facade.CalculaIcmsCredito().Valor;
+        }
     }
 }

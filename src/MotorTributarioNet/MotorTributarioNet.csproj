@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Facade\FacadeCalculadoraTributacao.cs" />
+    <Compile Include="Flags\Documento.cs" />
     <Compile Include="Flags\TipoContribuinte.cs" />
     <Compile Include="Flags\Csosn.cs" />
     <Compile Include="Flags\Crt .cs" />
