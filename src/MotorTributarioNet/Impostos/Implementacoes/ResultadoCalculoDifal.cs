@@ -39,6 +39,16 @@ namespace MotorTributarioNet.Impostos.Implementacoes
 
         public string GetObservacao(IDadosMensagemDifal dadosMensagemDifal)
         {
+            return MontaMensagemDifal(dadosMensagemDifal);
+        }
+
+        public static string GetObservacaoDifal(IDadosMensagemDifal dadosMensagemDifal)
+        {
+            return MontaMensagemDifal(dadosMensagemDifal);
+        }
+
+        private static string MontaMensagemDifal(IDadosMensagemDifal dadosMensagemDifal)
+        {
             return $"Valores totais do ICMS interstadual: DIFAL da UF destino {dadosMensagemDifal.ValorIcmsDestino} + FCP {dadosMensagemDifal.Fcp}; DIFAL da UF Origem {dadosMensagemDifal.ValorIcmsOrigem}";
         }
     }
