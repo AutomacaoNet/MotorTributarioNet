@@ -98,7 +98,7 @@ namespace MotorTributarioNet.Impostos
             return this;
         }
 
-        private void calcularIcms()
+        private CstBase calcularIcms()
         {
             if (CrtEmpresa == Crt.RegimeNormal)
             {
@@ -199,6 +199,8 @@ namespace MotorTributarioNet.Impostos
             {
 
             }
+
+            return Icms;
         }
 
         private TributacaoIpi calcularIpi()
@@ -206,6 +208,14 @@ namespace MotorTributarioNet.Impostos
 
             Ipi = new TributacaoIpi(_produtoTributavel, TipoDesconto.Condincional);
             ValorIpi = Ipi.Calcula().Valor;
+
+            if (_produtoTributavel.CstIpi == CstIpi.Cst00
+                || _produtoTributavel.CstIpi == CstIpi.Cst49
+                || _produtoTributavel.CstIpi == CstIpi.Cst50
+                || _produtoTributavel.CstIpi == CstIpi.Cst90)
+            {
+
+            }
 
             return null;
         }
