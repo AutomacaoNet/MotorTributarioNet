@@ -76,6 +76,7 @@
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoIcmsSt.cs" Link="Impostos\Tributacoes\TributacaoIcmsSt.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoIpi.cs" Link="Impostos\Tributacoes\TributacaoIpi.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoPis.cs" Link="Impostos\Tributacoes\TributacaoPis.cs" />
+    <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoIssqn.cs" Link="Impostos\Tributacoes\TributacaoIssqn.cs" />
     <Compile Include="..\MotorTributarioNet\Util\DecimalExt.cs" Link="Util\DecimalExt.cs" />
   </ItemGroup>
 

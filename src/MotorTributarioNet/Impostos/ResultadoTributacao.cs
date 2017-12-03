@@ -212,7 +212,7 @@ namespace MotorTributarioNet.Impostos
             if (_produtoTributavel.CstIpi == CstIpi.Cst00
                 || _produtoTributavel.CstIpi == CstIpi.Cst49
                 || _produtoTributavel.CstIpi == CstIpi.Cst50
-                || _produtoTributavel.CstIpi == CstIpi.Cst90)
+                || _produtoTributavel.CstIpi == CstIpi.Cst99)
             {
 
             }
