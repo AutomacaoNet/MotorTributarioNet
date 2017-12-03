@@ -10,6 +10,7 @@
     <Compile Include="..\MotorTributarioNet\Flags\Csosn.cs" Link="Flags\Csosn.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\Cst.cs" Link="Flags\Cst.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\CstIpi.cs" Link="Flags\CstIppi.cs" />
+    <Compile Include="..\MotorTributarioNet\Flags\CstPisCofins.cs" Link="Flags\CstPisCofins.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\Documento.cs" Link="Flags\Documento.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\ModalidadeDeterminacaoBcIcms.cs" Link="Flags\ModalidadeDeterminacaoBcIcms.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\ModalidadeDeterminacaoBcIcmsSt.cs" Link="Flags\ModalidadeDeterminacaoBcIcmsSt.cs" />

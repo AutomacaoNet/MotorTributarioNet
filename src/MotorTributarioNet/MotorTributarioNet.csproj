@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Facade\FacadeCalculadoraTributacao.cs" />
     <Compile Include="Flags\CstIpi.cs" />
+    <Compile Include="Flags\CstPisCofins.cs" />
     <Compile Include="Flags\Documento.cs" />
     <Compile Include="Flags\TipoContribuinte.cs" />
     <Compile Include="Flags\Csosn.cs" />

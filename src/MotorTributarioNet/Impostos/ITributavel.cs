@@ -26,6 +26,7 @@ namespace MotorTributarioNet.Impostos
     {
         Documento Documento { get; set; }
         Cst Cst { get; set; }
+        CstPisCofins CstPisCofins { get; set; }
         CstIpi CstIpi { get; set; }
         decimal ValorProduto { get; set; }
         decimal Frete { get; set; }

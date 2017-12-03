@@ -37,5 +37,6 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualMunicipal { get; set; }
         public decimal PercentualDiferimento { get ; set ; }
         public CstIpi CstIpi { get; set; }
+        public CstPisCofins CstPisCofins { get; set; }
     }
 }
