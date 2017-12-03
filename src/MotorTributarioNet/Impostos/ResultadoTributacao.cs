@@ -235,7 +235,11 @@ namespace MotorTributarioNet.Impostos
             return null;
         }
 
-   
+        private TributacaoIssqn calcularIssqn()
+        {
+
+            return null;
+        }
 
         private bool cstGeraDifal(string cst, int tipoOperacao, int indIE)
         {
