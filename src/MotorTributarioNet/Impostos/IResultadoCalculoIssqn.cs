@@ -18,42 +18,16 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
-using MotorTributarioNet.Flags;
-
 namespace MotorTributarioNet.Impostos
 {
-    public interface ITributavel
+    public interface IResultadoCalculoIssqn
     {
-        Documento Documento { get; set; }
-        Cst Cst { get; set; }
-        Csosn Csosn { get; set; }
-        CstPisCofins CstPisCofins { get; set; }
-        CstIpi CstIpi { get; set; }
-        decimal ValorProduto { get; set; }
-        decimal Frete { get; set; }
-        decimal Seguro { get; set; }
-        decimal OutrasDespesas { get; set; }
-        decimal Desconto { get; set; }
-        decimal ValorIpi { get; set; }
-        decimal PercentualReducao { get; set; }
-        decimal QuantidadeProduto { get; set; }
-        decimal PercentualIcms { get; set; }
-        decimal PercentualCredito { get; set; }
-        decimal PercentualDiferimento { get; set; }
-        decimal PercentualDifalInterna { get; set; }
-        decimal PercentualDifalInterestadual { get; set; }
-        decimal PercentualFcp { get; set; }
-        decimal PercentualMva { get; set; }
-        decimal PercentualIcmsSt { get; set; }
-        decimal PercentualIpi { get; set; }
-        decimal PercentualCofins { get; set; }
-        decimal PercentualPis { get; set; }
-        decimal PercentualReducaoSt { get; set; }
-        decimal PercentualIssqn { get; set; }
-        decimal PercentualRetPis { get; set; }
-        decimal PercentualRetCofins { get; set; }
-        decimal PercentualRetCsll { get; set; }
-        decimal PercentualRetIrrf { get; set; }
-        decimal PercentualRetInss { get; set; }
+        decimal BaseCalculoInss { get; set; }
+        decimal BaseCalculoIrrf { get; set; }
+        decimal ValorRetPis { get; set; }
+        decimal ValorRetCofins { get; set; }
+        decimal ValorRetCsll { get; set; }
+        decimal ValorRetInss { get; set; }
+        decimal ValorRetIrrf { get; set; }
     }
 }

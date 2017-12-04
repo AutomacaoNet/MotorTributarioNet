@@ -32,12 +32,16 @@ namespace MotorTributarioNet.Impostos
         #region Impostos Privados  
 
         private TipoContribuinte TipoContribuinte { get; set; }
+        private TipoOperacao Operacao { get; set; }
         private Crt CrtEmpresa { get; set; }
         private CstBase icms { get; set; }
         private CsosnBase Csosn { get; set; }
         private TributacaoPis Pis { get; set; }
         private TributacaoCofins Cofins { get; set; }
         private TributacaoIpi Ipi { get; set; }
+        private TributacaoDifal Difal { get; set; }
+        private TributacaoIssqn Issqn { get; set; }
+
         #endregion
 
         #region Retorno/Cálculo Público
@@ -68,14 +72,31 @@ namespace MotorTributarioNet.Impostos
         public decimal ValorBcIpi { get; private set; }
         public decimal ValorIpi { get; private set; }
 
+        public decimal ValorBcDifal { get; private set; }
+        public decimal Fcp { get; private set; }
+        public decimal ValorDifal { get; private set; }
+        public decimal ValorIcmsOrigem { get; private set; }
+        public decimal ValorIcmsDestino { get; private set; }
+
+        public decimal ValorIss { get; private set; }
+        public decimal BaseCalculoIss { get; private set; }
+        public decimal PercentualIss { get; private set; }
+        public decimal BaseCalculoInss { get; private set; }
+        public decimal BaseCalculoIrrf { get; private set; }
+        public decimal ValorRetCofins { get; private set; }
+        public decimal ValorRetPis { get; private set; }
+        public decimal ValorRetIrrf { get; private set; }
+        public decimal ValorRetInss { get; private set; }
+
         #endregion
 
         private readonly ITributavel _produtoTributavel;
 
-        public ResultadoTributacao(ITributavel produtoTributavel, Crt CrtEmpresa, TipoContribuinte tipoContribuinte)
+        public ResultadoTributacao(ITributavel produtoTributavel, Crt crtEmpresa, TipoOperacao operacao, TipoContribuinte tipoContribuinte)
         {
             _produtoTributavel = produtoTributavel;
-            this.CrtEmpresa = CrtEmpresa;
+            CrtEmpresa = crtEmpresa;
+            Operacao = operacao;
             TipoContribuinte = tipoContribuinte;
         }
 
@@ -211,6 +232,35 @@ namespace MotorTributarioNet.Impostos
             }
         }
 
+        private TributacaoDifal CalcularDifal
+        {
+            get
+            {
+                string cstCson = CrtEmpresa == Crt.SimplesNacional ? _produtoTributavel.Csosn.ToString() : _produtoTributavel.Cst.ToString();
+
+                Difal = new TributacaoDifal(_produtoTributavel, TipoDesconto.Condincional);
+                Fcp = decimal.Zero;
+                ValorBcDifal = decimal.Zero;
+                ValorDifal = decimal.Zero;
+                ValorIcmsOrigem = decimal.Zero;
+                ValorIcmsDestino = decimal.Zero;
+
+                if (Operacao == TipoOperacao.OperacaoInterestadual
+                       && CstGeraDifal(cstCson)
+                       && _produtoTributavel.PercentualDifalInterna != 0
+                       && _produtoTributavel.PercentualDifalInterestadual != 0)
+                {
+                    IResultadoCalculoDifal result = Difal.Calcula();
+                    Fcp = result.Fcp;
+                    ValorBcDifal = result.BaseCalculo;
+                    ValorDifal = result.Difal;
+                    ValorIcmsOrigem = result.ValorIcmsOrigem;
+                    ValorIcmsDestino = result.ValorIcmsDestino;
+                }
+                return Difal;
+            }
+        }
+
         private TributacaoIpi CalcularIpi
         {
             get
@@ -270,21 +320,21 @@ namespace MotorTributarioNet.Impostos
                 return Cofins;
             }
         }
-
-        private TributacaoDifal CalcularDifal()
+        
+        private TributacaoIssqn CalcularIssqn(bool calcularRetencao)
         {
-
-
+            Issqn = new TributacaoIssqn(_produtoTributavel, TipoDesconto.Condincional);
+            IResultadoCalculoIssqn result = Issqn.Calcula(calcularRetencao);
+            BaseCalculoInss = result.BaseCalculoInss;
+            BaseCalculoIrrf = result.BaseCalculoIrrf;
+            ValorRetCofins = result.ValorRetCofins;
+            ValorRetPis = result.ValorRetPis;
+            ValorRetIrrf = result.ValorRetIrrf;
+            ValorRetInss = result.BaseCalculoInss;
             return null;
         }
 
-        private TributacaoIssqn CalcularIssqn()
-        {
-
-            return null;
-        }
-
-        private bool CstGeraDifal(string cst, int tipoOperacao, int indIE)
+        private bool CstGeraDifal(string cst)
             => cst.Equals("00") || cst.Equals("20") || cst.Equals("40") || cst.Equals("41") || cst.Equals("60") || cst.Equals("102") || cst.Equals("103") || cst.Equals("400") || cst.Equals("500");
 
     }

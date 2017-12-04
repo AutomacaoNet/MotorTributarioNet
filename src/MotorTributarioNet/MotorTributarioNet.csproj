@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Facade\FacadeCalculadoraTributacao.cs" />
+    <Compile Include="Flags\TipoPessoa.cs" />
+    <Compile Include="Flags\TipoOperacao.cs" />
     <Compile Include="Flags\CstIpi.cs" />
     <Compile Include="Flags\CstPisCofins.cs" />
     <Compile Include="Flags\Documento.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Flags\OrigemMercadoria.cs" />
     <Compile Include="Flags\TipoDesconto.cs" />
     <Compile Include="Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" />
+    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIssqn.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculoBaseIcmsSemIpi.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculoBaseIcmsSt.cs" />
     <Compile Include="Impostos\Csosns\Base\CsosnBase.cs" />
@@ -79,9 +82,11 @@
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoDifal.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIbpt.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIcmsSt.cs" />
+    <Compile Include="Impostos\Implementacoes\ResultadoCalculoIssqn.cs" />
     <Compile Include="Impostos\IResultadoCalculoDifal.cs" />
     <Compile Include="Impostos\IResultadoCalculoIbpt.cs" />
     <Compile Include="Impostos\IResultadoCalculoIcmsSt.cs" />
+    <Compile Include="Impostos\IResultadoCalculoIssqn.cs" />
     <Compile Include="Impostos\ResultadoTributacao.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCofins.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
