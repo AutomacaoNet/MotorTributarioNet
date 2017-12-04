@@ -16,7 +16,6 @@ namespace MotorTributarioNet.Impostos.Tributacoes
             _calculaBaseCalculoIssqn = new CalculaBaseCalculoIssqn(_tributavel, tipoDesconto);
         }
 
-
         public IResultadoCalculoIssqn Calcula(bool calcularRetencoes)
         {
             return CalcularIssqn(calcularRetencoes);
@@ -26,57 +25,57 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         {
             var baseCalculo = _calculaBaseCalculoIssqn.CalculaBaseCalculo();
 
-            var valorIss = calcularIssqn(baseCalculo);
+            var valorIss = CalcularIssqn(baseCalculo);
 
             return !calcularRetencoes ? new ResultadoCalculoIssqn(baseCalculo, valorIss) : CalcularRetencoes(baseCalculo, valorIss);
         }
 
         private IResultadoCalculoIssqn CalcularRetencoes(decimal baseCalculo, decimal valorIss)
         {
-            decimal baseCalculoInss = baseCalculo;
-            decimal baseCalculoIrrf = baseCalculo;
-            decimal valorRetPis = calcularRetPis(baseCalculo);
-            decimal valorRetCofins = calcularRetCofins(baseCalculo);
-            decimal valorRetCsll = calcularRetCsll(baseCalculo);
-            decimal valorRetIrrf = calcularRetIrrf(baseCalculo);
-            decimal valorRetInss = calcularRetInss(baseCalculo);
+            var baseCalculoInss = baseCalculo;
+            var baseCalculoIrrf = baseCalculo;
+            var valorRetPis = CalcularRetPis(baseCalculo);
+            var valorRetCofins = CalcularRetCofins(baseCalculo);
+            var valorRetCsll = CalcularRetCsll(baseCalculo);
+            var valorRetIrrf = CalcularRetIrrf(baseCalculo);
+            var valorRetInss = CalcularRetInss(baseCalculo);
 
             return new ResultadoCalculoIssqn(baseCalculo, valorIss, baseCalculoInss, baseCalculoIrrf, valorRetPis, valorRetCofins, valorRetCsll, valorRetIrrf, valorRetInss);
 
         }
 
-        private decimal calcularIssqn(decimal baseCalculo)
+        private decimal CalcularIssqn(decimal baseCalculo)
         {
             return baseCalculo * _tributavel.PercentualIssqn / 100;
         }
-        private decimal calcularRetPis(decimal baseCalculo)
+        private decimal CalcularRetPis(decimal baseCalculo)
         {
-            decimal valor = baseCalculo * _tributavel.PercentualRetPis / 100;
-            return valor >= 10 ? valor : decimal.Zero;
+            var valor = baseCalculo * _tributavel.PercentualRetPis / 100;
+            return valor > 10 ? valor : decimal.Zero;
         }
 
-        private decimal calcularRetCofins(decimal baseCalculo)
+        private decimal CalcularRetCofins(decimal baseCalculo)
         {
-            decimal valor = baseCalculo * _tributavel.PercentualRetCofins / 100;
-            return valor >= 10 ? valor : decimal.Zero;
+            var valor = baseCalculo * _tributavel.PercentualRetCofins / 100;
+            return valor > 10 ? valor : decimal.Zero;
         }
 
-        private decimal calcularRetCsll(decimal baseCalculo)
+        private decimal CalcularRetCsll(decimal baseCalculo)
         {
-            decimal valor = baseCalculo * _tributavel.PercentualRetCsll / 100;
-            return valor >= 10 ? valor : decimal.Zero;
+            var valor = baseCalculo * _tributavel.PercentualRetCsll / 100;
+            return valor > 10 ? valor : decimal.Zero;
         }
 
-        private decimal calcularRetIrrf(decimal baseCalculo)
+        private decimal CalcularRetIrrf(decimal baseCalculo)
         {
-            decimal valor = baseCalculo * _tributavel.PercentualRetIrrf / 100;
-            return valor >= 10 ? valor : decimal.Zero;
+            var valor = baseCalculo * _tributavel.PercentualRetIrrf / 100;
+            return valor > 10 ? valor : decimal.Zero;
         }
 
-        private decimal calcularRetInss(decimal baseCalculo)
+        private decimal CalcularRetInss(decimal baseCalculo)
         {
-            decimal valor = baseCalculo * _tributavel.PercentualRetInss / 100;
-            return valor >= 10 ? valor : decimal.Zero;
+            var valor = baseCalculo * _tributavel.PercentualRetInss / 100;
+            return valor > 29 ? valor : decimal.Zero;
         }
     }
 }
