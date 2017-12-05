@@ -111,23 +111,22 @@ namespace MotorTributarioNet.Impostos
         {
 
             #region Calcular ICMS
-
-
-
-            #endregion
-
-            #region Calcular Pis/Cofins
-
-
-
+            CalcularIcms();
             #endregion
 
             #region Calcular Ipi 
-
-
-
+            CalcularIpi();
             #endregion
 
+            #region Calcular Pis/Cofins
+            CalcularPis();
+            CalcularCofins();
+            #endregion
+
+            // Falta colocar a regra
+            CalcularIssqn(true);
+            CalcularDifal();
+            CalcularIbpt(_ibpt);
             return this;
         }
 
@@ -387,93 +386,56 @@ namespace MotorTributarioNet.Impostos
             }
         }
 
-        private TributacaoDifal CalcularDifal
+
+        private TributacaoIpi CalcularIpi()
         {
-            get
+            Ipi = new TributacaoIpi(_produtoTributavel, TipoDesconto.Condincional);
+            ValorIpi = decimal.Zero;
+            ValorBcIpi = decimal.Zero;
+
+            if (_produtoTributavel.CstIpi == CstIpi.Cst00
+                || _produtoTributavel.CstIpi == CstIpi.Cst49
+                || _produtoTributavel.CstIpi == CstIpi.Cst50
+                || _produtoTributavel.CstIpi == CstIpi.Cst99)
             {
-                var cstCson = CrtEmpresa == Crt.SimplesNacional ? _produtoTributavel.Csosn.ToString() : _produtoTributavel.Cst.ToString();
-
-                Difal = new TributacaoDifal(_produtoTributavel, TipoDesconto.Condincional);
-                Fcp = decimal.Zero;
-                ValorBcDifal = decimal.Zero;
-                ValorDifal = decimal.Zero;
-                ValorIcmsOrigem = decimal.Zero;
-                ValorIcmsDestino = decimal.Zero;
-
-                if (Operacao == TipoOperacao.OperacaoInterestadual
-                       && CstGeraDifal(cstCson)
-                       && _produtoTributavel.PercentualDifalInterna != 0
-                       && _produtoTributavel.PercentualDifalInterestadual != 0)
-                {
-                    var result = Difal.Calcula();
-                    Fcp = result.Fcp;
-                    ValorBcDifal = result.BaseCalculo;
-                    ValorDifal = result.Difal;
-                    ValorIcmsOrigem = result.ValorIcmsOrigem;
-                    ValorIcmsDestino = result.ValorIcmsDestino;
-                }
-                return Difal;
+                var result = Ipi.Calcula();
+                ValorIpi = result.Valor;
+                ValorBcIpi = result.BaseCalculo;
             }
+            return Ipi;
         }
 
-        private TributacaoIpi CalcularIpi
+        private TributacaoPis CalcularPis()
         {
-            get
-            {
-                Ipi = new TributacaoIpi(_produtoTributavel, TipoDesconto.Condincional);
-                ValorIpi = decimal.Zero;
-                ValorBcIpi = decimal.Zero;
+            Pis = new TributacaoPis(_produtoTributavel, TipoDesconto.Condincional);
+            ValorPis = decimal.Zero;
+            ValorBcPis = decimal.Zero;
 
-                if (_produtoTributavel.CstIpi == CstIpi.Cst00
-                    || _produtoTributavel.CstIpi == CstIpi.Cst49
-                    || _produtoTributavel.CstIpi == CstIpi.Cst50
-                    || _produtoTributavel.CstIpi == CstIpi.Cst99)
-                {
-                    var result = Ipi.Calcula();
-                    ValorIpi = result.Valor;
-                    ValorBcIpi = result.BaseCalculo;
-                }
-                return Ipi;
+            if (_produtoTributavel.CstPisCofins == CstPisCofins.Cst01
+               || _produtoTributavel.CstPisCofins == CstPisCofins.Cst02)
+            {
+                var result = Pis.Calcula();
+                ValorPis = result.Valor;
+                ValorBcPis = result.BaseCalculo;
             }
+            return Pis;
         }
 
-        private TributacaoPis CalcularPis
+        private TributacaoCofins CalcularCofins()
         {
-            get
+            Cofins = new TributacaoCofins(_produtoTributavel, TipoDesconto.Condincional);
+            ValorCofins = decimal.Zero;
+            ValorBcCofins = decimal.Zero;
+
+            if (_produtoTributavel.CstPisCofins == CstPisCofins.Cst01
+                || _produtoTributavel.CstPisCofins == CstPisCofins.Cst02)
             {
-                Pis = new TributacaoPis(_produtoTributavel, TipoDesconto.Condincional);
-                ValorPis = decimal.Zero;
-                ValorBcPis = decimal.Zero;
+                var result = Cofins.Calcula();
+                ValorCofins = result.Valor;
+                ValorBcCofins = result.BaseCalculo;
 
-                if (_produtoTributavel.CstPisCofins == CstPisCofins.Cst01
-                   || _produtoTributavel.CstPisCofins == CstPisCofins.Cst02)
-                {
-                    var result = Pis.Calcula();
-                    ValorPis = result.Valor;
-                    ValorBcPis = result.BaseCalculo;
-                }
-                return Pis;
             }
-        }
-
-        private TributacaoCofins CalcularCofins
-        {
-            get
-            {
-                Cofins = new TributacaoCofins(_produtoTributavel, TipoDesconto.Condincional);
-                ValorCofins = decimal.Zero;
-                ValorBcCofins = decimal.Zero;
-
-                if (_produtoTributavel.CstPisCofins == CstPisCofins.Cst01
-                    || _produtoTributavel.CstPisCofins == CstPisCofins.Cst02)
-                {
-                    var result = Cofins.Calcula();
-                    ValorCofins = result.Valor;
-                    ValorBcCofins = result.BaseCalculo;
-
-                }
-                return Cofins;
-            }
+            return Cofins;
         }
 
         private TributacaoIssqn CalcularIssqn(bool calcularRetencao)
@@ -487,6 +449,32 @@ namespace MotorTributarioNet.Impostos
             ValorRetIrrf = result.ValorRetIrrf;
             ValorRetInss = result.BaseCalculoInss;
             return Issqn;
+        }
+
+        private TributacaoDifal CalcularDifal()
+        {
+            var cstCson = CrtEmpresa == Crt.SimplesNacional ? _produtoTributavel.Csosn.ToString() : _produtoTributavel.Cst.ToString();
+
+            Difal = new TributacaoDifal(_produtoTributavel, TipoDesconto.Condincional);
+            Fcp = decimal.Zero;
+            ValorBcDifal = decimal.Zero;
+            ValorDifal = decimal.Zero;
+            ValorIcmsOrigem = decimal.Zero;
+            ValorIcmsDestino = decimal.Zero;
+
+            if (Operacao == TipoOperacao.OperacaoInterestadual
+                   && CstGeraDifal(cstCson)
+                   && _produtoTributavel.PercentualDifalInterna != 0
+                   && _produtoTributavel.PercentualDifalInterestadual != 0)
+            {
+                var result = Difal.Calcula();
+                Fcp = result.Fcp;
+                ValorBcDifal = result.BaseCalculo;
+                ValorDifal = result.Difal;
+                ValorIcmsOrigem = result.ValorIcmsOrigem;
+                ValorIcmsDestino = result.ValorIcmsDestino;
+            }
+            return Difal;
         }
 
         private TributacaoIbpt CalcularIbpt(IIbpt ibpt)
