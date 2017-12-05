@@ -21,7 +21,7 @@ namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class ResultadoCalculoIbpt : IResultadoCalculoIbpt
     {
-        public ResultadoCalculoIbpt(decimal impostoAproximadoFederal, decimal impostoAproximadoMunicipio, 
+        public ResultadoCalculoIbpt(decimal impostoAproximadoFederal, decimal impostoAproximadoMunicipio,
             decimal impostoAproximadoEstadual, decimal impostoAproximadoImportados, decimal baseCalculo)
         {
             TributacaoFederal = impostoAproximadoFederal;
@@ -29,6 +29,7 @@ namespace MotorTributarioNet.Impostos.Implementacoes
             TributacaoMunicipal = impostoAproximadoMunicipio;
             TributacaoFederalImportados = impostoAproximadoImportados;
             BaseCalculo = baseCalculo;
+            ValorTotalTributos = TributacaoFederal + TributacaoFederalImportados + TributacaoEstadual + TributacaoMunicipal;
         }
 
         public decimal TributacaoFederal { get; set; }
@@ -36,5 +37,6 @@ namespace MotorTributarioNet.Impostos.Implementacoes
         public decimal BaseCalculo { get; set; }
         public decimal TributacaoEstadual { get; set; }
         public decimal TributacaoMunicipal { get; set; }
+        public decimal ValorTotalTributos { get; set; }
     }
 }
