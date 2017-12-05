@@ -23,7 +23,8 @@ namespace MotorTributarioNet.Impostos
     public interface IResultadoCalculoIssqn
     {
         decimal BaseCalculoInss { get; set; }
-        decimal BaseCalculoIrrf { get; set; }
+        decimal Valor { get; set; }
+        decimal BaseCalculoIrrf { get; set; }       
         decimal ValorRetPis { get; set; }
         decimal ValorRetCofins { get; set; }
         decimal ValorRetCsll { get; set; }

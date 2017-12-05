@@ -42,7 +42,7 @@ namespace MotorTributarioNet.Impostos.Implementacoes
         }
         
         public decimal BaseCalculo { get; }
-        public decimal Valor { get; }
+        public decimal Valor { get; set; }
         public decimal BaseCalculoInss { get; set; }
         public decimal BaseCalculoIrrf { get; set; }
         public decimal ValorRetPis { get; set; }
@@ -50,5 +50,6 @@ namespace MotorTributarioNet.Impostos.Implementacoes
         public decimal ValorRetCsll { get; set; }
         public decimal ValorRetInss { get; set; }
         public decimal ValorRetIrrf { get; set; }
+        
     }
 }

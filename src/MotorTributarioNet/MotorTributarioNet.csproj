@@ -87,6 +87,7 @@
     <Compile Include="Impostos\IResultadoCalculoIbpt.cs" />
     <Compile Include="Impostos\IResultadoCalculoIcmsSt.cs" />
     <Compile Include="Impostos\IResultadoCalculoIssqn.cs" />
+    <Compile Include="Impostos\Produto.cs" />
     <Compile Include="Impostos\ResultadoTributacao.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCofins.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Impostos\ITributavel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\DecimalExt.cs" />
+    <Compile Include="Util\EnumExt.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
