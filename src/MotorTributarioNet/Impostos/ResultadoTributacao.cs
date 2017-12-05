@@ -32,7 +32,7 @@ namespace MotorTributarioNet.Impostos
     {
         #region Impostos Privados  
 
-        private TipoContribuinte TipoContribuinte { get; set; }
+        private TipoPessoa TipoPessoa { get; set; }
         private TipoOperacao Operacao { get; set; }
         private Crt CrtEmpresa { get; set; }
         private CstBase Icms { get; set; }
@@ -90,43 +90,38 @@ namespace MotorTributarioNet.Impostos
         public decimal ValorRetIrrf { get; private set; }
         public decimal ValorRetInss { get; private set; }
 
-        public decimal ValorTributacaoFederal { get; set; }
-        public decimal ValorTributacaoFederalImportados { get; set; }
-        public decimal ValorTributacaoEstadual { get; set; }
-        public decimal ValorTributacaoMunicipal { get; set; }
-        public decimal ValorTotalTributos { get; set; }
+        public decimal ValorTributacaoFederal { get; private set; }
+        public decimal ValorTributacaoFederalImportados { get; private set; }
+        public decimal ValorTributacaoEstadual { get; private set; }
+        public decimal ValorTributacaoMunicipal { get; private set; }
+        public decimal ValorTotalTributos { get; private set; }
         #endregion
 
         private readonly ITributavel _produtoTributavel;
-        private readonly IIbpt _ibpt;
-        public ResultadoTributacao(ITributavel produtoTributavel, Crt crtEmpresa, TipoOperacao operacao, TipoContribuinte tipoContribuinte)
+        public ResultadoTributacao(ITributavel produtoTributavel, Crt crtEmpresa, TipoOperacao operacao, TipoPessoa tipoPessoa)
         {
             _produtoTributavel = produtoTributavel;
             CrtEmpresa = crtEmpresa;
             Operacao = operacao;
-            TipoContribuinte = tipoContribuinte;
+            TipoPessoa = tipoPessoa;
         }
 
         public ResultadoTributacao Calcular()
         {
-
-            #region Calcular ICMS
-            CalcularIcms();
-            #endregion
-
-            #region Calcular Ipi 
-            CalcularIpi();
-            #endregion
-
-            #region Calcular Pis/Cofins
+            if (_produtoTributavel.IsServico)
+            {
+                var calcularRetencao = (CrtEmpresa != Crt.SimplesNacional && TipoPessoa != TipoPessoa.Fisica);
+                CalcularIssqn(calcularRetencao);
+            }
+            else
+            {
+                CalcularIcms();
+                CalcularDifal();
+                CalcularIpi();
+            }
             CalcularPis();
             CalcularCofins();
-            #endregion
-
-            // Falta colocar a regra
-            CalcularIssqn(true);
-            CalcularDifal();
-            CalcularIbpt(_ibpt);
+            CalcularIbpt(_produtoTributavel.Ibpt);
             return this;
         }
 
