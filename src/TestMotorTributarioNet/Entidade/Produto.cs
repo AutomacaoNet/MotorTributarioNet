@@ -11,6 +11,10 @@ namespace TestCalculosTributarios.Entidade
         }
 
         public Documento Documento { get; set; }
+        public CstIpi CstIpi { get; set; }
+        public CstPisCofins CstPisCofins { get; set; }
+        public IIbpt Ibpt { get; set; }
+        public bool IsServico { get; set; }
         public MotorTributarioNet.Flags.Cst Cst { get; set; }
         public MotorTributarioNet.Flags.Csosn Csosn { get; set; }
         public decimal ValorProduto { get; set; }
@@ -44,7 +48,6 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualRetIrrf { get; set; }
         public decimal PercentualRetInss { get; set; }
 
-        public CstIpi CstIpi { get; set; }
-        public CstPisCofins CstPisCofins { get; set; }
+     
     }
 }
