@@ -13,7 +13,6 @@ namespace TestCalculosTributarios.Entidade
         public Documento Documento { get; set; }
         public CstIpi CstIpi { get; set; }
         public CstPisCofins CstPisCofins { get; set; }
-        public IIbpt Ibpt { get; set; }
         public bool IsServico { get; set; }
         public MotorTributarioNet.Flags.Cst Cst { get; set; }
         public MotorTributarioNet.Flags.Csosn Csosn { get; set; }

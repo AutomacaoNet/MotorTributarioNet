@@ -34,42 +34,48 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         {
             var baseCalculoInss = baseCalculo;
             var baseCalculoIrrf = baseCalculo;
-            var valorRetPis = CalcularRetPis(baseCalculo);
-            var valorRetCofins = CalcularRetCofins(baseCalculo);
-            var valorRetCsll = CalcularRetCsll(baseCalculo);
+            var calcularRetencoes = CalcularValorTotalTributacao(baseCalculo);
+
+            var valorRetPis = calcularRetencoes ? CalcularRetPis(baseCalculo) : decimal.Zero;
+            var valorRetCofins = calcularRetencoes ? CalcularRetCofins(baseCalculo) : decimal.Zero;
+            var valorRetCsll = calcularRetencoes ? CalcularRetCsll(baseCalculo) : decimal.Zero;
             var valorRetIrrf = CalcularRetIrrf(baseCalculo);
             var valorRetInss = CalcularRetInss(baseCalculo);
 
             return new ResultadoCalculoIssqn(baseCalculo, valorIss, baseCalculoInss, baseCalculoIrrf, valorRetPis, valorRetCofins, valorRetCsll, valorRetIrrf, valorRetInss);
-
         }
 
         private decimal CalcularIssqn(decimal baseCalculo)
         {
-            return baseCalculo * _tributavel.PercentualIssqn / 100;
+            var valor = baseCalculo * _tributavel.PercentualIssqn / 100;
+            return valor > 10 ? valor : decimal.Zero;
         }
         private decimal CalcularRetPis(decimal baseCalculo)
         {
-            var valor = baseCalculo * _tributavel.PercentualRetPis / 100;
-            return valor > 10 ? valor : decimal.Zero;
+            return baseCalculo * _tributavel.PercentualRetPis / 100;
         }
 
         private decimal CalcularRetCofins(decimal baseCalculo)
         {
-            var valor = baseCalculo * _tributavel.PercentualRetCofins / 100;
-            return valor > 10 ? valor : decimal.Zero;
+            return baseCalculo * _tributavel.PercentualRetCofins / 100;
         }
 
         private decimal CalcularRetCsll(decimal baseCalculo)
         {
-            var valor = baseCalculo * _tributavel.PercentualRetCsll / 100;
-            return valor > 10 ? valor : decimal.Zero;
+            return baseCalculo * _tributavel.PercentualRetCsll / 100;
         }
 
         private decimal CalcularRetIrrf(decimal baseCalculo)
         {
             var valor = baseCalculo * _tributavel.PercentualRetIrrf / 100;
             return valor > 10 ? valor : decimal.Zero;
+        }
+
+        private bool CalcularValorTotalTributacao(decimal baseCalculo)
+        {
+            var PercentualTotal = _tributavel.PercentualRetPis + _tributavel.PercentualRetCofins + _tributavel.PercentualRetCsll;
+            var valor = baseCalculo * PercentualTotal / 100;
+            return valor > 10;
         }
 
         private decimal CalcularRetInss(decimal baseCalculo)
