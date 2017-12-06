@@ -17,7 +17,7 @@ namespace TestCalculosTributarios
         [TestMethod]
         public void CalcularItemComUIcmsIpiPisCofins()
         {
-            var produto = new Produto
+            var produto = new MotorTributarioNet.Impostos.Produto
             {
 
                 ValorProduto = 1000.00m,
