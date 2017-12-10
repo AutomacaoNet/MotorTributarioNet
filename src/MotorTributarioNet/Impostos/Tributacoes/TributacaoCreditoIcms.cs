@@ -57,6 +57,11 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         {
             switch (_tributavel.Documento)
             {
+                case Documento.MFe:
+                case Documento.SAT:
+                case Documento.MDFe:
+                case Documento.NFCe:
+                case Documento.CTeOs:
                 case Documento.NFe:
                     return baseCalculo * _tributavel.PercentualCredito / 100;
                 case Documento.CTe:

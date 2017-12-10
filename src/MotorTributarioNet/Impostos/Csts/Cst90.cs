@@ -64,6 +64,11 @@ namespace MotorTributarioNet.Impostos.Csts
 
             switch (tributavel.Documento)
             {
+                case Documento.MFe:
+                case Documento.SAT:
+                case Documento.MDFe:
+                case Documento.NFCe:
+                case Documento.CTeOs:
                 case Documento.NFe:
                     var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
                     var resultadoCalculaCredito = facade.CalculaIcmsCredito();

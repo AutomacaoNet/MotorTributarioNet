@@ -2,7 +2,12 @@
 {
     public enum Documento
     {
+        MFe,
+        SAT,
+        MDFe,
+        NFCe,
         NFe,
-        CTe
+        CTe,
+        CTeOs
     }
 }
