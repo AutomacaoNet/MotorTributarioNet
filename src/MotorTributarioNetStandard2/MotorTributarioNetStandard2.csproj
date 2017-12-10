@@ -9,6 +9,8 @@
     <Compile Include="..\MotorTributarioNet\Flags\Crt .cs" Link="Flags\Crt .cs" />
     <Compile Include="..\MotorTributarioNet\Flags\Csosn.cs" Link="Flags\Csosn.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\Cst.cs" Link="Flags\Cst.cs" />
+    <Compile Include="..\MotorTributarioNet\Flags\CstIpi.cs" Link="Flags\CstIppi.cs" />
+    <Compile Include="..\MotorTributarioNet\Flags\CstPisCofins.cs" Link="Flags\CstPisCofins.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\Documento.cs" Link="Flags\Documento.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\ModalidadeDeterminacaoBcIcms.cs" Link="Flags\ModalidadeDeterminacaoBcIcms.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\ModalidadeDeterminacaoBcIcmsSt.cs" Link="Flags\ModalidadeDeterminacaoBcIcmsSt.cs" />
@@ -16,10 +18,13 @@
     <Compile Include="..\MotorTributarioNet\Flags\OrigemMercadoria.cs" Link="Flags\OrigemMercadoria.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\TipoContribuinte.cs" Link="Flags\TipoContribuinte.cs" />
     <Compile Include="..\MotorTributarioNet\Flags\TipoDesconto.cs" Link="Flags\TipoDesconto.cs" />
+    <Compile Include="..\MotorTributarioNet\Flags\TipoOperacao.cs" Link="Flags\TipoOperacao.cs" />
+    <Compile Include="..\MotorTributarioNet\Flags\TipoPessoa.cs" Link="Flags\TipoPessoa.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" Link="Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\CalculaBaseCalculoCofins.cs" Link="Impostos\CalulosDeBC\CalculaBaseCalculoCofins.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\CalculaBaseCalculoIcms.cs" Link="Impostos\CalulosDeBC\CalculaBaseCalculoIcms.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\CalculaBaseCalculoIpi.cs" Link="Impostos\CalulosDeBC\CalculaBaseCalculoIpi.cs" />
+    <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\CalculaBaseCalculoIssqn.cs" Link="Impostos\CalulosDeBC\CalculaBaseCalculoIssqn.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\CalculaBaseCalculoPis.cs" Link="Impostos\CalulosDeBC\CalculaBaseCalculoPis.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\CalculoBaseIcmsSemIpi.cs" Link="Impostos\CalulosDeBC\CalculoBaseIcmsSemIpi.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\CalulosDeBC\CalculoBaseIcmsSt.cs" Link="Impostos\CalulosDeBC\CalculoBaseIcmsSt.cs" />
@@ -56,6 +61,7 @@
     <Compile Include="..\MotorTributarioNet\Impostos\Implementacoes\ResultadoCalculoIcms.cs" Link="Impostos\Implementacoes\ResultadoCalculoIcms.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Implementacoes\ResultadoCalculoIcmsSt.cs" Link="Impostos\Implementacoes\ResultadoCalculoIcmsSt.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Implementacoes\ResultadoCalculoIpi.cs" Link="Impostos\Implementacoes\ResultadoCalculoIpi.cs" />
+    <Compile Include="..\MotorTributarioNet\Impostos\Implementacoes\ResultadoCalculoIssqn.cs" Link="Impostos\Implementacoes\ResultadoCalculoIssqn.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Implementacoes\ResultadoCalculoPis.cs" Link="Impostos\Implementacoes\ResultadoCalculoPis.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoCofins.cs" Link="Impostos\IResultadoCalculoCofins.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoCredito.cs" Link="Impostos\IResultadoCalculoCredito.cs" />
@@ -63,10 +69,12 @@
     <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoIbpt.cs" Link="Impostos\IResultadoCalculoIbpt.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoIcms.cs" Link="Impostos\IResultadoCalculoIcms.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoIcmsSt.cs" Link="Impostos\IResultadoCalculoIcmsSt.cs" />
+    <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoIssqn.cs" Link="Impostos\IResultadoCalculoIssqn.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoIpi.cs" Link="Impostos\IResultadoCalculoIpi.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\IResultadoCalculoPis.cs" Link="Impostos\IResultadoCalculoPis.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\ITributavel.cs" Link="Impostos\ITributavel.cs" />
-    <Compile Include="..\MotorTributarioNet\Impostos\ResultadoTributacao.cs" Link="Impostos\ResultadoTributacao.cs" />
+    <Compile Include="..\MotorTributarioNet\Impostos\Produto.cs" Link="Impostos\Produto.cs" />
+    <Compile Include="..\MotorTributarioNet\Impostos\ResultadoTributacao.cs" Link="Impostos\ResultadoTributacao.cs" />    
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoCofins.cs" Link="Impostos\Tributacoes\TributacaoCofins.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoCreditoIcms.cs" Link="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoDifal.cs" Link="Impostos\Tributacoes\TributacaoDifal.cs" />
@@ -75,7 +83,9 @@
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoIcmsSt.cs" Link="Impostos\Tributacoes\TributacaoIcmsSt.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoIpi.cs" Link="Impostos\Tributacoes\TributacaoIpi.cs" />
     <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoPis.cs" Link="Impostos\Tributacoes\TributacaoPis.cs" />
+    <Compile Include="..\MotorTributarioNet\Impostos\Tributacoes\TributacaoIssqn.cs" Link="Impostos\Tributacoes\TributacaoIssqn.cs" />    
     <Compile Include="..\MotorTributarioNet\Util\DecimalExt.cs" Link="Util\DecimalExt.cs" />
+  <Compile Include="..\MotorTributarioNet\Util\EnumExt.cs" Link="Util\EnumExt.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Facade\FacadeCalculadoraTributacao.cs" />
+    <Compile Include="Flags\TipoPessoa.cs" />
+    <Compile Include="Flags\TipoOperacao.cs" />
+    <Compile Include="Flags\CstIpi.cs" />
+    <Compile Include="Flags\CstPisCofins.cs" />
     <Compile Include="Flags\Documento.cs" />
     <Compile Include="Flags\TipoContribuinte.cs" />
     <Compile Include="Flags\Csosn.cs" />
@@ -52,6 +56,7 @@
     <Compile Include="Flags\OrigemMercadoria.cs" />
     <Compile Include="Flags\TipoDesconto.cs" />
     <Compile Include="Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" />
+    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIssqn.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculoBaseIcmsSemIpi.cs" />
     <Compile Include="Impostos\CalulosDeBC\CalculoBaseIcmsSt.cs" />
     <Compile Include="Impostos\Csosns\Base\CsosnBase.cs" />
@@ -77,9 +82,12 @@
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoDifal.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIbpt.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIcmsSt.cs" />
+    <Compile Include="Impostos\Implementacoes\ResultadoCalculoIssqn.cs" />
     <Compile Include="Impostos\IResultadoCalculoDifal.cs" />
     <Compile Include="Impostos\IResultadoCalculoIbpt.cs" />
     <Compile Include="Impostos\IResultadoCalculoIcmsSt.cs" />
+    <Compile Include="Impostos\IResultadoCalculoIssqn.cs" />
+    <Compile Include="Impostos\Produto.cs" />
     <Compile Include="Impostos\ResultadoTributacao.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCofins.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
@@ -88,6 +96,7 @@
     <Compile Include="Impostos\Tributacoes\TributacaoIcms.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoIcmsSt.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoIpi.cs" />
+    <Compile Include="Impostos\Tributacoes\TributacaoIssqn.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoPis.cs" />
     <Compile Include="Impostos\Csosns\Csosn201.cs" />
     <Compile Include="Impostos\Csosns\Csosn101.cs" />
@@ -112,6 +121,7 @@
     <Compile Include="Impostos\ITributavel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\DecimalExt.cs" />
+    <Compile Include="Util\EnumExt.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

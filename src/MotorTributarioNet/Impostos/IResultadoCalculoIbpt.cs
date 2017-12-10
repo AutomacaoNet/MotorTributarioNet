@@ -27,5 +27,6 @@ namespace MotorTributarioNet.Impostos
         decimal BaseCalculo { get; set; }
         decimal TributacaoEstadual { get; set; }
         decimal TributacaoMunicipal { get; set; }
+        decimal ValorTotalTributos { get; set; }
     }
 }

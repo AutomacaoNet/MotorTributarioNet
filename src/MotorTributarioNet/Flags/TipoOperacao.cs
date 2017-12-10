@@ -18,43 +18,19 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
-using MotorTributarioNet.Flags;
+using System.ComponentModel;
 
-namespace MotorTributarioNet.Impostos
+namespace MotorTributarioNet.Flags
 {
-    public interface ITributavel
+    public enum TipoOperacao
     {
-        Documento Documento { get; set; }
-        Cst Cst { get; set; }
-        Csosn Csosn { get; set; }
-        CstPisCofins CstPisCofins { get; set; }
-        CstIpi CstIpi { get; set; }
-        bool IsServico { get; set; }
-        decimal ValorProduto { get; set; }
-        decimal Frete { get; set; }
-        decimal Seguro { get; set; }
-        decimal OutrasDespesas { get; set; }
-        decimal Desconto { get; set; }
-        decimal ValorIpi { get; set; }
-        decimal PercentualReducao { get; set; }
-        decimal QuantidadeProduto { get; set; }
-        decimal PercentualIcms { get; set; }
-        decimal PercentualCredito { get; set; }
-        decimal PercentualDiferimento { get; set; }
-        decimal PercentualDifalInterna { get; set; }
-        decimal PercentualDifalInterestadual { get; set; }
-        decimal PercentualFcp { get; set; }
-        decimal PercentualMva { get; set; }
-        decimal PercentualIcmsSt { get; set; }
-        decimal PercentualIpi { get; set; }
-        decimal PercentualCofins { get; set; }
-        decimal PercentualPis { get; set; }
-        decimal PercentualReducaoSt { get; set; }
-        decimal PercentualIssqn { get; set; }
-        decimal PercentualRetPis { get; set; }
-        decimal PercentualRetCofins { get; set; }
-        decimal PercentualRetCsll { get; set; }
-        decimal PercentualRetIrrf { get; set; }
-        decimal PercentualRetInss { get; set; }
+        [Description("1 - Operação interna")]
+        OperacaoInterna = 1,
+
+        [Description("2 - Operação interestadual")]
+        OperacaoInterestadual = 2,
+
+        [Description("3 -Operação com exterior")]
+        OperacaoExterior = 3
     }
 }

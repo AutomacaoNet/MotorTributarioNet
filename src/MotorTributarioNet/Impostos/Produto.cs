@@ -1,7 +1,10 @@
-﻿using MotorTributarioNet.Flags;
-using MotorTributarioNet.Impostos;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MotorTributarioNet.Flags;
 
-namespace TestCalculosTributarios.Entidade
+namespace MotorTributarioNet.Impostos
 {
     public class Produto : ITributavel, IIbpt
     {
@@ -13,9 +16,10 @@ namespace TestCalculosTributarios.Entidade
         public Documento Documento { get; set; }
         public CstIpi CstIpi { get; set; }
         public CstPisCofins CstPisCofins { get; set; }
+        public IIbpt Ibpt { get; set; }
         public bool IsServico { get; set; }
-        public MotorTributarioNet.Flags.Cst Cst { get; set; }
-        public MotorTributarioNet.Flags.Csosn Csosn { get; set; }
+        public Cst Cst { get; set; }
+        public Csosn Csosn { get; set; }
         public decimal ValorProduto { get; set; }
         public decimal Frete { get; set; }
         public decimal Seguro { get; set; }
@@ -39,14 +43,12 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualFederalImportados { get; set; }
         public decimal PercentualEstadual { get; set; }
         public decimal PercentualMunicipal { get; set; }
-        public decimal PercentualDiferimento { get ; set ; }
+        public decimal PercentualDiferimento { get; set; }
         public decimal PercentualIssqn { get; set; }
         public decimal PercentualRetPis { get; set; }
         public decimal PercentualRetCofins { get; set; }
         public decimal PercentualRetCsll { get; set; }
         public decimal PercentualRetIrrf { get; set; }
         public decimal PercentualRetInss { get; set; }
-
-     
     }
 }

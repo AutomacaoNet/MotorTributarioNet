@@ -19,42 +19,40 @@
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
 using MotorTributarioNet.Flags;
+using MotorTributarioNet.Impostos.CalulosDeBC.Base;
 
-namespace MotorTributarioNet.Impostos
+namespace MotorTributarioNet.Impostos.CalulosDeBC
 {
-    public interface ITributavel
+    public class CalculaBaseCalculoIssqn : CalculaBaseCalculoBase
     {
-        Documento Documento { get; set; }
-        Cst Cst { get; set; }
-        Csosn Csosn { get; set; }
-        CstPisCofins CstPisCofins { get; set; }
-        CstIpi CstIpi { get; set; }
-        bool IsServico { get; set; }
-        decimal ValorProduto { get; set; }
-        decimal Frete { get; set; }
-        decimal Seguro { get; set; }
-        decimal OutrasDespesas { get; set; }
-        decimal Desconto { get; set; }
-        decimal ValorIpi { get; set; }
-        decimal PercentualReducao { get; set; }
-        decimal QuantidadeProduto { get; set; }
-        decimal PercentualIcms { get; set; }
-        decimal PercentualCredito { get; set; }
-        decimal PercentualDiferimento { get; set; }
-        decimal PercentualDifalInterna { get; set; }
-        decimal PercentualDifalInterestadual { get; set; }
-        decimal PercentualFcp { get; set; }
-        decimal PercentualMva { get; set; }
-        decimal PercentualIcmsSt { get; set; }
-        decimal PercentualIpi { get; set; }
-        decimal PercentualCofins { get; set; }
-        decimal PercentualPis { get; set; }
-        decimal PercentualReducaoSt { get; set; }
-        decimal PercentualIssqn { get; set; }
-        decimal PercentualRetPis { get; set; }
-        decimal PercentualRetCofins { get; set; }
-        decimal PercentualRetCsll { get; set; }
-        decimal PercentualRetIrrf { get; set; }
-        decimal PercentualRetInss { get; set; }
+        private readonly ITributavel _tributavel;
+        private readonly TipoDesconto _tipoDesconto;
+
+        public CalculaBaseCalculoIssqn(ITributavel tributavel, TipoDesconto tipoDesconto) : base(tributavel)
+        {
+            _tributavel = tributavel;
+            _tipoDesconto = tipoDesconto;
+        }
+
+        public decimal CalculaBaseCalculo()
+        {
+            var baseCalculo = CalculaBaseDeCalculo();
+
+            return _tipoDesconto == TipoDesconto.Condincional ? CalculaIcmsComDescontoCondicional(baseCalculo) : CalculaIcmsComDescontoIncondicional(baseCalculo);
+        }
+
+        private decimal CalculaIcmsComDescontoIncondicional(decimal baseCalculoInicial)
+        {
+            var baseCalculo = baseCalculoInicial - _tributavel.Desconto;
+
+            return baseCalculo;
+        }
+
+        private decimal CalculaIcmsComDescontoCondicional(decimal baseCalculoInicial)
+        {
+            var baseCalulo = baseCalculoInicial + _tributavel.Desconto;
+
+            return baseCalulo;
+        }
     }
 }

@@ -18,43 +18,38 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
-using MotorTributarioNet.Flags;
-
-namespace MotorTributarioNet.Impostos
+namespace MotorTributarioNet.Impostos.Implementacoes
 {
-    public interface ITributavel
+    public class ResultadoCalculoIssqn : IResultadoCalculoIssqn
     {
-        Documento Documento { get; set; }
-        Cst Cst { get; set; }
-        Csosn Csosn { get; set; }
-        CstPisCofins CstPisCofins { get; set; }
-        CstIpi CstIpi { get; set; }
-        bool IsServico { get; set; }
-        decimal ValorProduto { get; set; }
-        decimal Frete { get; set; }
-        decimal Seguro { get; set; }
-        decimal OutrasDespesas { get; set; }
-        decimal Desconto { get; set; }
-        decimal ValorIpi { get; set; }
-        decimal PercentualReducao { get; set; }
-        decimal QuantidadeProduto { get; set; }
-        decimal PercentualIcms { get; set; }
-        decimal PercentualCredito { get; set; }
-        decimal PercentualDiferimento { get; set; }
-        decimal PercentualDifalInterna { get; set; }
-        decimal PercentualDifalInterestadual { get; set; }
-        decimal PercentualFcp { get; set; }
-        decimal PercentualMva { get; set; }
-        decimal PercentualIcmsSt { get; set; }
-        decimal PercentualIpi { get; set; }
-        decimal PercentualCofins { get; set; }
-        decimal PercentualPis { get; set; }
-        decimal PercentualReducaoSt { get; set; }
-        decimal PercentualIssqn { get; set; }
-        decimal PercentualRetPis { get; set; }
-        decimal PercentualRetCofins { get; set; }
-        decimal PercentualRetCsll { get; set; }
-        decimal PercentualRetIrrf { get; set; }
-        decimal PercentualRetInss { get; set; }
+        public ResultadoCalculoIssqn(decimal baseCalculo, decimal valor)
+        {
+            BaseCalculo = baseCalculo;
+            Valor = valor;
+        }
+
+        public ResultadoCalculoIssqn(decimal baseCalculo, decimal valor, decimal baseCalculoInss, decimal baseCalculoIrrf, decimal valorRetPis, decimal valorRetCofins, decimal valorRetCsll, decimal valorRetIrrf, decimal valorRetInss)
+        {
+            BaseCalculo = baseCalculo;
+            Valor = valor;
+            BaseCalculoInss = baseCalculoInss;
+            BaseCalculoIrrf = baseCalculoIrrf;
+            ValorRetPis = valorRetPis;
+            ValorRetCofins = valorRetCofins;
+            ValorRetCsll = valorRetCsll;
+            ValorRetIrrf = valorRetIrrf;
+            ValorRetInss = valorRetInss;
+        }
+        
+        public decimal BaseCalculo { get; }
+        public decimal Valor { get; set; }
+        public decimal BaseCalculoInss { get; set; }
+        public decimal BaseCalculoIrrf { get; set; }
+        public decimal ValorRetPis { get; set; }
+        public decimal ValorRetCofins { get; set; }
+        public decimal ValorRetCsll { get; set; }
+        public decimal ValorRetInss { get; set; }
+        public decimal ValorRetIrrf { get; set; }
+        
     }
 }

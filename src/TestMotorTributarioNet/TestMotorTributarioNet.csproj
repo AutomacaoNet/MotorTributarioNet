@@ -38,6 +38,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.15, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -46,6 +47,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculoCofinsTest.cs" />
@@ -55,6 +60,7 @@
     <Compile Include="CalculoIcmsStTest.cs" />
     <Compile Include="CalculoIcmsTest.cs" />
     <Compile Include="CalculoIpiTest.cs" />
+    <Compile Include="CalculoItemNFe.cs" />
     <Compile Include="CalculoPisTest.cs" />
     <Compile Include="Csosn\Csosn101Test.cs" />
     <Compile Include="Csosn\Csosn201Test.cs" />
