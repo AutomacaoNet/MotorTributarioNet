@@ -19,7 +19,6 @@
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE                       
 
 
-using System;
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.Csosns;
 using MotorTributarioNet.Impostos.Csosns.Base;
