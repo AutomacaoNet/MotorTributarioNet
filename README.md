@@ -11,8 +11,6 @@ Duvidas poderão ser solucionadas aqui também grupo Telegram https://t.me/joinc
 
 [![Build status](https://ci.appveyor.com/api/projects/status/4lrcj87c5n4pveg9?svg=true)](https://ci.appveyor.com/project/AutomacaoNet/motortributarionet)
 
-[![Coverage Status](https://coveralls.io/repos/github/AutomacaoNet/MotorTributarioNet/badge.svg)](https://coveralls.io/github/AutomacaoNet/MotorTributarioNet)
-
 
 # MotorTributarioNet
 
