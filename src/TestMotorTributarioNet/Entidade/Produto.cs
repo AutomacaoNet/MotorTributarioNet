@@ -3,7 +3,7 @@ using MotorTributarioNet.Impostos;
 
 namespace TestCalculosTributarios.Entidade
 {
-    public class Produto : ITributavel, IIbpt
+    public class Produto : ITributavelProduto
     {
         public Produto()
         {

@@ -99,8 +99,8 @@ namespace MotorTributarioNet.Impostos
         public decimal ValorTotalTributos { get; private set; }
         #endregion
 
-        private readonly Produto _produto;
-        public ResultadoTributacao(Produto produto, Crt crtEmpresa, TipoOperacao operacao, TipoPessoa tipoPessoa)
+        private readonly ITributavelProduto _produto;
+        public ResultadoTributacao(ITributavelProduto produto, Crt crtEmpresa, TipoOperacao operacao, TipoPessoa tipoPessoa)
         {
             _produto = produto;
             CrtEmpresa = crtEmpresa;

@@ -87,7 +87,7 @@
     <Compile Include="Impostos\IResultadoCalculoIbpt.cs" />
     <Compile Include="Impostos\IResultadoCalculoIcmsSt.cs" />
     <Compile Include="Impostos\IResultadoCalculoIssqn.cs" />
-    <Compile Include="Impostos\Produto.cs" />
+    <Compile Include="Impostos\ITributavelProduto.cs" />
     <Compile Include="Impostos\ResultadoTributacao.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCofins.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />

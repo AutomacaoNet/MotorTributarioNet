@@ -1,12 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TestCalculosTributarios.Entidade;
 
 
 namespace TestCalculosTributarios
@@ -17,7 +12,7 @@ namespace TestCalculosTributarios
         [TestMethod]
         public void CalcularItemComUIcmsIpiPisCofins()
         {
-            var produto = new MotorTributarioNet.Impostos.Produto
+            var produto = new Produto
             {
 
                 ValorProduto = 1000.00m,
@@ -82,8 +77,8 @@ namespace TestCalculosTributarios
 
             Assert.AreEqual(20.00m, resultado.Fcp);
             Assert.AreEqual(60.00m, resultado.ValorDifal);
-            Assert.AreEqual(24.00m, resultado.ValorIcmsOrigem);
-            Assert.AreEqual(36.00m, resultado.ValorIcmsDestino);
+            Assert.AreEqual(12.00m, resultado.ValorIcmsOrigem);
+            Assert.AreEqual(48.00m, resultado.ValorIcmsDestino);
 
         }
 
