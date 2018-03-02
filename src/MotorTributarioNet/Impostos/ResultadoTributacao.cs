@@ -109,10 +109,7 @@ namespace MotorTributarioNet.Impostos
         }
 
         public ResultadoTributacao Calcular()
-        {
-            
-           
-            
+        { 
             if (_produto.IsServico)
             {
                 var calcularRetencao = (CrtEmpresa != Crt.SimplesNacional && TipoPessoa != TipoPessoa.Fisica);
