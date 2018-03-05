@@ -9,7 +9,7 @@ namespace TestCalculosTributarios
     public class ResultadoTributacaoTest
     {
         [TestMethod]
-        public void TestaCalculoCST00()
+        public void Testa_Calculo_CST00_Interestadual()
         {
             var produto = new Produto();
 
@@ -20,7 +20,6 @@ namespace TestCalculosTributarios
             produto.IsServico = false;
             produto.OutrasDespesas = 0;
             produto.PercentualCofins = 15;
-            produto.PercentualDifalInterestadual = 80m;
             produto.PercentualFcp = 1m;
             produto.PercentualIcms = 18;
             produto.PercentualPis = 5;
@@ -28,8 +27,10 @@ namespace TestCalculosTributarios
             produto.QuantidadeProduto = 9;
             produto.Seguro = 0;
             produto.ValorProduto = 23;
+            produto.PercentualDifalInterestadual = 12;
+            produto.PercentualDifalInterna = 18;
 
-            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica);
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterestadual, TipoPessoa.Juridica);
 
             var resultado = tributacao.Calcular();
             Assert.AreEqual(37.26m, resultado.ValorIcms);
