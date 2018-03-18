@@ -11,6 +11,26 @@ namespace TestCalculosTributarios
         [TestMethod]
         public void Testa_Calculo_CST00_Interestadual()
         {
+            var produto = CriaObjetoProduto();
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterestadual, TipoPessoa.Juridica);
+
+            var resultado = tributacao.Calcular();
+            Assert.AreEqual(37.26m, resultado.ValorIcms);
+        }
+
+        [TestMethod]
+        public void Testa_Calculo_FCP_Interestadual()
+        {
+            var produto = CriaObjetoProduto();
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica);
+            var resultado = tributacao.Calcular();
+            Assert.AreEqual(2.07m, resultado.Fcp);
+        }
+
+        private static Produto CriaObjetoProduto()
+        {
             var produto = new Produto();
 
             produto.Cst = MotorTributarioNet.Flags.Cst.Cst00;
@@ -29,12 +49,7 @@ namespace TestCalculosTributarios
             produto.ValorProduto = 23;
             produto.PercentualDifalInterestadual = 12;
             produto.PercentualDifalInterna = 18;
-
-            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterestadual, TipoPessoa.Juridica);
-
-            var resultado = tributacao.Calcular();
-            Assert.AreEqual(37.26m, resultado.ValorIcms);
+            return produto;
         }
-        
     }
 }

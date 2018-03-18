@@ -119,8 +119,9 @@ namespace MotorTributarioNet.Impostos
             }
             else
             {
-                CalcularIcms();             
+                CalcularIcms();
                 CalcularDifal();
+                CalcularFcp();
                 CalcularIpi();
             }
             CalcularPis();
@@ -468,10 +469,8 @@ namespace MotorTributarioNet.Impostos
 
         private TributacaoDifal CalcularDifal()
         {
-           
             var cstCson = (Crt.RegimeNormal == CrtEmpresa ? _produto.Cst.GetValue<int>() : _produto.Csosn.GetValue<int>());
             Difal = new TributacaoDifal(_produto, TipoDesconto.Condincional);
-            Fcp = decimal.Zero;
             ValorBcDifal = decimal.Zero;
             ValorDifal = decimal.Zero;
             ValorIcmsOrigem = decimal.Zero;
@@ -483,7 +482,6 @@ namespace MotorTributarioNet.Impostos
                    && _produto.PercentualDifalInterestadual != 0)
             {
                 var result = Difal.Calcula();
-                Fcp = result.Fcp;
                 ValorBcDifal = result.BaseCalculo;
                 ValorDifal = result.Difal;
                 ValorIcmsOrigem = result.ValorIcmsOrigem;
