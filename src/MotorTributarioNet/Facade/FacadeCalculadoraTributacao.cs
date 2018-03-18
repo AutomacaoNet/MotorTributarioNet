@@ -75,5 +75,10 @@ namespace MotorTributarioNet.Facade
         {
             return new TributacaoIbpt(_tributavel, ibpt).Calcula();
         }
+
+        public IResultadoCalculoFcp CalculaFcp()
+        {
+            return new TributacaoFcp(_tributavel, _tipoDesconto).Calcula();
+        }
     }
 }
