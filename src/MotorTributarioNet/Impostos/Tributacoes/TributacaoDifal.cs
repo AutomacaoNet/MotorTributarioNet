@@ -29,11 +29,13 @@ namespace MotorTributarioNet.Impostos.Tributacoes
     {
         private readonly ITributavel _tributavel;
         private readonly CalculaBaseCalculoIcms _calculaBaseCalculoIcms;
+        private readonly TributacaoFcp _tributacaoFcp;
 
         public TributacaoDifal(ITributavel tributavel, TipoDesconto tipoDesconto)
         {
             _tributavel = tributavel ?? throw new ArgumentNullException(nameof(tributavel));
             _calculaBaseCalculoIcms = new CalculaBaseCalculoIcms(_tributavel, tipoDesconto);
+            _tributacaoFcp = new TributacaoFcp(_tributavel, tipoDesconto);
         }
 
         public IResultadoCalculoDifal Calcula()
@@ -45,8 +47,7 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         {
             var baseCalculo = _calculaBaseCalculoIcms.CalculaBaseCalculo();
 
-
-            var fcp = baseCalculo * (_tributavel.PercentualFcp / 100);
+            var resultadoFcp = _tributacaoFcp.Calcula();
             var difal = CalcularDifal(baseCalculo);
 
             decimal percentualRateoOrigem = 40;
@@ -69,7 +70,7 @@ namespace MotorTributarioNet.Impostos.Tributacoes
             var aliquotaDestino = difal * (percentualReteoDestino/100);
 
 
-            return new ResultadoCalculoDifal(baseCalculo, difal, fcp, aliquotaDestino, aliquotaOrigem);
+            return new ResultadoCalculoDifal(baseCalculo, difal, resultadoFcp.Valor, aliquotaDestino, aliquotaOrigem);
         }
 
         private decimal CalcularDifal(decimal baseCalculo)
