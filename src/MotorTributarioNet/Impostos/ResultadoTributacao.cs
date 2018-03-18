@@ -42,6 +42,7 @@ namespace MotorTributarioNet.Impostos
         private TributacaoCofins Cofins { get; set; }
         private TributacaoIpi Ipi { get; set; }
         private TributacaoDifal Difal { get; set; }
+        private TributacaoFcp TributacaoFcp { get; set; }
         private TributacaoIssqn Issqn { get; set; }
         private TributacaoIbpt Ibpt { get; set; }
 
@@ -76,6 +77,7 @@ namespace MotorTributarioNet.Impostos
         public decimal ValorIpi { get; private set; }
 
         public decimal ValorBcDifal { get; private set; }
+        public decimal ValorBcFcp { get; private set; }
         public decimal Fcp { get; private set; }
         public decimal ValorDifal { get; private set; }
         public decimal ValorIcmsOrigem { get; private set; }
@@ -448,6 +450,20 @@ namespace MotorTributarioNet.Impostos
             ValorRetClss = result.ValorRetCsll;
             ValorIss = result.Valor;
             return Issqn;
+        }
+
+        private TributacaoFcp CalcularFcp()
+        {
+            TributacaoFcp = new TributacaoFcp(_produto, TipoDesconto.Condincional);
+            Fcp = decimal.Zero;
+            ValorBcFcp = decimal.Zero;
+
+            var result = TributacaoFcp.Calcula();
+
+            Fcp = result.Valor;
+            ValorBcFcp = result.BaseCalculo;
+
+            return TributacaoFcp;
         }
 
         private TributacaoDifal CalcularDifal()
