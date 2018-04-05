@@ -151,5 +151,25 @@ namespace TestCalculosTributarios.Csosn
 
             Assert.AreEqual(2.43m, csosn900.ValorIcmsSt.Arredondar());
         }
+
+        [TestMethod]
+        public void Testa_IcmsST_ComIPI_ComDesconto()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1.000m,
+                ValorProduto = 38.00m,
+                PercentualIcms = 12.00m,
+                PercentualIcmsSt = 16.00m,
+                PercentualIpi = 15.00m,
+                Desconto = 2.53m
+            };
+
+            var csosn900 = new Csosn900();
+
+            csosn900.Calcula(produto);
+
+            Assert.AreEqual(2.27m, csosn900.ValorIcmsSt.Arredondar());
+        }
     }
 }
