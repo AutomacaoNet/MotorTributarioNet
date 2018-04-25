@@ -38,6 +38,10 @@ namespace MotorTributarioNet.Impostos
         decimal ValorIpi { get; set; }
         decimal PercentualReducao { get; set; }
         decimal QuantidadeProduto { get; set; }
+
+        /// <summary>
+        /// Na substituição tributaria = Alíquota interestadual
+        /// </summary>
         decimal PercentualIcms { get; set; }
         decimal PercentualCredito { get; set; }
         decimal PercentualDiferimento { get; set; }
@@ -45,6 +49,10 @@ namespace MotorTributarioNet.Impostos
         decimal PercentualDifalInterestadual { get; set; }
         decimal PercentualFcp { get; set; }
         decimal PercentualMva { get; set; }
+
+        /// <summary>
+        /// Na Substituição tributária = Alíquota interna no Estado de destino
+        /// </summary>
         decimal PercentualIcmsSt { get; set; }
         decimal PercentualIpi { get; set; }
         decimal PercentualCofins { get; set; }
