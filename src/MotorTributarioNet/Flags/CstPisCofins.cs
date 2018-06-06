@@ -9,7 +9,7 @@ namespace MotorTributarioNet.Flags
     public enum CstPisCofins
     {
         [Description("01 - Operação Tributável com Alíquota Básica")]
-        Cst01 = 99,
+        Cst01 = 01,
         [Description("02 - Operação Tributável com Alíquota Diferenciada")]
         Cst02 = 02,
         [Description("03 - Operação Tributável com Alíquota por Unidade de Medida de Produto")]
