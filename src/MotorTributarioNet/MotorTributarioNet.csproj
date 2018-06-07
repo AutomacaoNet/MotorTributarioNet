@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MotorTributarioNet</RootNamespace>
     <AssemblyName>MotorTributarioNet</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,96 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Facade\FacadeCalculadoraTributacao.cs" />
-    <Compile Include="Flags\TipoPessoa.cs" />
-    <Compile Include="Flags\TipoOperacao.cs" />
-    <Compile Include="Flags\CstIpi.cs" />
-    <Compile Include="Flags\CstPisCofins.cs" />
-    <Compile Include="Flags\Documento.cs" />
-    <Compile Include="Flags\TipoContribuinte.cs" />
-    <Compile Include="Flags\Csosn.cs" />
-    <Compile Include="Flags\Crt .cs" />
-    <Compile Include="Flags\Cst.cs" />
-    <Compile Include="Flags\ModalidadeDeterminacaoBcIcms.cs" />
-    <Compile Include="Flags\ModalidadeDeterminacaoBcIcmsSt.cs" />
-    <Compile Include="Flags\MotivoDesoneracao.cs" />
-    <Compile Include="Flags\OrigemMercadoria.cs" />
-    <Compile Include="Flags\TipoDesconto.cs" />
-    <Compile Include="Impostos\CalulosDeBC\Base\CalculaBaseCalculoBase.cs" />
-    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIssqn.cs" />
-    <Compile Include="Impostos\CalulosDeBC\CalculaBaseFcp.cs" />
-    <Compile Include="Impostos\CalulosDeBC\CalculoBaseIcmsSemIpi.cs" />
-    <Compile Include="Impostos\CalulosDeBC\CalculoBaseIcmsSt.cs" />
-    <Compile Include="Impostos\Csosns\Base\CsosnBase.cs" />
-    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoCofins.cs" />
-    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIcms.cs" />
-    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoIpi.cs" />
-    <Compile Include="Impostos\CalulosDeBC\CalculaBaseCalculoPis.cs" />
-    <Compile Include="Impostos\Csts\Base\CstBase.cs" />
-    <Compile Include="Impostos\Csts\Cst00.cs" />
-    <Compile Include="Impostos\Csts\Cst10.cs" />
-    <Compile Include="Impostos\Csts\Cst20.cs" />
-    <Compile Include="Impostos\Csts\Cst30.cs" />
-    <Compile Include="Impostos\Csts\Cst40.cs" />
-    <Compile Include="Impostos\Csts\Cst41.cs" />
-    <Compile Include="Impostos\Csts\Cst50.cs" />
-    <Compile Include="Impostos\Csts\Cst51.cs" />
-    <Compile Include="Impostos\Csts\Cst60.cs" />
-    <Compile Include="Impostos\Csts\Cst70.cs" />
-    <Compile Include="Impostos\Csts\Cst90.cs" />
-    <Compile Include="Impostos\IDadosMensagemDifal.cs" />
-    <Compile Include="Impostos\IIbpt.cs" />
-    <Compile Include="Impostos\Implementacoes\DadosMensagemDifal.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoDifal.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoFcp.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoFcpSt.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoIbpt.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoIcmsSt.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoIssqn.cs" />
-    <Compile Include="Impostos\IResultadoCalculoDifal.cs" />
-    <Compile Include="Impostos\IResultadoCalculoFcp.cs" />
-    <Compile Include="Impostos\IResultadoCalculoFcpSt.cs" />
-    <Compile Include="Impostos\IResultadoCalculoIbpt.cs" />
-    <Compile Include="Impostos\IResultadoCalculoIcmsSt.cs" />
-    <Compile Include="Impostos\IResultadoCalculoIssqn.cs" />
-    <Compile Include="Impostos\ITributavelProduto.cs" />
-    <Compile Include="Impostos\ResultadoTributacao.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoCofins.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoDifal.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoFcp.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoFcpSt.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoIbpt.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoIcms.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoIcmsSt.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoIpi.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoIssqn.cs" />
-    <Compile Include="Impostos\Tributacoes\TributacaoPis.cs" />
-    <Compile Include="Impostos\Csosns\Csosn201.cs" />
-    <Compile Include="Impostos\Csosns\Csosn101.cs" />
-    <Compile Include="Impostos\Csosns\Csosn102.cs" />
-    <Compile Include="Impostos\Csosns\Csosn103.cs" />
-    <Compile Include="Impostos\Csosns\Csosn202.cs" />
-    <Compile Include="Impostos\Csosns\Csosn203.cs" />
-    <Compile Include="Impostos\Csosns\Csosn300.cs" />
-    <Compile Include="Impostos\Csosns\Csosn400.cs" />
-    <Compile Include="Impostos\Csosns\Csosn500.cs" />
-    <Compile Include="Impostos\Csosns\Csosn900.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoCofins.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoCredito.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoIcms.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoIpi.cs" />
-    <Compile Include="Impostos\Implementacoes\ResultadoCalculoPis.cs" />
-    <Compile Include="Impostos\IResultadoCalculoCofins.cs" />
-    <Compile Include="Impostos\IResultadoCalculoCredito.cs" />
-    <Compile Include="Impostos\IResultadoCalculoIcms.cs" />
-    <Compile Include="Impostos\IResultadoCalculoIpi.cs" />
-    <Compile Include="Impostos\IResultadoCalculoPis.cs" />
-    <Compile Include="Impostos\ITributavel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\DecimalExt.cs" />
-    <Compile Include="Util\EnumExt.cs" />
   </ItemGroup>
   <ItemGroup />
+  <Import Project="..\Shared.MotorTributarioNet\Shared.MotorTributarioNet.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
