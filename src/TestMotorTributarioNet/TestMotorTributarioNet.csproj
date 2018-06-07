@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="CalculoCofinsTest.cs" />
     <Compile Include="CalculoDifalFcpTest.cs" />
+    <Compile Include="CalculoFcpStTest.cs" />
     <Compile Include="CalculoFcpTest.cs" />
     <Compile Include="CalculoIbptTest.cs" />
     <Compile Include="CalculoIcmsCreditoTest.cs" />

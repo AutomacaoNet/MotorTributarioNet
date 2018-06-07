@@ -64,5 +64,6 @@ namespace MotorTributarioNet.Impostos
         decimal PercentualRetCsll { get; set; }
         decimal PercentualRetIrrf { get; set; }
         decimal PercentualRetInss { get; set; }
+        decimal PercentualFcpSt { get; set; }
     }
 }

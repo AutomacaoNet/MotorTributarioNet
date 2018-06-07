@@ -46,7 +46,6 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualRetCsll { get; set; }
         public decimal PercentualRetIrrf { get; set; }
         public decimal PercentualRetInss { get; set; }
-
-     
+        public decimal PercentualFcpSt { get; set; }
     }
 }

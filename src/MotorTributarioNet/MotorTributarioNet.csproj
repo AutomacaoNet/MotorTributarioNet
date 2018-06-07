@@ -82,11 +82,13 @@
     <Compile Include="Impostos\Implementacoes\DadosMensagemDifal.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoDifal.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoFcp.cs" />
+    <Compile Include="Impostos\Implementacoes\ResultadoCalculoFcpSt.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIbpt.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIcmsSt.cs" />
     <Compile Include="Impostos\Implementacoes\ResultadoCalculoIssqn.cs" />
     <Compile Include="Impostos\IResultadoCalculoDifal.cs" />
     <Compile Include="Impostos\IResultadoCalculoFcp.cs" />
+    <Compile Include="Impostos\IResultadoCalculoFcpSt.cs" />
     <Compile Include="Impostos\IResultadoCalculoIbpt.cs" />
     <Compile Include="Impostos\IResultadoCalculoIcmsSt.cs" />
     <Compile Include="Impostos\IResultadoCalculoIssqn.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="Impostos\Tributacoes\TributacaoCreditoIcms.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoDifal.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoFcp.cs" />
+    <Compile Include="Impostos\Tributacoes\TributacaoFcpSt.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoIbpt.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoIcms.cs" />
     <Compile Include="Impostos\Tributacoes\TributacaoIcmsSt.cs" />
