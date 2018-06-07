@@ -104,4 +104,8 @@
     <Folder Include="Util\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MotorTributarioNet\MotorTributarioNet.csproj" />
+  </ItemGroup>
+
 </Project>
