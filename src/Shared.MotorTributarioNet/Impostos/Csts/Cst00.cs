@@ -30,6 +30,8 @@ namespace MotorTributarioNet.Impostos.Csts
         public decimal ValorBcIcms { get; private set; }
         public decimal PercentualIcms { get; private set; }
         public decimal ValorIcms { get; private set; }
+		public decimal PercentualFcp { get; private set; }
+		public decimal ValorFcp { get; private set; }
 
         public Cst00(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
@@ -39,10 +41,14 @@ namespace MotorTributarioNet.Impostos.Csts
 
         public override void Calcula(ITributavel tributavel)
         {
-            var result = new FacadeCalculadoraTributacao(tributavel,TipoDesconto).CalculaIcms();
-            ValorBcIcms = result.BaseCalculo;
+			FacadeCalculadoraTributacao facadeCalculadoraTributacao = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+			IResultadoCalculoIcms resultadoCalculoIcms = facadeCalculadoraTributacao.CalculaIcms();
+			IResultadoCalculoFcp resultadoCalculoFcp = facadeCalculadoraTributacao.CalculaFcp();
+            ValorBcIcms = resultadoCalculoIcms.BaseCalculo;
             PercentualIcms = tributavel.PercentualIcms;
-            ValorIcms = result.Valor;
+            ValorIcms = resultadoCalculoIcms.Valor;
+			PercentualFcp = tributavel.PercentualFcp;
+			ValorFcp = resultadoCalculoFcp.Valor;
         }
 
     }

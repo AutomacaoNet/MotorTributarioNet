@@ -40,8 +40,14 @@ namespace MotorTributarioNet.Impostos.Csts
         public decimal ValorIcmsSt { get; private set; }
         public decimal PercentualCredito { get; private set; }
         public decimal ValorCredito { get; private set; }
+		public decimal ValorBcFcp { get; private set; }
+		public decimal PercentualFcp { get; private set; }
+		public decimal ValorFcp { get; private set; }
+		public decimal ValorBcFcpSt { get; private set; }
+		public decimal PercentualFcpSt { get; private set; }
+		public decimal ValorFcpSt { get; private set; }
 
-        public Cst90(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
+		public Cst90(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Cst = Cst.Cst90;
             ModalidadeDeterminacaoBcIcmsSt = ModalidadeDeterminacaoBcIcmsSt.MargemValorAgregado;
@@ -55,7 +61,11 @@ namespace MotorTributarioNet.Impostos.Csts
             CalculaIcmsSt(tributavel);
 
             CalculaCredito(tributavel);
-        }
+
+			CalculaFcp(tributavel);
+
+			CalculaFcpSt(tributavel);
+		}
 
 
         private void CalculaCredito(ITributavel tributavel)
@@ -115,5 +125,28 @@ namespace MotorTributarioNet.Impostos.Csts
             ValorIcms = resultadoCalculoIcms.Valor;
         }
 
-    }
+		private void CalculaFcp(ITributavel tributavel)
+		{
+			PercentualFcp = tributavel.PercentualFcp;
+
+			var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+
+			var resultadoCalculoFcp = facade.CalculaFcp();
+			ValorBcFcp = resultadoCalculoFcp.BaseCalculo;
+			ValorFcp = resultadoCalculoFcp.Valor;
+		}
+
+		private void CalculaFcpSt(ITributavel tributavel)
+		{
+			PercentualFcpSt = tributavel.PercentualFcpSt;
+
+			var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+
+			var resultadoCalculoFcpSt = facade.CalculaFcpSt();
+
+			ValorBcFcpSt = resultadoCalculoFcpSt.BaseCalculoFcpSt;
+			ValorFcpSt = resultadoCalculoFcpSt.ValorFcpSt;
+		}
+
+	}
 }
