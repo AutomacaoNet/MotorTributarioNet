@@ -33,7 +33,7 @@ namespace TestCalculosTributarios
             Assert.AreEqual(20.00m, resultadoCalculoDifal.Fcp);
             Assert.AreEqual(60.00m, resultadoCalculoDifal.Difal);
             Assert.AreEqual(00.00m, resultadoCalculoDifal.ValorIcmsOrigem);
-            Assert.AreEqual(48.00m, resultadoCalculoDifal.ValorIcmsDestino);
+            Assert.AreEqual(60.00m, resultadoCalculoDifal.ValorIcmsDestino);
             Assert.AreEqual("Valores totais do ICMS interstadual: DIFAL da UF destino 48,00 + FCP 20,00; DIFAL da UF Origem 12,00",
                 resultadoCalculoDifal.GetObservacao(new DadosMensagemDifal(decimal.Round(resultadoCalculoDifal.Fcp, 2), 
                     decimal.Round(resultadoCalculoDifal.ValorIcmsDestino, 2),
