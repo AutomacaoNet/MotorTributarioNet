@@ -35,6 +35,9 @@ namespace MotorTributarioNet.Impostos.Csts
         // Manual CT-e v3.00 - Pag. 165
         public decimal ValorIcmsStRetido { get; set; }
 
+		// Demais propriedades ainda devem ser implementadas para a NF-e 4.00
+		public decimal PercentualSt { get; private set; }
+
         public Cst60(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Cst = Cst.Cst60;
@@ -49,6 +52,8 @@ namespace MotorTributarioNet.Impostos.Csts
             ValorIcmsStRetido = resultadoCalculoIcms.ValorIcmsSt;
 
             ValorCreditoOutorgadoOuPresumido = facade.CalculaIcmsCredito().Valor;
+
+			PercentualSt = tributavel.PercentualIcmsSt + tributavel.PercentualFcpSt;
         }
     }
 }

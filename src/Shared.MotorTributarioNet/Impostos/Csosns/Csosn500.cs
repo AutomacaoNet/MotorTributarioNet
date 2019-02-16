@@ -32,5 +32,11 @@ namespace MotorTributarioNet.Impostos.Csosns
 
         public decimal PercentualBcStRetido { get; set; }
         public decimal ValorBcStRetido { get; set; }
-    }
+		public decimal PercentualSt { get; set; }
+
+		public override void Calcula(ITributavel tributavel) {
+			PercentualSt = tributavel.PercentualIcmsSt + tributavel.PercentualFcpSt;
+		}
+
+	}
 }

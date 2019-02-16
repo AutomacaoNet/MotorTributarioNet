@@ -33,8 +33,11 @@ namespace MotorTributarioNet.Impostos.Csts
         public decimal ValorBcIcmsSt { get; private set; }
         public decimal PercentualIcmsSt { get; private set; }
         public decimal ValorIcmsSt { get; private set; }
+		public decimal ValorBcFcpSt { get; private set; }
+		public decimal PercentualFcpSt { get; private set; }
+		public decimal ValorFcpSt { get; private set; }
 
-        public Cst30(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
+		public Cst30(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Cst = Cst.Cst30;
         }
@@ -44,15 +47,21 @@ namespace MotorTributarioNet.Impostos.Csts
             PercentualMva = tributavel.PercentualMva;
             PercentualReducaoSt = tributavel.PercentualReducaoSt;
             PercentualIcmsSt = tributavel.PercentualIcmsSt;
+			PercentualFcpSt = tributavel.PercentualFcpSt;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+            FacadeCalculadoraTributacao facadeCalculadoraTributacao = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
 
-            tributavel.ValorIpi = facade.CalculaIpi().Valor;
+            tributavel.ValorIpi = facadeCalculadoraTributacao.CalculaIpi().Valor;
 
-            var resultadoCalculoCofins = facade.CalculaIcmsSt();
+            IResultadoCalculoIcmsSt resultadoCalculoIcmsSt = facadeCalculadoraTributacao.CalculaIcmsSt();
 
-            ValorBcIcmsSt = resultadoCalculoCofins.BaseCalculoIcmsSt;
-            ValorIcmsSt = resultadoCalculoCofins.ValorIcmsSt;
+            ValorBcIcmsSt = resultadoCalculoIcmsSt.BaseCalculoIcmsSt;
+            ValorIcmsSt = resultadoCalculoIcmsSt.ValorIcmsSt;
+
+			IResultadoCalculoFcpSt resultadoCalculoFcpSt = facadeCalculadoraTributacao.CalculaFcpSt();
+
+			ValorBcFcpSt = resultadoCalculoFcpSt.BaseCalculoFcpSt;
+			ValorFcpSt = resultadoCalculoFcpSt.ValorFcpSt;
         }
     }
 }

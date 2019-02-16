@@ -18,6 +18,7 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
 
 namespace MotorTributarioNet.Impostos.Csts
@@ -25,8 +26,9 @@ namespace MotorTributarioNet.Impostos.Csts
     public class Cst20 : Cst00
     {
         public decimal PercentualReducao { get; private set; }
-
-        public Cst20(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
+		public decimal ValorBcFcp { get; private set; }
+		
+		public Cst20(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Cst = Cst.Cst20;
         }
@@ -34,7 +36,9 @@ namespace MotorTributarioNet.Impostos.Csts
         public override void Calcula(ITributavel tributavel)
         {
             base.Calcula(tributavel);
-            PercentualReducao = tributavel.PercentualReducao;
-        }
+
+			PercentualReducao = tributavel.PercentualReducao;
+			ValorBcFcp = new FacadeCalculadoraTributacao(tributavel, TipoDesconto).CalculaFcp().BaseCalculo;
+		}
     }
 }

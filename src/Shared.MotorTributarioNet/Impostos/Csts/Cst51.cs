@@ -34,10 +34,11 @@ namespace MotorTributarioNet.Impostos.Csts
         public decimal PercentualReducao { get; private set; }
         public decimal ValorBcIcms { get; private set; }
         public decimal ValorIcms { get; private set; }
+		public decimal ValorBcFcp { get; private set; }
+		public decimal PercentualFcp { get; private set; }
+		public decimal ValorFcp { get; private set; }
 
-
-
-        public Cst51(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
+		public Cst51(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Cst = Cst.Cst51;
             ModalidadeDeterminacaoBcIcms = ModalidadeDeterminacaoBcIcms.ValorOperacao;
@@ -45,14 +46,23 @@ namespace MotorTributarioNet.Impostos.Csts
 
         public override void Calcula(ITributavel tributavel)
         {
-            var result = new FacadeCalculadoraTributacao(tributavel, TipoDesconto).CalculaIcms();
-            PercentualReducao = tributavel.PercentualReducao;
-            ValorBcIcms = result.BaseCalculo;
+			FacadeCalculadoraTributacao facadeCalculadoraTributacao = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+
+			IResultadoCalculoIcms resultadoCalculoIcms = facadeCalculadoraTributacao.CalculaIcms();
+
+			PercentualReducao = tributavel.PercentualReducao;
+            ValorBcIcms = resultadoCalculoIcms.BaseCalculo;
             PercentualIcms = tributavel.PercentualIcms;
             ValorIcmsOperacao = (ValorBcIcms * PercentualIcms) / 100;
             PercentualDiferimento = tributavel.PercentualDiferimento;
             ValorIcmsDiferido = (PercentualDiferimento * ValorIcmsOperacao) / 100;
             ValorIcms = ValorIcmsOperacao - ValorIcmsDiferido;
+
+			IResultadoCalculoFcp resultadoCalculoFcp = facadeCalculadoraTributacao.CalculaFcp();
+
+			PercentualFcp = tributavel.PercentualFcp;
+			ValorBcFcp = resultadoCalculoFcp.BaseCalculo;
+			ValorFcp = resultadoCalculoFcp.Valor;
         }
     }
 }
