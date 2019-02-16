@@ -77,7 +77,7 @@ namespace TestCalculosTributarios
 
             Assert.AreEqual(20.00m, resultado.Fcp);
             Assert.AreEqual(60.00m, resultado.ValorDifal);
-            Assert.AreEqual(12.00m, resultado.ValorIcmsOrigem);
+            Assert.AreEqual(00.00m, resultado.ValorIcmsOrigem);
             Assert.AreEqual(48.00m, resultado.ValorIcmsDestino);
 
         }
