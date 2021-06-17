@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorTributarioNet", "MotorTributarioNet\MotorTributarioNet.csproj", "{CC58CE17-1419-40DA-B219-0CA65648974E}"
 EndProject
@@ -15,6 +15,7 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Shared.MotorTributarioNet\Shared.MotorTributarioNet.projitems*{a9cef254-2df4-43de-a330-ba77bfb1d05a}*SharedItemsImports = 13
 		Shared.MotorTributarioNet\Shared.MotorTributarioNet.projitems*{cc58ce17-1419-40da-b219-0ca65648974e}*SharedItemsImports = 4
+		Shared.MotorTributarioNet\Shared.MotorTributarioNet.projitems*{ceda13da-f305-47de-8542-81325032d12e}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -79,6 +79,7 @@
     <Compile Include="Entidade\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultadoTributacaoTest.cs" />
+    <Compile Include="UtilsTestes\DecimalUtilsTestes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
