@@ -15,6 +15,7 @@ namespace TestCalculosTributarios
         public void CalculaDifalJuntoComFcp()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
 
             var produto = new Produto
             {
