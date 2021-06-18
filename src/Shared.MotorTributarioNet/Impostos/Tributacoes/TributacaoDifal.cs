@@ -50,20 +50,8 @@ namespace MotorTributarioNet.Impostos.Tributacoes
             var resultadoFcp = _tributacaoFcp.Calcula();
             var difal = CalcularDifal(baseCalculo);
 
-            decimal percentualRateoOrigem = 40;
-            decimal percentualReteoDestino = 60;
-
-            if (DateTime.Now.Year == 2018)
-            {
-                percentualRateoOrigem = 20;
-                percentualReteoDestino = 80;
-            }
-
-            if (DateTime.Now.Year >= 2019)
-            {
-                percentualRateoOrigem = 0;
-                percentualReteoDestino = 100;
-            }
+            decimal percentualRateoOrigem = 0;
+            decimal percentualReteoDestino = 100;
 
             var aliquotaOrigem = difal * (percentualRateoOrigem/100);
 

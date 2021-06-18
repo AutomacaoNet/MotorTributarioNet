@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Globalization;
+using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MotorTributarioNet.Facade;
 using MotorTributarioNet.Impostos.Implementacoes;
 using TestCalculosTributarios.Entidade;
@@ -12,6 +14,9 @@ namespace TestCalculosTributarios
         [TestMethod]
         public void CalculaDifalJuntoComFcp()
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+
             var produto = new Produto
             {
                 ValorProduto = 845.00m,
