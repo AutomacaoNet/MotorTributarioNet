@@ -33,6 +33,7 @@ namespace MotorTributarioNet.Impostos
     {
         #region Impostos Privados  
 
+        private TipoDesconto TipoDesconto { get; set; }
         private TipoPessoa TipoPessoa { get; set; }
         private TipoOperacao Operacao { get; set; }
         private Crt CrtEmpresa { get; set; }
@@ -102,12 +103,13 @@ namespace MotorTributarioNet.Impostos
         #endregion
 
         private readonly ITributavelProduto _produto;
-        public ResultadoTributacao(ITributavelProduto produto, Crt crtEmpresa, TipoOperacao operacao, TipoPessoa tipoPessoa)
+        public ResultadoTributacao(ITributavelProduto produto, Crt crtEmpresa, TipoOperacao operacao, TipoPessoa tipoPessoa, TipoDesconto tipoDesconto = TipoDesconto.Incondicional)
         {
             _produto = produto;
             CrtEmpresa = crtEmpresa;
             Operacao = operacao;
             TipoPessoa = tipoPessoa;
+            TipoDesconto = tipoDesconto;
         }
 
         public ResultadoTributacao Calcular()
@@ -389,7 +391,7 @@ namespace MotorTributarioNet.Impostos
 
         private TributacaoIpi CalcularIpi()
         {
-            Ipi = new TributacaoIpi(_produto, TipoDesconto.Condincional);
+            Ipi = new TributacaoIpi(_produto, TipoDesconto);
             ValorIpi = decimal.Zero;
             ValorBcIpi = decimal.Zero;
 
@@ -407,7 +409,7 @@ namespace MotorTributarioNet.Impostos
 
         private TributacaoPis CalcularPis()
         {
-            Pis = new TributacaoPis(_produto, TipoDesconto.Condincional);
+            Pis = new TributacaoPis(_produto, TipoDesconto);
             ValorPis = decimal.Zero;
             ValorBcPis = decimal.Zero;
 
@@ -423,7 +425,7 @@ namespace MotorTributarioNet.Impostos
 
         private TributacaoCofins CalcularCofins()
         {
-            Cofins = new TributacaoCofins(_produto, TipoDesconto.Condincional);
+            Cofins = new TributacaoCofins(_produto, TipoDesconto);
             ValorCofins = decimal.Zero;
             ValorBcCofins = decimal.Zero;
 
@@ -440,7 +442,7 @@ namespace MotorTributarioNet.Impostos
 
         private TributacaoIssqn CalcularIssqn(bool calcularRetencao)
         {
-            Issqn = new TributacaoIssqn(_produto, TipoDesconto.Condincional);
+            Issqn = new TributacaoIssqn(_produto, TipoDesconto);
             var result = Issqn.Calcula(calcularRetencao);
             BaseCalculoInss = result.BaseCalculoInss;
             BaseCalculoIrrf = result.BaseCalculoIrrf;
@@ -455,7 +457,7 @@ namespace MotorTributarioNet.Impostos
 
         private TributacaoFcp CalcularFcp()
         {
-            TributacaoFcp = new TributacaoFcp(_produto, TipoDesconto.Condincional);
+            TributacaoFcp = new TributacaoFcp(_produto, TipoDesconto);
             Fcp = decimal.Zero;
             ValorBcFcp = decimal.Zero;
 
@@ -470,7 +472,7 @@ namespace MotorTributarioNet.Impostos
         private TributacaoDifal CalcularDifal()
         {
             var cstCson = (Crt.RegimeNormal == CrtEmpresa ? _produto.Cst.GetValue<int>() : _produto.Csosn.GetValue<int>());
-            Difal = new TributacaoDifal(_produto, TipoDesconto.Condincional);
+            Difal = new TributacaoDifal(_produto, TipoDesconto);
             ValorBcDifal = decimal.Zero;
             ValorDifal = decimal.Zero;
             ValorIcmsOrigem = decimal.Zero;
