@@ -61,6 +61,7 @@
     <Compile Include="CalculoIcmsStTest.cs" />
     <Compile Include="CalculoIcmsTest.cs" />
     <Compile Include="CalculoIpiTest.cs" />
+    <Compile Include="CalculoIssqnTest.cs" />
     <Compile Include="CalculoItemNFe.cs" />
     <Compile Include="CalculoPisTest.cs" />
     <Compile Include="Csosn\Csosn101Test.cs" />

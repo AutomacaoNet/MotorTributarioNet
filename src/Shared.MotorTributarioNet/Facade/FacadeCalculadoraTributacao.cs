@@ -85,5 +85,10 @@ namespace MotorTributarioNet.Facade
         {
             return new TributacaoFcpSt(_tributavel, _tipoDesconto).Calcula();
         }
+
+        public IResultadoCalculoIssqn CalculaIssqn(bool calcularRetencao)
+        {
+            return new TributacaoIssqn(_tributavel, _tipoDesconto).Calcula(calcularRetencao);
+        }
     }
 }
