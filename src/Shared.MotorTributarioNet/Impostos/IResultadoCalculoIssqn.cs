@@ -22,6 +22,7 @@ namespace MotorTributarioNet.Impostos
 {
     public interface IResultadoCalculoIssqn
     {
+        decimal BaseCalculo { get; }
         decimal BaseCalculoInss { get; set; }
         decimal Valor { get; set; }
         decimal BaseCalculoIrrf { get; set; }       
