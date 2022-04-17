@@ -29,3 +29,11 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       working-directory: 'src/'
+      
+    - name: Publish-Nuget
+      uses: luizbon/publish-nuget@patch-1
+      with:
+        PROJECT_FILE_PATH: 'src\MotorTributarioNetCore\MotorTributarioNet.csproj'
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        TAG_COMMIT: false
+        VERSION_STATIC: 2.1.${{github.run_number}}
