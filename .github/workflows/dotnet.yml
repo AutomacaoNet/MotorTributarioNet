@@ -1,4 +1,4 @@
-name: .NET
+name: ExecutaTestes
 
 on:
   push:
