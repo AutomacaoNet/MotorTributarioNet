@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMotorTributarioNet", "TestMotorTributarioNet\TestMotorTributarioNet.csproj", "{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorTributarioNet", "MotorTributarioNetCore\MotorTributarioNet.csproj", "{BE5B1077-1769-4AC0-8EB7-88261A071C13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestesUnitarios", "TestesUnitarios\TestesUnitarios.csproj", "{AC08A858-CE04-47E4-94DF-6D5FBA43324A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE5B1077-1769-4AC0-8EB7-88261A071C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE5B1077-1769-4AC0-8EB7-88261A071C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE5B1077-1769-4AC0-8EB7-88261A071C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE5B1077-1769-4AC0-8EB7-88261A071C13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC08A858-CE04-47E4-94DF-6D5FBA43324A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC08A858-CE04-47E4-94DF-6D5FBA43324A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC08A858-CE04-47E4-94DF-6D5FBA43324A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC08A858-CE04-47E4-94DF-6D5FBA43324A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
