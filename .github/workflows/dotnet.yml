@@ -19,9 +19,13 @@ jobs:
       with:
         dotnet-version: 6.0.x
         
-    - name: Restore dependencies
+    - name: Restore dependencies Motor
       run: dotnet restore
       working-directory: 'src/'
+      
+    - name: Restore dependencies Testes
+      run: dotnet restore
+      working-directory: 'src/TestMotorTributarioNet'
       
     - name: Build
       run: dotnet build --no-restore
