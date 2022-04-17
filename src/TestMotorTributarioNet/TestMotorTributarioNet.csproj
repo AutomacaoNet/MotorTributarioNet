@@ -86,10 +86,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\MotorTributarioNet\MotorTributarioNet.csproj">
-      <Project>{cc58ce17-1419-40da-b219-0ca65648974e}</Project>
+    <ProjectReference Include="..\MotorTributarioNetCore\MotorTributarioNet.csproj">
+      <Project>{be5b1077-1769-4ac0-8eb7-88261a071c13}</Project>
       <Name>MotorTributarioNet</Name>
     </ProjectReference>
   </ItemGroup>

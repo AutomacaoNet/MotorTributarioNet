@@ -1,39 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31321.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorTributarioNet", "MotorTributarioNet\MotorTributarioNet.csproj", "{CC58CE17-1419-40DA-B219-0CA65648974E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMotorTributarioNet", "TestMotorTributarioNet\TestMotorTributarioNet.csproj", "{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorTributarioNetStandard2", "MotorTributarioNetStandard2\MotorTributarioNetStandard2.csproj", "{CEDA13DA-F305-47DE-8542-81325032D12E}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared.MotorTributarioNet", "Shared.MotorTributarioNet\Shared.MotorTributarioNet.shproj", "{A9CEF254-2DF4-43DE-A330-BA77BFB1D05A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorTributarioNet", "MotorTributarioNetCore\MotorTributarioNet.csproj", "{BE5B1077-1769-4AC0-8EB7-88261A071C13}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Shared.MotorTributarioNet\Shared.MotorTributarioNet.projitems*{a9cef254-2df4-43de-a330-ba77bfb1d05a}*SharedItemsImports = 13
-		Shared.MotorTributarioNet\Shared.MotorTributarioNet.projitems*{cc58ce17-1419-40da-b219-0ca65648974e}*SharedItemsImports = 4
-		Shared.MotorTributarioNet\Shared.MotorTributarioNet.projitems*{ceda13da-f305-47de-8542-81325032d12e}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CC58CE17-1419-40DA-B219-0CA65648974E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC58CE17-1419-40DA-B219-0CA65648974E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC58CE17-1419-40DA-B219-0CA65648974E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC58CE17-1419-40DA-B219-0CA65648974E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9CD0A74-7B22-4823-BA5D-424E2AD2C713}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CEDA13DA-F305-47DE-8542-81325032D12E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEDA13DA-F305-47DE-8542-81325032D12E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEDA13DA-F305-47DE-8542-81325032D12E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEDA13DA-F305-47DE-8542-81325032D12E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE5B1077-1769-4AC0-8EB7-88261A071C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5B1077-1769-4AC0-8EB7-88261A071C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5B1077-1769-4AC0-8EB7-88261A071C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5B1077-1769-4AC0-8EB7-88261A071C13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
