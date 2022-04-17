@@ -23,10 +23,6 @@ jobs:
       run: dotnet restore
       working-directory: 'src/'
       
-    - name: Restore dependencies Testes
-      run: dotnet restore
-      working-directory: 'src/TestMotorTributarioNet'
-      
     - name: Build
       run: dotnet build --no-restore
       working-directory: 'src/'
