@@ -36,4 +36,4 @@ jobs:
         PROJECT_FILE_PATH: 'src\MotorTributarioNetCore\MotorTributarioNet.csproj'
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
         TAG_COMMIT: false
-        VERSION_STATIC: 2.1.${{github.run_number}}
+        VERSION_STATIC: echo "${GITHUB_REF##*/}"
