@@ -13,7 +13,7 @@ jobs:
     
     - name: Set current date as env variable
       id: date
-      run: echo "::set-output name=date::$(date +'%Y%m%d.%H.%M')"
+      run: echo "::set-output name=date::$(date +'%Y.%m.%d.%H%M')"
     - name: Echo current date
       run: echo ${{ steps.date.outputs.date }}
     
