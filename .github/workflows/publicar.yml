@@ -35,7 +35,7 @@ jobs:
       working-directory: 'src/'
       
     - name: Publish-Nuget
-      uses: alirezanet/publish-nuget@master
+      uses: robertorp/publish-nuget@master
       with:
         PROJECT_FILE_PATH: 'src/MotorTributarioNet/MotorTributarioNet.csproj'
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
