@@ -8,6 +8,8 @@ Sobre o uso? https://github.com/AutomacaoNet/MotorTributarioNet/wiki
 
 [![executar-testes](https://github.com/AutomacaoNet/MotorTributarioNet/actions/workflows/executar-testes.yml/badge.svg)](https://github.com/AutomacaoNet/MotorTributarioNet/actions/workflows/executar-testes.yml)
 
+[![publicar](https://github.com/AutomacaoNet/MotorTributarioNet/actions/workflows/publicar.yml/badge.svg?branch=master)](https://github.com/AutomacaoNet/MotorTributarioNet/actions/workflows/publicar.yml)
+
 
 # MotorTributarioNet
 
