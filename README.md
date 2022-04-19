@@ -6,6 +6,8 @@ Sobre o uso? https://github.com/AutomacaoNet/MotorTributarioNet/wiki
 
 [![GitHub license](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/AutomacaoNet/MotorTributarioNet/master/LICENSE)
 
+[![executar-testes](https://github.com/AutomacaoNet/MotorTributarioNet/actions/workflows/executar-testes.yml/badge.svg)](https://github.com/AutomacaoNet/MotorTributarioNet/actions/workflows/executar-testes.yml)
+
 
 # MotorTributarioNet
 
