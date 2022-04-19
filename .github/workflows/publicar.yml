@@ -1,9 +1,7 @@
 name: publicar
 
 on:
-  create:
-    tags:
-      - v*
+  workflow_dispatch
 
 jobs:
   build:
@@ -41,5 +39,5 @@ jobs:
       with:
         PROJECT_FILE_PATH: 'src\MotorTributarioNetCore\MotorTributarioNet.csproj'
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-        TAG_COMMIT: false
+        TAG_COMMIT: true
         VERSION_STATIC: ${{ steps.date.outputs.date }}
