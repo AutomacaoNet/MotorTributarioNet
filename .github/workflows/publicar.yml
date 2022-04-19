@@ -33,11 +33,8 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       working-directory: 'src/'
-      
-    - name: Publish-Nuget
-      uses: luizbon/publish-nuget@patch-1
-      with:
-        PROJECT_FILE_PATH: 'src/MotorTributarioNet/MotorTributarioNet.csproj'
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-        TAG_COMMIT: false
-        VERSION_STATIC: ${{ steps.date.outputs.date }}
+        
+    - name: Package
+      run: dotnet pack  -p:PackageVersion=${{ steps.date.outputs.date }} --no-build -c Release src/MotorTributarioNet/MotorTributarioNet.csproj -o .
+    - name: Publish
+      run: dotnet nuget push *.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
