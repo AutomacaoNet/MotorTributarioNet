@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MotorTributarioNetCore\MotorTributarioNet.csproj" />
+    <ProjectReference Include="..\MotorTributarioNet\MotorTributarioNet.csproj" />
   </ItemGroup>
 
 </Project>

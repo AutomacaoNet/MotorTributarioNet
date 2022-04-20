@@ -1,17 +1,21 @@
 name: publicar
 
 on:
-  create:
-    tags:
-      - v*
+  workflow_dispatch
 
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+    
+    - name: Set current date as env variable
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y.%m.%d.%H%M')"
+    - name: Echo current date
+      run: echo ${{ steps.date.outputs.date }}
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
@@ -31,9 +35,9 @@ jobs:
       working-directory: 'src/'
       
     - name: Publish-Nuget
-      uses: luizbon/publish-nuget@patch-1
+      uses: robertorp/publish-nuget@master
       with:
-        PROJECT_FILE_PATH: 'src\MotorTributarioNetCore\MotorTributarioNet.csproj'
+        PROJECT_FILE_PATH: 'src/MotorTributarioNet/MotorTributarioNet.csproj'
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
         TAG_COMMIT: false
-        VERSION_STATIC: ${{github.event.release.tag_name}}
+        VERSION_STATIC: ${{ steps.date.outputs.date }}
