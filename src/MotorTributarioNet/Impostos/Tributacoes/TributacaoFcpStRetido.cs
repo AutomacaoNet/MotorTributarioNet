@@ -28,21 +28,20 @@ namespace MotorTributarioNet.Impostos.Tributacoes
     public class TributacaoFcpStRetido
     {
         private readonly ITributavel _tributavel;
-        private readonly decimal _baseIcmsSt;
 
         public TributacaoFcpStRetido(ITributavel tributavel)
         {
             _tributavel = tributavel ?? throw new ArgumentNullException(nameof(tributavel));
-            _baseIcmsSt = _tributavel.ValorUltimaBaseCalculoIcmsStRetido;
         }
 
         public IResultadoCalculoFcpSt Calcula()
         {
-            return CalculaFcpSt(_baseIcmsSt);
+            return CalculaFcpSt();
         }
 
-        private IResultadoCalculoFcpSt CalculaFcpSt(decimal baseIcmsSt)
+        private IResultadoCalculoFcpSt CalculaFcpSt()
         {
+            decimal baseIcmsSt = _tributavel.ValorUltimaBaseCalculoIcmsStRetido * _tributavel.QuantidadeProduto;
             var valorIcmsSt = (baseIcmsSt * (_tributavel.PercentualFcpStRetido / 100));
 
             return new ResultadoCalculoFcpSt(baseIcmsSt, valorIcmsSt);
