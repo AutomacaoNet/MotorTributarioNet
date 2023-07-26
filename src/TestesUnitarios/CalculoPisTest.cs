@@ -122,6 +122,26 @@ namespace TestCalculosTributarios
             Assert.Equal(900.00m, resultadoCalculoPis.BaseCalculo);
             Assert.Equal(14.85m, resultadoCalculoPis.Valor);
         }
+        [Fact]
+        public void Testa_Calculo_Base_Pis_Sem_ICMS()
+        {
+            var produto = new Produto()
+            {
+                Cst = MotorTributarioNet.Flags.Cst.Cst00,
+                CstPisCofins = CstPisCofins.Cst01,
+                PercentualIcms = 12,
+                PercentualPis = 1.65m,
+                QuantidadeProduto = 1,
+                ValorProduto = 15m,
+                DeduzIcmsDaBaseDePisCofins = true
+            };
+
+            var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var resultado = tributacao.CalculaPis();
+
+            Assert.Equal(13.20m, resultado.BaseCalculo);
+            Assert.Equal(0.2178m, resultado.Valor);
+        }
 
     }
 }

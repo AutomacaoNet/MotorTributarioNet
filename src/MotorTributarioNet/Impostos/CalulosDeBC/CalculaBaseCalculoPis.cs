@@ -20,6 +20,7 @@
 
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.CalulosDeBC.Base;
+using MotorTributarioNet.Impostos.Tributacoes;
 
 namespace MotorTributarioNet.Impostos.CalulosDeBC
 {
@@ -36,7 +37,12 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
 
         public decimal CalculaBaseCalculo()
         {
+            decimal valorIcms = new TributacaoIcms(_tributavel, _tipoDesconto).Calcula().Valor;
             var baseCalculo = CalculaBaseDeCalculo();
+            if (_tributavel.DeduzIcmsDaBaseDePisCofins)
+            {
+                baseCalculo -= valorIcms;
+            }
 
             return _tipoDesconto == TipoDesconto.Condincional ? CalculaIcmsComDescontoCondicional(baseCalculo) : CalculaIcmsComDescontoIncondicional(baseCalculo);
         }
