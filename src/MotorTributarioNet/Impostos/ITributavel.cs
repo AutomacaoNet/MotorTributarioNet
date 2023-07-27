@@ -49,6 +49,8 @@ namespace MotorTributarioNet.Impostos
         decimal PercentualDifalInterestadual { get; set; }
         decimal PercentualFcp { get; set; }
         decimal PercentualMva { get; set; }
+        decimal PercentualFcpStRetido { get; set; }
+        decimal ValorUltimaBaseCalculoIcmsStRetido { get; set; }
 
         /// <summary>
         /// Na Substituição tributária = Alíquota interna no Estado de destino
