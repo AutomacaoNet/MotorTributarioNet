@@ -124,7 +124,7 @@ namespace TestCalculosTributarios
         }
 
         [Fact]
-        public void Testa_Calculo_Base_Cofins_Sem_ICMS()
+        public void CalculoPisSemIncidenciaICMSNaBaseDeCalculo()
         {
             var produto = new Produto()
             {
@@ -142,6 +142,29 @@ namespace TestCalculosTributarios
 
             Assert.Equal(13.20m, resultado.BaseCalculo);
             Assert.Equal(1.0032m, resultado.Valor);
+        }
+        [Fact]
+        public void CalculoPisSemIncidenciaICMSNaBaseDeCalculoComFreteOutrasDespesasDesconto()
+        {
+            var produto = new Produto()
+            {
+                Cst = MotorTributarioNet.Flags.Cst.Cst00,
+                CstPisCofins = CstPisCofins.Cst01,
+                PercentualIcms = 12,
+                PercentualCofins = 7.6m,
+                QuantidadeProduto = 1,
+                ValorProduto = 15.99m,
+                Frete = 1.02m,
+                Desconto = 0.85m,
+                OutrasDespesas = 0.67m,
+                DeduzIcmsDaBaseDePisCofins = true
+            };
+
+            var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var resultado = tributacao.CalculaCofins();
+
+            Assert.Equal(14.8104m, resultado.BaseCalculo);
+            Assert.Equal(1.1255904m, resultado.Valor);
         }
     }
 }
