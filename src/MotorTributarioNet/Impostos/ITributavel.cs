@@ -66,5 +66,7 @@ namespace MotorTributarioNet.Impostos
         decimal PercentualRetInss { get; set; }
         decimal PercentualFcpSt { get; set; }
         bool DeduzIcmsDaBaseDePisCofins { get; set; }
+        decimal PercentualReducaoPis { get; set; }
+        decimal PercentualReducaoCofins { get; set; }
     }
 }

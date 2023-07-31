@@ -166,5 +166,23 @@ namespace TestCalculosTributarios
             Assert.Equal(14.8104m, resultado.BaseCalculo);
             Assert.Equal(0.2443716m, resultado.Valor);
         }
+        [Fact]
+        public void CalculoPisComReducaoDeBaseDeCalculo()
+        {
+            var produto = new Produto()
+            {
+                CstPisCofins = CstPisCofins.Cst01,
+                PercentualPis = 1.65m,
+                QuantidadeProduto = 2,
+                ValorProduto = 15.99m,
+                PercentualReducaoPis = 30.2m,
+            };
+
+            var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var resultado = tributacao.CalculaPis();
+
+            Assert.Equal(22.32204m, resultado.BaseCalculo);
+            Assert.Equal(0.36831366m, resultado.Valor);
+        }
     }
 }
