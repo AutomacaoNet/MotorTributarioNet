@@ -46,6 +46,7 @@ namespace MotorTributarioNet.Impostos
         private TributacaoFcp TributacaoFcp { get; set; }
         private TributacaoIssqn Issqn { get; set; }
         private TributacaoIbpt Ibpt { get; set; }
+        private TributacaoFcpStRetido TributacaoFcpStRetido { get; set; }
 
         #endregion
 
@@ -100,6 +101,9 @@ namespace MotorTributarioNet.Impostos
         public decimal ValorTributacaoEstadual { get; private set; }
         public decimal ValorTributacaoMunicipal { get; private set; }
         public decimal ValorTotalTributos { get; private set; }
+
+        public decimal ValorBcFcpStRetido { get; private set; }
+        public decimal FcpStRetido { get; private set; }
         #endregion
 
         private readonly ITributavelProduto _produto;
@@ -124,6 +128,7 @@ namespace MotorTributarioNet.Impostos
                 CalcularIcms();
                 CalcularDifal();
                 CalcularFcp();
+                CalcularFcpStRetido();
                 CalcularIpi();
             }
             CalcularPis();
@@ -465,6 +470,20 @@ namespace MotorTributarioNet.Impostos
 
             Fcp = result.Valor;
             ValorBcFcp = result.BaseCalculo;
+
+            return TributacaoFcp;
+        }
+
+        private TributacaoFcp CalcularFcpStRetido()
+        {
+            TributacaoFcpStRetido = new TributacaoFcpStRetido(_produto);
+            FcpStRetido = decimal.Zero;
+            ValorBcFcpStRetido = decimal.Zero;
+
+            var result = TributacaoFcpStRetido.Calcula();
+
+            FcpStRetido = result.ValorFcpSt;
+            ValorBcFcpStRetido = result.BaseCalculoFcpSt;
 
             return TributacaoFcp;
         }
