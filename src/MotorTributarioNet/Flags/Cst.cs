@@ -24,7 +24,7 @@ namespace MotorTributarioNet.Flags
 {
     public enum Cst
     {
-        [Description("00 - Tributada integralmente")]
+        [Description("00 - Tributada integralmente.")]
         Cst00 = 00,
         [Description("02 - Tributação monofásica própria sobre combustíveis")]
         Cst02 = 02,
