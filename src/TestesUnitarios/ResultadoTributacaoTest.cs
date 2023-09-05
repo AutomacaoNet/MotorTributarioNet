@@ -1,5 +1,6 @@
 ﻿using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos;
+using MotorTributarioNet.Util;
 using TestCalculosTributarios.Entidade;
 using Xunit;
 
@@ -26,6 +27,145 @@ namespace TestCalculosTributarios
             var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica);
             var resultado = tributacao.Calcular();
             Assert.Equal(2.07m, resultado.Fcp);
+        }
+
+        [Fact]
+        public void Testa_ICSM_Desonerado_Base_Simples_Cst_20()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1,
+                ValorProduto = 3.50m,
+                PercentualIcms = 12,
+                PercentualReducao = 41.67m,
+                Cst = MotorTributarioNet.Flags.Cst.Cst20
+            };
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica, tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado.BaseSimples);
+            var resultado = tributacao.Calcular();
+            decimal valorArredondado = resultado.ValorIcmsDesonerado.Arredondar();
+            Assert.Equal(0.24m, valorArredondado);
+        }
+
+        [Fact]
+        public void Testa_ICSM_Desonerado_Base_Por_Dentro_Cst_20()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1,
+                ValorProduto = 3.50m,
+                PercentualIcms = 12,
+                PercentualReducao = 41.67m,
+                Cst = MotorTributarioNet.Flags.Cst.Cst20
+            };
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica, tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado.BasePorDentro);
+            var resultado = tributacao.Calcular();
+            decimal valorArredondado = resultado.ValorIcmsDesonerado.Arredondar();
+            Assert.Equal(0.20m, valorArredondado);
+        }
+
+        [Fact]
+        public void Testa_ICSM_Desonerado_Base_Simples_Cst_30()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1,
+                ValorProduto = 200,
+                PercentualIcms = 20,
+                Cst = MotorTributarioNet.Flags.Cst.Cst30
+            };
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica, tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado.BaseSimples);
+            var resultado = tributacao.Calcular();
+            decimal valorArredondado = resultado.ValorIcmsDesonerado.Arredondar();
+            Assert.Equal(40m, valorArredondado);
+        }
+
+        [Fact]
+        public void Testa_ICSM_Desonerado_Base_Por_Dentro_Cst_30()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1,
+                ValorProduto = 200,
+                PercentualIcms = 20,
+                Cst = MotorTributarioNet.Flags.Cst.Cst30
+            };
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica, tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado.BasePorDentro);
+            var resultado = tributacao.Calcular();
+            decimal valorArredondado = resultado.ValorIcmsDesonerado.Arredondar();
+            Assert.Equal(50m, valorArredondado);
+        }
+
+        [Fact]
+        public void Testa_ICSM_Desonerado_Base_Simples_Cst_40()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1,
+                ValorProduto = 200,
+                PercentualIcms = 20,
+                Cst = MotorTributarioNet.Flags.Cst.Cst40
+            };
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica, tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado.BaseSimples);
+            var resultado = tributacao.Calcular();
+            decimal valorArredondado = resultado.ValorIcmsDesonerado.Arredondar();
+            Assert.Equal(40m, valorArredondado);
+        }
+        [Fact]
+        public void Testa_ICSM_Desonerado_Base_Por_Dentro_Cst_40()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1,
+                ValorProduto = 200,
+                PercentualIcms = 20,
+                Cst = MotorTributarioNet.Flags.Cst.Cst40
+            };
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica, tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado.BasePorDentro);
+            var resultado = tributacao.Calcular();
+            decimal valorArredondado = resultado.ValorIcmsDesonerado.Arredondar();
+            Assert.Equal(50m, valorArredondado);
+        }
+
+        [Fact]
+        public void Testa_ICSM_Desonerado_Base_Simples_Cst_70()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1,
+                ValorProduto = 3.50m,
+                PercentualIcms = 12,
+                PercentualReducao = 41.67m,
+                Cst = MotorTributarioNet.Flags.Cst.Cst70
+            };
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica, tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado.BaseSimples);
+            var resultado = tributacao.Calcular();
+            decimal valorArredondado = resultado.ValorIcmsDesonerado.Arredondar();
+            Assert.Equal(0.24m, valorArredondado);
+        }
+
+        [Fact]
+        public void Testa_ICSM_Desonerado_Base_Por_Dentro_Cst_70()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1,
+                ValorProduto = 3.50m,
+                PercentualIcms = 12,
+                PercentualReducao = 41.67m,
+                Cst = MotorTributarioNet.Flags.Cst.Cst70
+            };
+
+            var tributacao = new ResultadoTributacao(produto, Crt.RegimeNormal, TipoOperacao.OperacaoInterna, TipoPessoa.Juridica, tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado.BasePorDentro);
+            var resultado = tributacao.Calcular();
+            decimal valorArredondado = resultado.ValorIcmsDesonerado.Arredondar();
+            Assert.Equal(0.20m, valorArredondado);
         }
 
         private static Produto CriaObjetoProduto()

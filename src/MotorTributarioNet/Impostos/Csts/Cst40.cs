@@ -18,6 +18,7 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.Csts.Base;
 
@@ -27,10 +28,17 @@ namespace MotorTributarioNet.Impostos.Csts
     {
         public MotivoDesoneracao MotivoDesoneracao { get; set; }
         public decimal ValorIcmsDesonerado { get; set; }
+        public TipoCalculoIcmsDesonerado? TipoCalculoIcmsDesonerado { get; set; }
 
-        public Cst40(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
+        public Cst40(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional, TipoCalculoIcmsDesonerado? tipoCalculoIcmsDesonerado = null) : base(origemMercadoria, tipoDesconto)
         {
             Cst = Cst.Cst40;
+            TipoCalculoIcmsDesonerado = tipoCalculoIcmsDesonerado;
+        }
+        public override void Calcula(ITributavel tributavel)
+        {
+            FacadeCalculadoraTributacao facadeCalculadoraTributacao = new FacadeCalculadoraTributacao(tributavel, TipoDesconto, TipoCalculoIcmsDesonerado);
+            ValorIcmsDesonerado = facadeCalculadoraTributacao.CalculaIcmsDesonerado().Valor;
         }
 
     }
