@@ -49,5 +49,8 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualFcpSt { get; set; }
         public decimal PercentualFcpStRetido { get; set; }
         public decimal ValorUltimaBaseCalculoIcmsStRetido { get; set; }
+        public bool DeduzIcmsDaBaseDePisCofins { get; set; } = false;
+        public decimal PercentualReducaoPis { get; set; }
+        public decimal PercentualReducaoCofins { get; set; }
     }
 }
