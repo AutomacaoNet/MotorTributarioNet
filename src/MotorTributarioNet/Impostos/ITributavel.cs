@@ -70,5 +70,16 @@ namespace MotorTributarioNet.Impostos
         bool DeduzIcmsDaBaseDePisCofins { get; set; }
         decimal PercentualReducaoPis { get; set; }
         decimal PercentualReducaoCofins { get; set; }
+        decimal PercentualBiodisel { get; set; }
+        decimal PercentualOriginarioUf { get; set; }
+        decimal QuantidadeBaseCalculoIcmsMonofasico { get; set; }
+        decimal QuantidadeBaseCalculoIcmsMonofasicoRetencao { get; set; }
+        decimal QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente { get; set; }
+        decimal AliquotaAdRemIcms { get; set; }
+        decimal AliquotaAdRemIcmsretencao { get; set; }
+        decimal AliquotaAdRemIcmsRetidoAnteriormente { get; set; }
+        decimal PercentualReducaoAliquotaAdRemIcms { get; set; }
+        decimal PercentualIcmsMonofasicoDiferido { get; set; }
+
     }
 }

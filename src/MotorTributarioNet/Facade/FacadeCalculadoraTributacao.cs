@@ -96,5 +96,9 @@ namespace MotorTributarioNet.Facade
         {
             return new TributacaoIcmsDesonerado(_tributavel, _tipoDesconto, _tipoCalculoIcmsDesonerado).Calcula();
         }
+        public IResultadoCalculoIcmsMonofasico CalculaIcmsMonofasico()
+        {
+            return new TributacaoIcmsMonofasico(_tributavel, _tipoDesconto).Calcula();
+        }
     }
 }

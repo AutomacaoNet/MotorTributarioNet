@@ -105,6 +105,16 @@ namespace MotorTributarioNet.Impostos
 
         public decimal ValorBcFcpStRetido { get; private set; }
         public decimal FcpStRetido { get; private set; }
+
+        public decimal QuantidadeBaseCalculoIcmsMonofasico { get; private set; }
+        public decimal ValorIcmsMonofasicoProprio { get; private set; }
+        public decimal QuantidadeBaseCalculoIcmsMonofasicoRetencao { get; private set; }
+        public decimal ValorIcmsMonofasicoRetencao { get; private set; }
+        public decimal ValorIcmsMonofasicoOperacao { get; private set; }
+        public decimal ValorIcmsMonofasicoDiferido { get; private set; }
+        public decimal QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente { get; private set; }
+        public decimal ValorIcmsMonofasicoRetidoAnteriormente { get; private set; }
+
         #endregion
 
         private readonly ITributavelProduto _produto;
@@ -152,6 +162,12 @@ namespace MotorTributarioNet.Impostos
                         PercentualIcms = ((Cst00)Icms).PercentualIcms;
                         ValorIcms = ((Cst00)Icms).ValorIcms;
                         break;
+                    case Cst.Cst02:
+                        Icms = new Cst02();
+                        Icms.Calcula(_produto);
+                        ValorIcmsMonofasicoProprio = ((Cst02)Icms).ValorIcmsMonofasicoProprio;
+                        QuantidadeBaseCalculoIcmsMonofasico = ((Cst02)Icms).QuantidadeBaseCalculoIcmsMonofasico;
+                        break;
                     case Cst.Cst10:
                         Icms = new Cst10();
                         Icms.Calcula(_produto);
@@ -163,6 +179,14 @@ namespace MotorTributarioNet.Impostos
                         ValorBcIcmsSt = ((Cst10)Icms).ValorBcIcmsSt;
                         PercentualIcmsSt = ((Cst10)Icms).PercentualIcmsSt;
                         ValorIcmsSt = ((Cst10)Icms).ValorIcmsSt;
+                        break;
+                    case Cst.Cst15:
+                        Icms = new Cst15();
+                        Icms.Calcula(_produto);
+                        ValorIcmsMonofasicoProprio = ((Cst15)Icms).ValorIcmsMonofasicoProprio;
+                        ValorIcmsMonofasicoRetencao = ((Cst15)Icms).ValorIcmsMonofasicoRetencao;
+                        QuantidadeBaseCalculoIcmsMonofasico = ((Cst15)Icms).QuantidadeBaseCalculoIcmsMonofasico;
+                        QuantidadeBaseCalculoIcmsMonofasicoRetencao = ((Cst15)Icms).QuantidadeBaseCalculoIcmsMonofasicoRetencao;
                         break;
                     case Cst.Cst20:
                         Icms = new Cst20(tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado);
@@ -208,11 +232,25 @@ namespace MotorTributarioNet.Impostos
                         ValorIcmsOperacao = ((Cst51)Icms).ValorIcmsOperacao;
                         PercentualReducao = ((Cst51)Icms).PercentualReducao;
                         break;
+                    case Cst.Cst53:
+                        Icms = new Cst53();
+                        Icms.Calcula(_produto);
+                        ValorIcmsMonofasicoProprio = ((Cst53)Icms).ValorIcmsMonofasicoProprio;
+                        ValorIcmsMonofasicoOperacao = ((Cst53)Icms).ValorIcmsMonofasicoOperacao;
+                        ValorIcmsMonofasicoDiferido = ((Cst53)Icms).ValorIcmsMonofasicoDiferido;
+                        QuantidadeBaseCalculoIcmsMonofasico = ((Cst53)Icms).QuantidadeBaseCalculoIcmsMonofasico;
+                        break;
                     case Cst.Cst60:
                         Icms = new Cst60();
                         Icms.Calcula(_produto);
                         PercentualBcStRetido = ((Cst60)Icms).PercentualBcStRetido;
                         ValorBcStRetido = ((Cst60)Icms).ValorBcStRetido;
+                        break;
+                    case Cst.Cst61:
+                        Icms = new Cst61();
+                        Icms.Calcula(_produto);
+                        ValorIcmsMonofasicoRetidoAnteriormente = ((Cst61)Icms).ValorIcmsMonofasicoRetidoAnteriormente;
+                        QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente = ((Cst61)Icms).QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente;
                         break;
                     case Cst.Cst70:
                         Icms = new Cst70(tipoCalculoIcmsDesonerado: TipoCalculoIcmsDesonerado);
