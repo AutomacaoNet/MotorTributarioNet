@@ -20,29 +20,27 @@
 
 using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
+using MotorTributarioNet.Impostos.Csts.Base;
 
 namespace MotorTributarioNet.Impostos.Csts
 {
-    public class Cst20 : Cst00
+    public class Cst61 : CstBase
     {
-        public decimal PercentualReducao { get; private set; }
-        public decimal ValorBcFcp { get; private set; }
-        public decimal ValorIcmsDesonerado { get; private set; }
-        public TipoCalculoIcmsDesonerado? TipoCalculoIcmsDesonerado { get; private set; }
+        public decimal QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente { get; private set; }
+        public decimal ValorIcmsMonofasicoRetidoAnteriormente { get; private set; }
 
-        public Cst20(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional, TipoCalculoIcmsDesonerado? tipoCalculoIcmsDesonerado = null) : base(origemMercadoria, tipoDesconto)
+        public Cst61(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
-            Cst = Cst.Cst20;
-            TipoCalculoIcmsDesonerado = tipoCalculoIcmsDesonerado;
+            Cst = Cst.Cst61;
         }
 
         public override void Calcula(ITributavel tributavel)
         {
-            base.Calcula(tributavel);
-
-            PercentualReducao = tributavel.PercentualReducao;
-            ValorBcFcp = new FacadeCalculadoraTributacao(tributavel, TipoDesconto).CalculaFcp().BaseCalculo;
-            ValorIcmsDesonerado = new FacadeCalculadoraTributacao(tributavel, TipoDesconto, TipoCalculoIcmsDesonerado).CalculaIcmsDesonerado().Valor;
+            FacadeCalculadoraTributacao facadeCalculadoraTributacao = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+            IResultadoCalculoIcmsMonofasico resultadoCalculoIcms = facadeCalculadoraTributacao.CalculaIcmsMonofasico();
+            ValorIcmsMonofasicoRetidoAnteriormente = resultadoCalculoIcms.ValorIcmsMonofasicoRetidoAnteriormente;
+            QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente = resultadoCalculoIcms.QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente;
         }
+
     }
 }

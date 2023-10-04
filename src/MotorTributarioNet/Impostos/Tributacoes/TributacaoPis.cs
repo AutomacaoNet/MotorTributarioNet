@@ -45,9 +45,9 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         {
             var baseCalculo = _calculaBaseCalculoPis.CalculaBaseCalculo() + _tributavel.ValorIpi;
 
-            var valorIcms = CalculaPis(baseCalculo);
+            var valorPis = CalculaPis(baseCalculo);
 
-            return new ResultadoCalculoPis(baseCalculo, valorIcms);
+            return new ResultadoCalculoPis(baseCalculo, valorPis);
         }
 
         private decimal CalculaPis(decimal baseCalculo)

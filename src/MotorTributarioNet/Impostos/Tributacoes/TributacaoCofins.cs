@@ -45,9 +45,9 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         {
             var baseCalculo = _calculaBaseCalculoCofins.CalculaBaseCalculo() + _tributavel.ValorIpi;
 
-            var valorIcms = CalculaCofins(baseCalculo);
+            var valorCofins = CalculaCofins(baseCalculo);
 
-            return new ResultadoCalculoCofins(baseCalculo, valorIcms);
+            return new ResultadoCalculoCofins(baseCalculo, valorCofins);
         }
 
         private decimal CalculaCofins(decimal baseCalculo)

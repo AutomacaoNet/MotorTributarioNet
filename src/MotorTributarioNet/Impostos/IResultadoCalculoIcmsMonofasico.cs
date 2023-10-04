@@ -18,31 +18,17 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
-using MotorTributarioNet.Facade;
-using MotorTributarioNet.Flags;
-
-namespace MotorTributarioNet.Impostos.Csts
+namespace MotorTributarioNet.Impostos
 {
-    public class Cst20 : Cst00
+    public interface IResultadoCalculoIcmsMonofasico
     {
-        public decimal PercentualReducao { get; private set; }
-        public decimal ValorBcFcp { get; private set; }
-        public decimal ValorIcmsDesonerado { get; private set; }
-        public TipoCalculoIcmsDesonerado? TipoCalculoIcmsDesonerado { get; private set; }
-
-        public Cst20(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional, TipoCalculoIcmsDesonerado? tipoCalculoIcmsDesonerado = null) : base(origemMercadoria, tipoDesconto)
-        {
-            Cst = Cst.Cst20;
-            TipoCalculoIcmsDesonerado = tipoCalculoIcmsDesonerado;
-        }
-
-        public override void Calcula(ITributavel tributavel)
-        {
-            base.Calcula(tributavel);
-
-            PercentualReducao = tributavel.PercentualReducao;
-            ValorBcFcp = new FacadeCalculadoraTributacao(tributavel, TipoDesconto).CalculaFcp().BaseCalculo;
-            ValorIcmsDesonerado = new FacadeCalculadoraTributacao(tributavel, TipoDesconto, TipoCalculoIcmsDesonerado).CalculaIcmsDesonerado().Valor;
-        }
+        decimal QuantidadeBaseCalculoIcmsMonofasico { get; }
+        decimal ValorIcmsMonofasicoProprio { get; }
+        decimal QuantidadeBaseCalculoIcmsMonofasicoRetencao { get; }
+        decimal ValorIcmsMonofasicoRetencao { get; }
+        decimal ValorIcmsMonofasicoOperacao { get; }
+        decimal ValorIcmsMonofasicoDiferido { get; }
+        decimal QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente { get; }
+        decimal ValorIcmsMonofasicoRetidoAnteriormente { get; }
     }
 }

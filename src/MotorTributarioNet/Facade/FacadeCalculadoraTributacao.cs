@@ -29,11 +29,13 @@ namespace MotorTributarioNet.Facade
     {
         private readonly ITributavel _tributavel;
         private readonly TipoDesconto _tipoDesconto;
+        private readonly TipoCalculoIcmsDesonerado? _tipoCalculoIcmsDesonerado;
 
-        public FacadeCalculadoraTributacao(ITributavel tributavel, TipoDesconto tipoDesconto = TipoDesconto.Incondicional)
+        public FacadeCalculadoraTributacao(ITributavel tributavel, TipoDesconto tipoDesconto = TipoDesconto.Incondicional, TipoCalculoIcmsDesonerado? tipoCalculoIcmsDesonerado = null)
         {
             _tributavel = tributavel;
             _tipoDesconto = tipoDesconto;
+            _tipoCalculoIcmsDesonerado = tipoCalculoIcmsDesonerado;
         }
 
         public IResultadoCalculoIcms CalculaIcms()
@@ -89,6 +91,14 @@ namespace MotorTributarioNet.Facade
         public IResultadoCalculoIssqn CalculaIssqn(bool calcularRetencao)
         {
             return new TributacaoIssqn(_tributavel, _tipoDesconto).Calcula(calcularRetencao);
+        }
+        public IResultadoCalculoIcmsDesonerado CalculaIcmsDesonerado()
+        {
+            return new TributacaoIcmsDesonerado(_tributavel, _tipoDesconto, _tipoCalculoIcmsDesonerado).Calcula();
+        }
+        public IResultadoCalculoIcmsMonofasico CalculaIcmsMonofasico()
+        {
+            return new TributacaoIcmsMonofasico(_tributavel, _tipoDesconto).Calcula();
         }
     }
 }
