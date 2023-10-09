@@ -20,29 +20,31 @@
 
 using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
+using MotorTributarioNet.Impostos.Csts.Base;
 
 namespace MotorTributarioNet.Impostos.Csts
 {
-    public class Cst20 : Cst00
+    public class Cst53 : CstBase
     {
-        public decimal PercentualReducao { get; private set; }
-        public decimal ValorBcFcp { get; private set; }
-        public decimal ValorIcmsDesonerado { get; private set; }
-        public TipoCalculoIcmsDesonerado? TipoCalculoIcmsDesonerado { get; private set; }
+        public decimal QuantidadeBaseCalculoIcmsMonofasico { get; private set; }
+        public decimal ValorIcmsMonofasicoProprio { get; private set; }
+        public decimal ValorIcmsMonofasicoOperacao { get; private set; }
+        public decimal ValorIcmsMonofasicoDiferido { get; private set; }
 
-        public Cst20(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional, TipoCalculoIcmsDesonerado? tipoCalculoIcmsDesonerado = null) : base(origemMercadoria, tipoDesconto)
+        public Cst53(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
-            Cst = Cst.Cst20;
-            TipoCalculoIcmsDesonerado = tipoCalculoIcmsDesonerado;
+            Cst = Cst.Cst53;
         }
 
         public override void Calcula(ITributavel tributavel)
         {
-            base.Calcula(tributavel);
-
-            PercentualReducao = tributavel.PercentualReducao;
-            ValorBcFcp = new FacadeCalculadoraTributacao(tributavel, TipoDesconto).CalculaFcp().BaseCalculo;
-            ValorIcmsDesonerado = new FacadeCalculadoraTributacao(tributavel, TipoDesconto, TipoCalculoIcmsDesonerado).CalculaIcmsDesonerado().Valor;
+            FacadeCalculadoraTributacao facadeCalculadoraTributacao = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+            IResultadoCalculoIcmsMonofasico resultadoCalculoIcms = facadeCalculadoraTributacao.CalculaIcmsMonofasico();
+            ValorIcmsMonofasicoProprio = resultadoCalculoIcms.ValorIcmsMonofasicoProprio;
+            ValorIcmsMonofasicoOperacao = resultadoCalculoIcms.ValorIcmsMonofasicoOperacao;
+            ValorIcmsMonofasicoDiferido = resultadoCalculoIcms.ValorIcmsMonofasicoDiferido;
+            QuantidadeBaseCalculoIcmsMonofasico = resultadoCalculoIcms.QuantidadeBaseCalculoIcmsMonofasico;
         }
+
     }
 }

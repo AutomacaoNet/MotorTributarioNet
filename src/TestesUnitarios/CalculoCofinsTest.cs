@@ -122,5 +122,69 @@ namespace TestCalculosTributarios
             Assert.Equal(900.00m, resultadoCalculoCofins.BaseCalculo);
             Assert.Equal(5.85m, resultadoCalculoCofins.Valor);
         }
+
+        [Fact]
+        public void CalculoCofinsSemIncidenciaICMSNaBaseDeCalculo()
+        {
+            var produto = new Produto()
+            {
+                Cst = MotorTributarioNet.Flags.Cst.Cst00,
+                CstPisCofins = CstPisCofins.Cst01,
+                PercentualCofins = 7.6m,
+                PercentualIcms = 12,
+                QuantidadeProduto = 1,
+                ValorProduto = 15m,
+                DeduzIcmsDaBaseDePisCofins = true
+            };
+
+            var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var resultado = tributacao.CalculaCofins();
+
+            Assert.Equal(13.20m, resultado.BaseCalculo);
+            Assert.Equal(1.0032m, resultado.Valor);
+        }
+
+        [Fact]
+        public void CalculoCofinsSemIncidenciaICMSNaBaseDeCalculoComFreteOutrasDespesasDesconto()
+        {
+            var produto = new Produto()
+            {
+                Cst = MotorTributarioNet.Flags.Cst.Cst00,
+                CstPisCofins = CstPisCofins.Cst01,
+                PercentualIcms = 12,
+                PercentualCofins = 7.6m,
+                QuantidadeProduto = 1,
+                ValorProduto = 15.99m,
+                Frete = 1.02m,
+                Desconto = 0.85m,
+                OutrasDespesas = 0.67m,
+                DeduzIcmsDaBaseDePisCofins = true
+            };
+
+            var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var resultado = tributacao.CalculaCofins();
+
+            Assert.Equal(14.8104m, resultado.BaseCalculo);
+            Assert.Equal(1.1255904m, resultado.Valor);
+        }
+
+        [Fact]
+        public void CalculoCofinsComReducaoDeBaseDeCalculo()
+        {
+            var produto = new Produto()
+            {
+                CstPisCofins = CstPisCofins.Cst01,
+                PercentualCofins = 7.6m,
+                QuantidadeProduto = 2,
+                ValorProduto = 15.99m,
+                PercentualReducaoCofins = 30.2m,
+            };
+
+            var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var resultado = tributacao.CalculaCofins();
+
+            Assert.Equal(22.32204m, resultado.BaseCalculo);
+            Assert.Equal(1.69647504m, resultado.Valor);
+        }
     }
 }

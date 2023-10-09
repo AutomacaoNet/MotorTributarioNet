@@ -26,8 +26,12 @@ namespace MotorTributarioNet.Flags
     {
         [Description("00 - Tributada integralmente.")]
         Cst00 = 00,
-        [Description("10 - Tributada e com cobrança do ICMS por substituição tributária.")]
+        [Description("02 - Tributação monofásica própria sobre combustíveis")]
+        Cst02 = 02,
+        [Description("10 - Tributada e com cobrança do ICMS por substituição tributária")]
         Cst10 = 10,
+        [Description("15 - Tributação monofásica própria e com responsabilidade pela retenção sobre combustíveis")]
+        Cst15 = 15,
         [Description("20 - Com redução de Base de Cálculo")]
         Cst20 = 20,
         [Description("30 - Isenta ou não tributada e com cobrança do ICMS por substituição tributária")]
@@ -40,8 +44,12 @@ namespace MotorTributarioNet.Flags
         Cst50 = 50,
         [Description("51 - Com diferimento")]
         Cst51 = 51,
+        [Description("53 - Tributação monofásica sobre combustíveis com recolhimento diferido")]
+        Cst53 = 53,
         [Description("60 - ICMS cobrado anteriormente por substituição tributária")]
         Cst60 = 60,
+        [Description("61 - Tributação monofásica sobre combustíveis cobrada anteriormente")]
+        Cst61 = 61,
         [Description("70 - Com redução da Base de Cálculo e cobrança do ICMS por substituição tributária")]
         Cst70 = 70,
         [Description("90 - Outras")]

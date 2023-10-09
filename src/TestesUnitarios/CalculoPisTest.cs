@@ -123,5 +123,68 @@ namespace TestCalculosTributarios
             Assert.Equal(14.85m, resultadoCalculoPis.Valor);
         }
 
+        [Fact]
+        public void CalculoPisSemIncidenciaICMSNaBaseDeCalculo()
+        {
+            var produto = new Produto()
+            {
+                Cst = MotorTributarioNet.Flags.Cst.Cst00,
+                CstPisCofins = CstPisCofins.Cst01,
+                PercentualIcms = 12,
+                PercentualPis = 1.65m,
+                QuantidadeProduto = 1,
+                ValorProduto = 15m,
+                DeduzIcmsDaBaseDePisCofins = true
+            };
+
+            var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var resultado = tributacao.CalculaPis();
+
+            Assert.Equal(13.20m, resultado.BaseCalculo);
+            Assert.Equal(0.2178m, resultado.Valor);
+        }
+
+        [Fact]
+        public void CalculoPisSemIncidenciaICMSNaBaseDeCalculoComFreteOutrasDespesasDesconto()
+        {
+            var produto = new Produto()
+            {
+                Cst = MotorTributarioNet.Flags.Cst.Cst00,
+                CstPisCofins = CstPisCofins.Cst01,
+                PercentualIcms = 12,
+                PercentualPis = 1.65m,
+                QuantidadeProduto = 1,
+                ValorProduto = 15.99m,
+                Frete = 1.02m,
+                Desconto = 0.85m,
+                OutrasDespesas = 0.67m,
+                DeduzIcmsDaBaseDePisCofins = true
+            };
+
+            var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var resultado = tributacao.CalculaPis();
+
+            Assert.Equal(14.8104m, resultado.BaseCalculo);
+            Assert.Equal(0.2443716m, resultado.Valor);
+        }
+
+        [Fact]
+        public void CalculoPisComReducaoDeBaseDeCalculo()
+        {
+            var produto = new Produto()
+            {
+                CstPisCofins = CstPisCofins.Cst01,
+                PercentualPis = 1.65m,
+                QuantidadeProduto = 2,
+                ValorProduto = 15.99m,
+                PercentualReducaoPis = 30.2m,
+            };
+
+            var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
+            var resultado = tributacao.CalculaPis();
+
+            Assert.Equal(22.32204m, resultado.BaseCalculo);
+            Assert.Equal(0.36831366m, resultado.Valor);
+        }
     }
 }

@@ -20,29 +20,33 @@
 
 using MotorTributarioNet.Facade;
 using MotorTributarioNet.Flags;
+using MotorTributarioNet.Impostos.Csts.Base;
 
 namespace MotorTributarioNet.Impostos.Csts
 {
-    public class Cst20 : Cst00
+    public class Cst15 : CstBase
     {
-        public decimal PercentualReducao { get; private set; }
-        public decimal ValorBcFcp { get; private set; }
-        public decimal ValorIcmsDesonerado { get; private set; }
-        public TipoCalculoIcmsDesonerado? TipoCalculoIcmsDesonerado { get; private set; }
+        public decimal QuantidadeBaseCalculoIcmsMonofasico { get; private set; }
+        public decimal ValorIcmsMonofasicoProprio { get; private set; }
+        public decimal QuantidadeBaseCalculoIcmsMonofasicoRetencao { get; private set; }
+        public decimal ValorIcmsMonofasicoRetencao { get; private set; }
 
-        public Cst20(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional, TipoCalculoIcmsDesonerado? tipoCalculoIcmsDesonerado = null) : base(origemMercadoria, tipoDesconto)
+
+        public Cst15(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
-            Cst = Cst.Cst20;
-            TipoCalculoIcmsDesonerado = tipoCalculoIcmsDesonerado;
+            Cst = Cst.Cst15;
         }
 
         public override void Calcula(ITributavel tributavel)
         {
-            base.Calcula(tributavel);
+            FacadeCalculadoraTributacao facadeCalculadoraTributacao = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+            IResultadoCalculoIcmsMonofasico resultadoCalculoIcmsMonofasico = facadeCalculadoraTributacao.CalculaIcmsMonofasico();
 
-            PercentualReducao = tributavel.PercentualReducao;
-            ValorBcFcp = new FacadeCalculadoraTributacao(tributavel, TipoDesconto).CalculaFcp().BaseCalculo;
-            ValorIcmsDesonerado = new FacadeCalculadoraTributacao(tributavel, TipoDesconto, TipoCalculoIcmsDesonerado).CalculaIcmsDesonerado().Valor;
+            QuantidadeBaseCalculoIcmsMonofasico = resultadoCalculoIcmsMonofasico.QuantidadeBaseCalculoIcmsMonofasico;
+            ValorIcmsMonofasicoProprio = resultadoCalculoIcmsMonofasico.ValorIcmsMonofasicoProprio;
+            QuantidadeBaseCalculoIcmsMonofasicoRetencao = resultadoCalculoIcmsMonofasico.QuantidadeBaseCalculoIcmsMonofasicoRetencao;
+            ValorIcmsMonofasicoRetencao = resultadoCalculoIcmsMonofasico.ValorIcmsMonofasicoRetencao;
         }
+
     }
 }
