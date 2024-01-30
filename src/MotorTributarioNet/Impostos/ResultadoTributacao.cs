@@ -62,6 +62,10 @@ namespace MotorTributarioNet.Impostos
         public decimal PercentualReducaoIcmsBc { get; private set; }
         public decimal PercentualBcStRetido { get; private set; }
         public decimal PercentualDiferimento { get; private set; }
+        public decimal PercentualIss { get; private set; }
+        public decimal PercentualReducaoIcmsEfetivo { get; set; }
+        public decimal PercentualIcmsEfetivo { get; private set; }
+        public decimal PercentualFcpStRetido { get; private set; }
 
         public decimal ValorIcmsDiferido { get; private set; }
         public decimal ValorIcmsOperacao { get; private set; }
@@ -88,7 +92,6 @@ namespace MotorTributarioNet.Impostos
 
         public decimal ValorIss { get; private set; }
         public decimal BaseCalculoIss { get; private set; }
-        public decimal PercentualIss { get; private set; }
         public decimal BaseCalculoInss { get; private set; }
         public decimal BaseCalculoIrrf { get; private set; }
         public decimal ValorRetCofins { get; private set; }
@@ -114,6 +117,8 @@ namespace MotorTributarioNet.Impostos
         public decimal ValorIcmsMonofasicoDiferido { get; private set; }
         public decimal QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente { get; private set; }
         public decimal ValorIcmsMonofasicoRetidoAnteriormente { get; private set; }
+        public decimal ValorBcIcmsEfetivo { get; private set; }
+        public decimal ValorIcmsEfetivo { get; private set; }
 
         #endregion
 
@@ -245,6 +250,11 @@ namespace MotorTributarioNet.Impostos
                         Icms.Calcula(_produto);
                         PercentualBcStRetido = ((Cst60)Icms).PercentualBcStRetido;
                         ValorBcStRetido = ((Cst60)Icms).ValorBcStRetido;
+                        ValorBcIcmsEfetivo = ((Cst60)Icms).ValorBcIcmsEfetivo;
+                        PercentualReducaoIcmsEfetivo = ((Cst60)Icms).PercentualReducaoIcmsEfetivo;
+                        PercentualIcmsEfetivo = ((Cst60)Icms).PercentualIcmsEfetivo;
+                        PercentualFcpStRetido = ((Cst60)Icms).PercentualFcpStRetido;
+                        ValorIcmsEfetivo = ((Cst60)Icms).ValorIcmsEfetivo;
                         break;
                     case Cst.Cst61:
                         Icms = new Cst61();
@@ -413,7 +423,14 @@ namespace MotorTributarioNet.Impostos
 
                     case Csosn.Csosn500:
                         //500 ICMS cobrado anteriormente por substituição tributária (substituído) ou por antecipação - Classificam-se neste código as operações sujeitas exclusivamente ao regime de substituição tributária na condição de substituído tributário ou no caso de antecipações
-                        //nao tem calculo
+                        //nao tem calculo de icms, mas possui de outros impostos:
+                        CsosnBase = new Csosn500();
+                        CsosnBase.Calcula(_produto);
+                        ValorBcIcmsEfetivo = ((Csosn500)CsosnBase).ValorBcIcmsEfetivo;
+                        PercentualReducaoIcmsEfetivo = ((Csosn500)CsosnBase).PercentualReducaoIcmsEfetivo;
+                        PercentualIcmsEfetivo = ((Csosn500)CsosnBase).PercentualIcmsEfetivo;
+                        PercentualFcpStRetido = ((Csosn500)CsosnBase).PercentualFcpStRetido;
+                        ValorIcmsEfetivo = ((Csosn500)CsosnBase).ValorIcmsEfetivo;
                         break;
 
                     case Csosn.Csosn900:
