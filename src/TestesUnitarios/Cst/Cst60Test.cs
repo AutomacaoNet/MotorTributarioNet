@@ -52,9 +52,8 @@ namespace TestCalculosTributarios.Cst
             {
                 QuantidadeProduto = 1.000m,
                 ValorProduto = 1000.00m,
-                PercentualIcmsEfetivo = 18.00m,
-                PercentualReducaoIcmsEfetivo = 20.00m,
-                PercentualFcpStRetido = 2.00m
+                PercentualIcmsEfetivo = 20.00m,
+                PercentualReducaoIcmsEfetivo = 20.00m
             };
 
             var cst60 = new Cst60();

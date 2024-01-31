@@ -54,7 +54,7 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         {
             if (_tributavel.PercentualIcmsEfetivo > 0m)
             {
-                decimal percentualCalculoIcmsEfetivo = _tributavel.PercentualIcmsEfetivo + _tributavel.PercentualFcpStRetido;
+                decimal percentualCalculoIcmsEfetivo = _tributavel.PercentualIcmsEfetivo;
                 return baseCalculo * percentualCalculoIcmsEfetivo / 100;
             }
             return 0m;
