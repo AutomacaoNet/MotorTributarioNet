@@ -80,6 +80,7 @@ namespace MotorTributarioNet.Impostos
         decimal AliquotaAdRemIcmsRetidoAnteriormente { get; set; }
         decimal PercentualReducaoAliquotaAdRemIcms { get; set; }
         decimal PercentualIcmsMonofasicoDiferido { get; set; }
-
+        decimal PercentualIcmsEfetivo { get; set; }
+        decimal PercentualReducaoIcmsEfetivo { get; set; }
     }
 }

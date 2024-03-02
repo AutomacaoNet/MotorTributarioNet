@@ -18,40 +18,46 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using System;
 using MotorTributarioNet.Flags;
-using MotorTributarioNet.Impostos.Csosns.Base;
-using MotorTributarioNet.Facade;
+using MotorTributarioNet.Impostos.CalulosDeBC;
+using MotorTributarioNet.Impostos.Implementacoes;
 
-namespace MotorTributarioNet.Impostos.Csosns
+namespace MotorTributarioNet.Impostos.Tributacoes
 {
-    public class Csosn500 : CsosnBase
+    public class TributacaoIcmsEfetivo
     {
-        public Csosn500(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
+        private readonly ITributavel _tributavel;
+        private readonly CalculaBaseCalculoIcmsEfetivo _calculaBaseCalculoIcms;
+
+        public TributacaoIcmsEfetivo(ITributavel tributavel, TipoDesconto tipoDesconto)
         {
-            Csosn = Csosn.Csosn500;
+            _tributavel = tributavel ?? throw new ArgumentNullException(nameof(tributavel));
+            _calculaBaseCalculoIcms = new CalculaBaseCalculoIcmsEfetivo(_tributavel, tipoDesconto);
         }
 
-        public decimal PercentualBcStRetido { get; set; }
-        public decimal ValorBcStRetido { get; set; }
-		public decimal PercentualSt { get; set; }
-        public decimal ValorBcIcmsEfetivo { get; private set; }
-        public decimal PercentualReducaoIcmsEfetivo { get; set; }
-        public decimal PercentualIcmsEfetivo { get; private set; }
-        public decimal ValorIcmsEfetivo { get; private set; }
-        public decimal PercentualFcpStRetido { get; private set; }
-
-        public override void Calcula(ITributavel tributavel) {
-			PercentualSt = tributavel.PercentualIcmsSt + tributavel.PercentualFcpSt;
-
-            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
-            var resultadoCalculoIcmsEfetivo = facade.CalculaIcmsEfetivo();
-
-            ValorBcIcmsEfetivo = resultadoCalculoIcmsEfetivo.BaseCalculo;
-            PercentualIcmsEfetivo = tributavel.PercentualIcmsEfetivo;
-            PercentualReducaoIcmsEfetivo = tributavel.PercentualReducaoIcmsEfetivo;
-            ValorIcmsEfetivo = resultadoCalculoIcmsEfetivo.Valor;
-            PercentualFcpStRetido = tributavel.PercentualFcpStRetido;
+        public IResultadoCalculoIcmsEfetivo Calcula()
+        {
+            return CalculaIcms();
         }
 
-	}
+        private IResultadoCalculoIcmsEfetivo CalculaIcms()
+        {
+            var baseCalculo = _calculaBaseCalculoIcms.CalculaBaseCalculo();
+
+            var valorIcms = CalculaIcms(baseCalculo);
+
+            return new ResultadoCalculoIcmsEfetivo(baseCalculo, valorIcms);
+        }
+
+        private decimal CalculaIcms(decimal baseCalculo)
+        {
+            if (_tributavel.PercentualIcmsEfetivo > 0m)
+            {
+                decimal percentualCalculoIcmsEfetivo = _tributavel.PercentualIcmsEfetivo;
+                return baseCalculo * percentualCalculoIcmsEfetivo / 100;
+            }
+            return 0m;
+        }
+    }
 }
