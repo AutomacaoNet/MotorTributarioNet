@@ -18,40 +18,17 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
-using MotorTributarioNet.Flags;
-using MotorTributarioNet.Impostos.Csosns.Base;
-using MotorTributarioNet.Facade;
-
-namespace MotorTributarioNet.Impostos.Csosns
+namespace MotorTributarioNet.Impostos.Implementacoes
 {
-    public class Csosn500 : CsosnBase
+    public class ResultadoCalculoIcmsEfetivo : IResultadoCalculoIcmsEfetivo
     {
-        public Csosn500(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
+        public ResultadoCalculoIcmsEfetivo(decimal baseCalculo, decimal valor)
         {
-            Csosn = Csosn.Csosn500;
+            BaseCalculo = baseCalculo;
+            Valor = valor;
         }
 
-        public decimal PercentualBcStRetido { get; set; }
-        public decimal ValorBcStRetido { get; set; }
-		public decimal PercentualSt { get; set; }
-        public decimal ValorBcIcmsEfetivo { get; private set; }
-        public decimal PercentualReducaoIcmsEfetivo { get; set; }
-        public decimal PercentualIcmsEfetivo { get; private set; }
-        public decimal ValorIcmsEfetivo { get; private set; }
-        public decimal PercentualFcpStRetido { get; private set; }
-
-        public override void Calcula(ITributavel tributavel) {
-			PercentualSt = tributavel.PercentualIcmsSt + tributavel.PercentualFcpSt;
-
-            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
-            var resultadoCalculoIcmsEfetivo = facade.CalculaIcmsEfetivo();
-
-            ValorBcIcmsEfetivo = resultadoCalculoIcmsEfetivo.BaseCalculo;
-            PercentualIcmsEfetivo = tributavel.PercentualIcmsEfetivo;
-            PercentualReducaoIcmsEfetivo = tributavel.PercentualReducaoIcmsEfetivo;
-            ValorIcmsEfetivo = resultadoCalculoIcmsEfetivo.Valor;
-            PercentualFcpStRetido = tributavel.PercentualFcpStRetido;
-        }
-
-	}
+        public decimal BaseCalculo { get; }
+        public decimal Valor { get; }
+    }
 }

@@ -37,6 +37,11 @@ namespace MotorTributarioNet.Impostos.Csts
 
 		// Demais propriedades ainda devem ser implementadas para a NF-e 4.00
 		public decimal PercentualSt { get; private set; }
+        public decimal ValorBcIcmsEfetivo { get; private set; }
+        public decimal PercentualReducaoIcmsEfetivo { get; set; }
+        public decimal PercentualIcmsEfetivo { get; private set; }
+        public decimal ValorIcmsEfetivo { get; private set; }
+        public decimal PercentualFcpStRetido { get; private set; }
 
         public Cst60(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
@@ -47,9 +52,18 @@ namespace MotorTributarioNet.Impostos.Csts
         {
             var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
             var resultadoCalculoIcms = facade.CalculaIcmsSt();
+            var resultadoCalculoIcmsEfetivo = facade.CalculaIcmsEfetivo();
+
             PercentualBcStRetido = tributavel.PercentualIcmsSt;
             ValorBcStRetido = resultadoCalculoIcms.BaseCalculoIcmsSt;
             ValorIcmsStRetido = resultadoCalculoIcms.ValorIcmsSt;
+
+            //ICMS Efetivo
+            ValorBcIcmsEfetivo = resultadoCalculoIcmsEfetivo.BaseCalculo;
+            PercentualIcmsEfetivo = tributavel.PercentualIcmsEfetivo;
+            PercentualReducaoIcmsEfetivo = tributavel.PercentualReducaoIcmsEfetivo;
+            ValorIcmsEfetivo = resultadoCalculoIcmsEfetivo.Valor;
+            PercentualFcpStRetido = tributavel.PercentualFcpStRetido;
 
             ValorCreditoOutorgadoOuPresumido = facade.CalculaIcmsCredito().Valor;
 

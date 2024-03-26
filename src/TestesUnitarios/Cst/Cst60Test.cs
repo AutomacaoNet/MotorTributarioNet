@@ -44,5 +44,24 @@ namespace TestCalculosTributarios.Cst
             Assert.Equal(1000.00m, cst.ValorBcStRetido);
             Assert.Equal(36.00m, cst.ValorCreditoOutorgadoOuPresumido);
         }
+
+        [Fact]
+        public void CalculaCST60_ICMSEfetivo()
+        {
+            var produto = new Produto
+            {
+                QuantidadeProduto = 1.000m,
+                ValorProduto = 1000.00m,
+                PercentualIcmsEfetivo = 20.00m,
+                PercentualReducaoIcmsEfetivo = 20.00m
+            };
+
+            var cst60 = new Cst60();
+
+            cst60.Calcula(produto);
+
+            Assert.Equal(800.00m, cst60.ValorBcIcmsEfetivo);
+            Assert.Equal(160.00m, cst60.ValorIcmsEfetivo);
+        }
     }
 }
