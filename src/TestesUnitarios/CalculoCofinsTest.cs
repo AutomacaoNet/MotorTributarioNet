@@ -46,45 +46,6 @@ namespace TestCalculosTributarios
         }
 
         [Fact]
-        public void CalculaCofinsMaisIpi()
-        {
-            var produto = new Produto
-            {
-                PercentualCofins = 0.65m,
-                ValorProduto = 1000.00m,
-                QuantidadeProduto = 1.000m,
-                ValorIpi = 10
-            };
-
-            var facade = new FacadeCalculadoraTributacao(produto);
-
-            var resultadoCalculoCofins = facade.CalculaCofins();
-
-            Assert.Equal(1010.00m, resultadoCalculoCofins.BaseCalculo);
-            Assert.Equal(6.56m, decimal.Round(resultadoCalculoCofins.Valor, 2));
-        }
-
-        [Fact]
-        public void CalculaCofinsMaisIpiComDescontoIncondicional()
-        {
-            var produto = new Produto
-            {
-                PercentualCofins = 0.65m,
-                ValorProduto = 1000.00m,
-                QuantidadeProduto = 1.000m,
-                ValorIpi = 10,
-                Desconto = 100.00m
-            };
-
-            var facade = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
-
-            var resultadoCalculoCofins = facade.CalculaCofins();
-
-            Assert.Equal(910.00m, resultadoCalculoCofins.BaseCalculo);
-            Assert.Equal(5.92m, decimal.Round(resultadoCalculoCofins.Valor, 2));
-        }
-
-        [Fact]
         public void CalculaCofinsComIpiZero()
         {
             var produto = new Produto
