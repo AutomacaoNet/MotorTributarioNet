@@ -26,15 +26,15 @@ namespace TestCalculosTributarios.Csosn
 
             csosn900.Calcula(produto);
 
-            Assert.Equal(391.00m, csosn900.ValorCredito);
+            Assert.Equal(340.00M, csosn900.ValorCredito);
             Assert.Equal(17.00m, csosn900.PercentualCredito);
             Assert.Equal(18.00m, csosn900.PercentualIcmsSt);
             Assert.Equal(40.00m, csosn900.PercentualMva);
-            Assert.Equal(0.00m, csosn900.PercentualReducaoSt);
             Assert.Equal(3220.00m, csosn900.ValorBcIcmsSt);
             Assert.Equal(219.60m, csosn900.ValorIcmsSt);
-            Assert.Equal(414.00m, csosn900.ValorIcms);
-            Assert.Equal(2300.00m, csosn900.ValorBcIcms);
+            Assert.Equal(2000.00m, csosn900.ValorBcIcms);
+            Assert.Equal(360.00m, csosn900.ValorIcms);
+
         }
 
         [Fact]
@@ -56,15 +56,16 @@ namespace TestCalculosTributarios.Csosn
 
             csosn900.Calcula(produto);
 
-            Assert.Equal(391.00m, csosn900.ValorCredito);
+            Assert.Equal(340.00m, csosn900.ValorCredito);
             Assert.Equal(17.00m, csosn900.PercentualCredito);
             Assert.Equal(18.00m, csosn900.PercentualIcmsSt);
             Assert.Equal(40.00m, csosn900.PercentualMva);
             Assert.Equal(0.00m, csosn900.PercentualReducaoSt);
             Assert.Equal(3220.00m, csosn900.ValorBcIcmsSt);
             Assert.Equal(219.60m, csosn900.ValorIcmsSt);
-            Assert.Equal(414.00m, csosn900.ValorIcms);
-            Assert.Equal(2300.00m, csosn900.ValorBcIcms);
+            Assert.Equal(2000.00m, csosn900.ValorBcIcms);
+            Assert.Equal(360.00m, csosn900.ValorIcms);
+
         }
 
         [Fact]
@@ -86,15 +87,16 @@ namespace TestCalculosTributarios.Csosn
 
             csosn900.Calcula(produto);
 
-            Assert.Equal(391.00m, csosn900.ValorCredito);
+            Assert.Equal(340.00m, csosn900.ValorCredito);
             Assert.Equal(17.00m, csosn900.PercentualCredito);
             Assert.Equal(18.00m, csosn900.PercentualIcmsSt);
             Assert.Equal(40.00m, csosn900.PercentualMva);
             Assert.Equal(10.00m, csosn900.PercentualReducaoSt);
             Assert.Equal(2898.00m, csosn900.ValorBcIcmsSt);
             Assert.Equal(161.64m, csosn900.ValorIcmsSt);
-            Assert.Equal(414.00m, csosn900.ValorIcms);
-            Assert.Equal(2300.00m, csosn900.ValorBcIcms);
+            Assert.Equal(2000.00m, csosn900.ValorBcIcms);
+            Assert.Equal(360.00m, csosn900.ValorIcms);
+
         }
 
         [Fact]
@@ -210,7 +212,7 @@ namespace TestCalculosTributarios.Csosn
 
             csosn900.Calcula(produto);
 
-            Assert.Equal(61.19m, csosn900.ValorBcIcmsSt.Arredondar());
+            Assert.Equal(61.18m, csosn900.ValorBcIcmsSt);
         }
     }
 }

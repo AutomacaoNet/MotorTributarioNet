@@ -18,14 +18,16 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE    
 
+using System;
+
 namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class ResultadoCalculoFcpStRetido : IResultadoCalculoFcpStRetido
     {
         public ResultadoCalculoFcpStRetido(decimal baseCalculoFcpStRetido, decimal valorFcpStRetido)
         {
-            BaseCalculoFcpStRetido = baseCalculoFcpStRetido;
-            ValorFcpStRetido = valorFcpStRetido;
+            BaseCalculoFcpStRetido = Math.Round(baseCalculoFcpStRetido, 2);
+            ValorFcpStRetido = Math.Round(valorFcpStRetido, 2);
         }
 
         public decimal BaseCalculoFcpStRetido { get; }

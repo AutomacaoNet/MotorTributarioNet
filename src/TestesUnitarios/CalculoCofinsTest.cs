@@ -141,7 +141,7 @@ namespace TestCalculosTributarios
             var resultado = tributacao.CalculaCofins();
 
             Assert.Equal(13.20m, resultado.BaseCalculo);
-            Assert.Equal(1.0032m, resultado.Valor);
+            Assert.Equal(1.00m, resultado.Valor);
         }
 
         [Fact]
@@ -164,8 +164,8 @@ namespace TestCalculosTributarios
             var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
             var resultado = tributacao.CalculaCofins();
 
-            Assert.Equal(14.8104m, resultado.BaseCalculo);
-            Assert.Equal(1.1255904m, resultado.Valor);
+            Assert.Equal(14.81m, resultado.BaseCalculo);
+            Assert.Equal(1.13m, resultado.Valor);
         }
 
         [Fact]
@@ -183,8 +183,8 @@ namespace TestCalculosTributarios
             var tributacao = new FacadeCalculadoraTributacao(produto, TipoDesconto.Incondicional);
             var resultado = tributacao.CalculaCofins();
 
-            Assert.Equal(22.32204m, resultado.BaseCalculo);
-            Assert.Equal(1.69647504m, resultado.Valor);
+            Assert.Equal(22.32m, resultado.BaseCalculo);
+            Assert.Equal(1.70m, resultado.Valor);
         }
     }
 }

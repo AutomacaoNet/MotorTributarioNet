@@ -11,13 +11,14 @@ namespace TestCalculosTributarios
     {
 
         [Fact]
-        public void CalculaDifalJuntoComFcp()
+        public void CalculaDifalJuntoComFcp_AtivoImobilizado()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
             Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
 
             var produto = new Produto
             {
+                IsAtivoImobilizadoOuUsoeConsumo = true,
                 ValorProduto = 845.00m,
                 QuantidadeProduto = 1.000m,
                 Frete = 35.00m,

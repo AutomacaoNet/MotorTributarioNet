@@ -55,5 +55,31 @@ namespace TestCalculosTributarios.Csosn
             Assert.Equal(3220.00m, csosn202.ValorBcIcmsSt);
             Assert.Equal(219.60m, csosn202.ValorIcmsSt);
         }
+
+        [Fact]
+        public void TestaCsosn202ComReducao()
+        {
+            var produto = new Produto
+            {
+                PercentualIcms = 18.00m,
+                PercentualReducao = 61.11m,
+                PercentualIcmsSt = 18.00m,
+                PercentualReducaoSt = 61.11m,
+                PercentualIpi = 15.00m,
+                ValorProduto = 2000.00m,
+                QuantidadeProduto = 1.000m,
+                PercentualMva = 40.00m,
+            };
+
+            var csosn202 = new Csosn202();
+
+            csosn202.Calcula(produto);
+
+            Assert.Equal(18.00m, csosn202.PercentualIcmsSt);
+            Assert.Equal(40.00m, csosn202.PercentualMvaSt);
+            Assert.Equal(61.11m, csosn202.PercentualReducaoSt);
+            Assert.Equal(1252.26m, csosn202.ValorBcIcmsSt);
+            Assert.Equal(85.40m, csosn202.ValorIcmsSt);
+        }
     }
 }

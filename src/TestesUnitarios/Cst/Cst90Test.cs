@@ -37,24 +37,24 @@ namespace TestCalculosTributarios.Cst
                 PercentualIcms = 18.00m,
                 PercentualIcmsSt = 18.00m,
                 PercentualReducao = 10.00m,
-                ValorProduto = 100.00m,
-                QuantidadeProduto = 1.000m,
+                PercentualReducaoSt = 10.00m,
                 PercentualMva = 100.00m,
-                PercentualReducaoSt = 10m
+                ValorProduto = 100.00m,
+                QuantidadeProduto = 1.000m
 
             };
-
 
             var cst = new Cst90();
             cst.Calcula(produto);
 
             Assert.Equal(ModalidadeDeterminacaoBcIcmsSt.MargemValorAgregado, cst.ModalidadeDeterminacaoBcIcmsSt);
             Assert.Equal(100.00m, cst.PercentualMva);
-            Assert.Equal(162.00m, cst.ValorBcIcmsSt);
             Assert.Equal(10.00m, cst.PercentualReducaoSt);
-            Assert.Equal(162.00m, cst.ValorBcIcmsSt);
             Assert.Equal(18.00m, cst.PercentualIcmsSt);
-            Assert.Equal(12.96m, cst.ValorIcmsSt);
+            Assert.Equal(90.00m, cst.ValorBcIcms);
+            Assert.Equal(16.20m, cst.ValorIcmsSt);
+            Assert.Equal(180.00m, cst.ValorBcIcmsSt);
+            Assert.Equal(16.20m, cst.ValorIcmsSt);
         }
 
         [Fact]

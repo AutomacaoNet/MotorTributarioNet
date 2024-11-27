@@ -17,6 +17,8 @@
 // no endereço 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
+using System;
+
 namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class ResultadoCalculoIbpt : IResultadoCalculoIbpt
@@ -24,11 +26,11 @@ namespace MotorTributarioNet.Impostos.Implementacoes
         public ResultadoCalculoIbpt(decimal impostoAproximadoFederal, decimal impostoAproximadoMunicipio,
             decimal impostoAproximadoEstadual, decimal impostoAproximadoImportados, decimal baseCalculo)
         {
-            TributacaoFederal = impostoAproximadoFederal;
-            TributacaoEstadual = impostoAproximadoEstadual;
-            TributacaoMunicipal = impostoAproximadoMunicipio;
-            TributacaoFederalImportados = impostoAproximadoImportados;
-            BaseCalculo = baseCalculo;
+            TributacaoFederal = Math.Round(impostoAproximadoFederal, 2);
+            TributacaoEstadual = Math.Round(impostoAproximadoEstadual, 2);
+            TributacaoMunicipal = Math.Round(impostoAproximadoMunicipio, 2);
+            TributacaoFederalImportados = Math.Round(impostoAproximadoImportados, 2);
+            BaseCalculo = Math.Round(baseCalculo, 2);
             ValorTotalTributos = TributacaoFederal + TributacaoFederalImportados + TributacaoEstadual + TributacaoMunicipal;
         }
 

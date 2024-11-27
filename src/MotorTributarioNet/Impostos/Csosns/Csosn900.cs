@@ -62,17 +62,21 @@ namespace MotorTributarioNet.Impostos.Csosns
         public override void Calcula(ITributavel tributavel)
         {
             CalculaIcms(tributavel);
-
             CalculaIcmsSt(tributavel);
 
+            decimal percentualReducao = tributavel.PercentualReducao;
+            tributavel.PercentualReducao = 0m;
+            
             CalculaCredito(tributavel);
+
+            tributavel.PercentualReducao = percentualReducao;
         }
 
         private void CalculaCredito(ITributavel tributavel)
         {
             PercentualCredito = tributavel.PercentualCredito;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel,TipoDesconto);
+            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
             var resultadoCalculaCredito = facade.CalculaIcmsCredito();
             ValorCredito = resultadoCalculaCredito.Valor;
         }
@@ -83,7 +87,7 @@ namespace MotorTributarioNet.Impostos.Csosns
             PercentualReducaoSt = tributavel.PercentualReducaoSt;
             PercentualIcmsSt = tributavel.PercentualIcmsSt;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel,TipoDesconto);
+            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
 
             tributavel.ValorIpi = facade.CalculaIpi().Valor;
 
@@ -98,7 +102,7 @@ namespace MotorTributarioNet.Impostos.Csosns
             PercentualReducaoIcmsBc = tributavel.PercentualReducao;
             PercentualIcms = tributavel.PercentualIcms;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel,TipoDesconto);
+            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
 
             tributavel.ValorIpi = facade.CalculaIpi().Valor;
 

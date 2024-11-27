@@ -18,6 +18,8 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using System;
+
 namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class DadosMensagemDifal : IDadosMensagemDifal
@@ -28,9 +30,9 @@ namespace MotorTributarioNet.Impostos.Implementacoes
 
         public DadosMensagemDifal(decimal fcp, decimal valorIcmsDestino, decimal valorIcmsOrigem)
         {
-            Fcp = fcp;
-            ValorIcmsDestino = valorIcmsDestino;
-            ValorIcmsOrigem = valorIcmsOrigem;
+            Fcp = Math.Round(fcp, 2);
+            ValorIcmsDestino = Math.Round(valorIcmsDestino, 2);
+            ValorIcmsOrigem = Math.Round(valorIcmsOrigem, 2);
         }
     }
 }

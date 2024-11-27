@@ -52,7 +52,7 @@ namespace MotorTributarioNet.Impostos.Tributacoes
 
         private decimal CalculaIcms(decimal baseCalculo)
         {
-            return baseCalculo*_tributavel.PercentualIcms / 100;
+            return baseCalculo * _tributavel.PercentualIcms / 100;
         }
     }
 }
