@@ -18,6 +18,8 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using System;
+
 namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class ResultadoCalculoDifal : IResultadoCalculoDifal
@@ -30,11 +32,11 @@ namespace MotorTributarioNet.Impostos.Implementacoes
 
         public ResultadoCalculoDifal(decimal baseCalculo, decimal difal, decimal fcp, decimal valorIcmsDestino, decimal valorIcmsOrigem)
         {
-            BaseCalculo = baseCalculo;
-            Difal = difal;
-            Fcp = fcp;
-            ValorIcmsDestino = valorIcmsDestino;
-            ValorIcmsOrigem = valorIcmsOrigem;
+            BaseCalculo = Math.Round(baseCalculo, 2);
+            Difal = Math.Round(difal, 2);
+            Fcp = Math.Round(fcp, 2);
+            ValorIcmsDestino = Math.Round(valorIcmsDestino, 2);
+            ValorIcmsOrigem = Math.Round(valorIcmsOrigem, 2);
         }
 
         public string GetObservacao(IDadosMensagemDifal dadosMensagemDifal)

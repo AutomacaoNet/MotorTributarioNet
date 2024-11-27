@@ -30,6 +30,7 @@ namespace MotorTributarioNet.Impostos
         CstPisCofins CstPisCofins { get; set; }
         CstIpi CstIpi { get; set; }
         bool IsServico { get; set; }
+        bool IsAtivoImobilizadoOuUsoeConsumo { get; set; }
         decimal ValorProduto { get; set; }
         decimal Frete { get; set; }
         decimal Seguro { get; set; }

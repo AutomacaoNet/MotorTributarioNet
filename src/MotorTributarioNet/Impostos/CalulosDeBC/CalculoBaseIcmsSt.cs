@@ -34,12 +34,11 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
             _tipoDesconto = tipoDesconto;
         }
 
-  
+
         public decimal CalculaBaseCalculo()
         {
-            var baseCalculo = CalculaBaseDeCalculo() + _tributavel.ValorIpi;
-            baseCalculo = baseCalculo - (baseCalculo * _tributavel.PercentualReducao / 100);
-            var baseCalculoSt = CalculaBaseCalculoST(baseCalculo);
+            var baseCalculo = CalculaBaseDeCalculo();
+            var baseCalculoSt = CalculaBaseCalculoST(baseCalculo + _tributavel.ValorIpi);
             return baseCalculoSt;
         }
 
@@ -47,29 +46,21 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
         public decimal CalculaBaseCalculoST(decimal baseCalculoIcms)
         {
             var baseCalculoSt = _tipoDesconto == TipoDesconto.Condincional ? CalculaIcmsComDescontoCondicional(baseCalculoIcms) : CalculaIcmsComDescontoIncondicional(baseCalculoIcms);
-
-            baseCalculoSt = baseCalculoSt * (1.00m + _tributavel.PercentualMva / 100.00m);
-
+            baseCalculoSt *= (1.00m + _tributavel.PercentualMva / 100.00m);
             return baseCalculoSt;
         }
-
-
 
         private decimal CalculaIcmsComDescontoIncondicional(decimal baseCalculoInicial)
         {
             var baseCalculo = baseCalculoInicial - _tributavel.Desconto;
-
-            baseCalculo = baseCalculo - baseCalculo * _tributavel.PercentualReducaoSt / 100;
-
+            baseCalculo -= baseCalculo * _tributavel.PercentualReducaoSt / 100;
             return baseCalculo;
         }
 
         private decimal CalculaIcmsComDescontoCondicional(decimal baseCalculoInicial)
         {
             var baseCalulo = baseCalculoInicial + _tributavel.Desconto;
-
-            baseCalulo = baseCalulo - baseCalulo * _tributavel.PercentualReducaoSt / 100;
-
+            baseCalulo -= baseCalulo * _tributavel.PercentualReducaoSt / 100;
             return baseCalulo;
         }
     }

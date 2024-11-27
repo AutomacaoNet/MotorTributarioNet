@@ -32,12 +32,12 @@ namespace MotorTributarioNet.Impostos.Csts
         public decimal ValorBcIcmsSt { get; private set; }
         public decimal PercentualIcmsSt { get; private set; }
         public decimal ValorIcmsSt { get; private set; }
-		public decimal ValorBcFcp { get; private set; }
-		public decimal ValorBcFcpSt { get; private set; }
-		public decimal PercentualFcpSt { get; private set; }
-		public decimal ValorFcpSt { get; private set; }
+        public decimal ValorBcFcp { get; private set; }
+        public decimal ValorBcFcpSt { get; private set; }
+        public decimal PercentualFcpSt { get; private set; }
+        public decimal ValorFcpSt { get; private set; }
 
-		public Cst10(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
+        public Cst10(OrigemMercadoria origemMercadoria = OrigemMercadoria.Nacional, TipoDesconto tipoDesconto = TipoDesconto.Incondicional) : base(origemMercadoria, tipoDesconto)
         {
             Cst = Cst.Cst10;
             ModalidadeDeterminacaoBcIcmsSt = ModalidadeDeterminacaoBcIcmsSt.MargemValorAgregado;
@@ -48,23 +48,23 @@ namespace MotorTributarioNet.Impostos.Csts
             base.Calcula(tributavel);
 
             PercentualMva = tributavel.PercentualMva;
-            PercentualReducaoSt = tributavel.PercentualReducaoSt;
             PercentualIcmsSt = tributavel.PercentualIcmsSt;
-			PercentualFcpSt = tributavel.PercentualFcpSt;
+            PercentualFcpSt = tributavel.PercentualFcpSt;
+            PercentualReducaoSt = tributavel.PercentualReducaoSt;
 
             FacadeCalculadoraTributacao facadeCalculadoraTributacao = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
 
             tributavel.ValorIpi = facadeCalculadoraTributacao.CalculaIpi().Valor;
 
             IResultadoCalculoIcmsSt resultadoCalculoIcmsSt = facadeCalculadoraTributacao.CalculaIcmsSt();
-			IResultadoCalculoFcpSt resultadoCalculoFcpSt = facadeCalculadoraTributacao.CalculaFcpSt();
+            IResultadoCalculoFcpSt resultadoCalculoFcpSt = facadeCalculadoraTributacao.CalculaFcpSt();
 
             ValorBcIcmsSt = resultadoCalculoIcmsSt.BaseCalculoIcmsSt;
             ValorIcmsSt = resultadoCalculoIcmsSt.ValorIcmsSt;
 
-			ValorBcFcp = facadeCalculadoraTributacao.CalculaFcp().BaseCalculo;
-			ValorBcFcpSt = resultadoCalculoFcpSt.BaseCalculoFcpSt;
-			ValorFcpSt = resultadoCalculoFcpSt.ValorFcpSt;
+            ValorBcFcp = facadeCalculadoraTributacao.CalculaFcp().BaseCalculo;
+            ValorBcFcpSt = resultadoCalculoFcpSt.BaseCalculoFcpSt;
+            ValorFcpSt = resultadoCalculoFcpSt.ValorFcpSt;
         }
     }
 }

@@ -18,14 +18,16 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using System;
+
 namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class ResultadoCalculoCofins : IResultadoCalculoCofins
     {
         public ResultadoCalculoCofins(decimal baseCalculo, decimal valor)
         {
-            BaseCalculo = baseCalculo;
-            Valor = valor;
+            BaseCalculo = Math.Round(baseCalculo, 2);
+            Valor = Math.Round(valor, 2);
         }
 
         public decimal BaseCalculo { get; }

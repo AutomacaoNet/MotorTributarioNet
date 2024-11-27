@@ -18,6 +18,8 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using System;
+
 namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class ResultadoCalculoIcmsSt : IResultadoCalculoIcmsSt
@@ -29,10 +31,10 @@ namespace MotorTributarioNet.Impostos.Implementacoes
 
         public ResultadoCalculoIcmsSt(decimal baseCalculoOperacaoPropria, decimal valorIcmsProprio, decimal baseCalculoIcmsSt, decimal valorIcmsSt)
         {
-            BaseCalculoOperacaoPropria = baseCalculoOperacaoPropria;
-            ValorIcmsProprio = valorIcmsProprio;
-            BaseCalculoIcmsSt = baseCalculoIcmsSt;
-            ValorIcmsSt = valorIcmsSt;
+            BaseCalculoOperacaoPropria = Math.Round(baseCalculoOperacaoPropria, 2);
+            ValorIcmsProprio = Math.Round(valorIcmsProprio, 2);
+            BaseCalculoIcmsSt = Math.Round(baseCalculoIcmsSt, 2);
+            ValorIcmsSt = Math.Round(valorIcmsSt, 2);
         }
     }
 }

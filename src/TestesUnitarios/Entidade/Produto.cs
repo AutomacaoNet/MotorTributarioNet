@@ -14,6 +14,7 @@ namespace TestCalculosTributarios.Entidade
         public CstIpi CstIpi { get; set; }
         public CstPisCofins CstPisCofins { get; set; }
         public bool IsServico { get; set; }
+        public bool IsAtivoImobilizadoOuUsoeConsumo { get; set; }
         public MotorTributarioNet.Flags.Cst Cst { get; set; }
         public MotorTributarioNet.Flags.Csosn Csosn { get; set; }
         public decimal ValorProduto { get; set; }

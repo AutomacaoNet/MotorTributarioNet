@@ -18,14 +18,16 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE    
 
+using System;
+
 namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class ResultadoCalculoFcp : IResultadoCalculoFcp
     {
         public ResultadoCalculoFcp(decimal baseCalculo, decimal fcp)
         {
-            BaseCalculo = baseCalculo;
-            Valor = fcp;
+            BaseCalculo = Math.Round(baseCalculo, 2);
+            Valor = Math.Round(fcp, 2);
         }
 
         public decimal BaseCalculo { get; }

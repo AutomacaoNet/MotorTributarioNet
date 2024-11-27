@@ -49,16 +49,44 @@ namespace TestCalculosTributarios.Csosn
                 PercentualCredito = 5.00m
             };
 
-            var csosn201 = new Csosn201(tipoDesconto:TipoDesconto.Condincional);
+            var csosn201 = new Csosn201(tipoDesconto: TipoDesconto.Condincional);
+
+            csosn201.Calcula(produto);
+
+            Assert.Equal(5.00m, csosn201.PercentualCredito);
+            Assert.Equal(18.00m, csosn201.PercentualIcmsSt);
+            Assert.Equal(40.00m, csosn201.PercentualMva);
+            Assert.Equal(3220.00m, csosn201.ValorBcIcmsSt);
+            Assert.Equal(219.60m, csosn201.ValorIcmsSt);
+            Assert.Equal(100.00m, csosn201.ValorCredito);
+        }
+
+        [Fact]
+        public void TestaCsosn201ComReducao()
+        {
+            var produto = new Produto
+            {
+                PercentualIcms = 18.00m,
+                PercentualReducao = 61.11m,
+                PercentualIcmsSt = 18.00m,
+                PercentualReducaoSt = 61.11m,
+                PercentualIpi = 15.00m,
+                ValorProduto = 2000.00m,
+                QuantidadeProduto = 1.000m,
+                PercentualMva = 40.00m,
+                PercentualCredito = 5.00m
+            };
+
+            var csosn201 = new Csosn201();
 
             csosn201.Calcula(produto);
 
             Assert.Equal(18.00m, csosn201.PercentualIcmsSt);
             Assert.Equal(5.00m, csosn201.PercentualCredito);
             Assert.Equal(40.00m, csosn201.PercentualMva);
-            Assert.Equal(0.00m, csosn201.PercentualReducaoSt);
-            Assert.Equal(3220.00m, csosn201.ValorBcIcmsSt);
-            Assert.Equal(219.60m, csosn201.ValorIcmsSt);
+            Assert.Equal(61.11m, csosn201.PercentualReducaoSt);
+            Assert.Equal(1252.26m, csosn201.ValorBcIcmsSt);
+            Assert.Equal(85.40m, csosn201.ValorIcmsSt);
             Assert.Equal(100.00m, csosn201.ValorCredito);
         }
     }

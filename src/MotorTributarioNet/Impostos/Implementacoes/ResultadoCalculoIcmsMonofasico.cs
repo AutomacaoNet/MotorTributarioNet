@@ -18,6 +18,8 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using System;
+
 namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class ResultadoCalculoIcmsMonofasico : IResultadoCalculoIcmsMonofasico
@@ -32,13 +34,13 @@ namespace MotorTributarioNet.Impostos.Implementacoes
             decimal valorIcmsMonofasicoRetidoAnteriormente)
         {
             QuantidadeBaseCalculoIcmsMonofasico = quantidadeBaseCalculoIcmsMonofasico;
-            ValorIcmsMonofasicoProprio = valorIcmsMonofasicoProprio;
+            ValorIcmsMonofasicoProprio = Math.Round(valorIcmsMonofasicoProprio, 2);
             QuantidadeBaseCalculoIcmsMonofasicoRetencao = quantidadeBaseCalculoIcmsMonofasicoRetencao;
-            ValorIcmsMonofasicoRetencao = valorIcmsMonofasicoRetencao;
-            ValorIcmsMonofasicoOperacao = valorIcmsMonofasicoOperacao;
-            ValorIcmsMonofasicoDiferido = valorIcmsMonofasicoDiferido;
+            ValorIcmsMonofasicoRetencao = Math.Round(valorIcmsMonofasicoRetencao, 2);
+            ValorIcmsMonofasicoOperacao = Math.Round(valorIcmsMonofasicoOperacao, 2);
+            ValorIcmsMonofasicoDiferido = Math.Round(valorIcmsMonofasicoDiferido, 2);
             QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente = quantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente;
-            ValorIcmsMonofasicoRetidoAnteriormente = valorIcmsMonofasicoRetidoAnteriormente;
+            ValorIcmsMonofasicoRetidoAnteriormente = Math.Round(valorIcmsMonofasicoRetidoAnteriormente, 2);
 
         }
 

@@ -18,27 +18,29 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE      
 
+using System;
+
 namespace MotorTributarioNet.Impostos.Implementacoes
 {
     public class ResultadoCalculoIssqn : IResultadoCalculoIssqn
     {
         public ResultadoCalculoIssqn(decimal baseCalculo, decimal valor)
         {
-            BaseCalculo = baseCalculo;
-            Valor = valor;
+            BaseCalculo = Math.Round(baseCalculo, 2);
+            Valor = Math.Round(valor, 2);
         }
 
         public ResultadoCalculoIssqn(decimal baseCalculo, decimal valor, decimal baseCalculoInss, decimal baseCalculoIrrf, decimal valorRetPis, decimal valorRetCofins, decimal valorRetCsll, decimal valorRetIrrf, decimal valorRetInss)
         {
-            BaseCalculo = baseCalculo;
-            Valor = valor;
-            BaseCalculoInss = baseCalculoInss;
-            BaseCalculoIrrf = baseCalculoIrrf;
-            ValorRetPis = valorRetPis;
-            ValorRetCofins = valorRetCofins;
-            ValorRetCsll = valorRetCsll;
-            ValorRetIrrf = valorRetIrrf;
-            ValorRetInss = valorRetInss;
+            BaseCalculo = Math.Round(baseCalculo, 2);
+            Valor = Math.Round(valor, 2);
+            BaseCalculoInss = Math.Round(baseCalculoInss, 2);
+            BaseCalculoIrrf = Math.Round(baseCalculoIrrf, 2);
+            ValorRetPis = Math.Round(valorRetPis, 2);
+            ValorRetCofins = Math.Round(valorRetCofins, 2);
+            ValorRetCsll = Math.Round(valorRetCsll, 2);
+            ValorRetIrrf = Math.Round(valorRetIrrf, 2);
+            ValorRetInss = Math.Round(valorRetInss, 2);
         }
         
         public decimal BaseCalculo { get; }

@@ -45,7 +45,7 @@ namespace MotorTributarioNet.Impostos.Csosns
             PercentualReducaoSt = tributavel.PercentualReducaoSt;
             PercentualIcmsSt = tributavel.PercentualIcmsSt;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel,TipoDesconto);
+            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
 
             tributavel.ValorIpi = facade.CalculaIpi().Valor;
 
