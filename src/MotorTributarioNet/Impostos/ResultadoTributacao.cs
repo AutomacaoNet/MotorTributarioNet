@@ -18,7 +18,6 @@
 // Você também pode obter uma copia da licença em:                              
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE                       
 
-
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.Csosns;
 using MotorTributarioNet.Impostos.Csosns.Base;
@@ -287,7 +286,7 @@ namespace MotorTributarioNet.Impostos
                         break;
                 }
             }
-            else
+            else if (CrtEmpresa == Crt.SimplesNacional)
             {
                 switch (_produto.Csosn)
                 {
@@ -451,19 +450,58 @@ namespace MotorTributarioNet.Impostos
                         break;
                 }
             }
-        }
+            else
+            {
+                ValorCredito = decimal.Zero;
+                PercentualCredito = decimal.Zero;
+                ValorBcIcmsEfetivo = decimal.Zero;
+                PercentualReducaoIcmsEfetivo = decimal.Zero;
+                PercentualIcmsEfetivo = decimal.Zero;
+                PercentualFcpStRetido = decimal.Zero;
+                ValorIcmsEfetivo = decimal.Zero;
+                PercentualIcms = decimal.Zero;
+                PercentualReducao = decimal.Zero;
+                PercentualIcmsSt = decimal.Zero;
+                PercentualReducaoSt = decimal.Zero;
+                PercentualMva = decimal.Zero;
+                ValorBcIcms = decimal.Zero;
+                ValorIcms = decimal.Zero;
+                ValorIcmsSt = decimal.Zero;
+                ValorBcIcmsSt = decimal.Zero;
 
+                switch (_produto.Csosn)
+                {
+                    case Csosn.Csosn101:
+                    case Csosn.Csosn201:
+                    case Csosn.Csosn202:
+                    case Csosn.Csosn203:
+                    case Csosn.Csosn500:
+                        _produto.Csosn = Csosn.Csosn102;
+                        break;
+                    case Csosn.Csosn900:
+                        CsosnBase = new Csosn900();
+                        CsosnBase.Calcula(_produto);
+                        PercentualCredito = ((Csosn900)CsosnBase).PercentualCredito;
+                        ValorCredito = ((Csosn900)CsosnBase).ValorCredito;
+                        ValorBcIcms = ((Csosn900)CsosnBase).ValorBcIcms;
+                        ValorIcms = ((Csosn900)CsosnBase).ValorIcms;
+                        PercentualMva = ((Csosn900)CsosnBase).PercentualMva;
+                        PercentualIcmsSt = ((Csosn900)CsosnBase).PercentualIcmsSt;
+                        PercentualReducaoSt = ((Csosn900)CsosnBase).PercentualReducaoSt;
+                        ValorIcmsSt = ((Csosn900)CsosnBase).ValorIcmsSt;
+                        ValorBcIcmsSt = ((Csosn900)CsosnBase).ValorBcIcmsSt;
+                        break;
+                }
+            }
+        }
 
         private TributacaoIpi CalcularIpi()
         {
             Ipi = new TributacaoIpi(_produto, TipoDesconto);
             ValorIpi = decimal.Zero;
             ValorBcIpi = decimal.Zero;
-
-            if (_produto.CstIpi == CstIpi.Cst00
-                || _produto.CstIpi == CstIpi.Cst49
-                || _produto.CstIpi == CstIpi.Cst50
-                || _produto.CstIpi == CstIpi.Cst99)
+            if (CrtEmpresa != Crt.SimplesNacionalMei &&
+                (_produto.CstIpi == CstIpi.Cst00 || _produto.CstIpi == CstIpi.Cst49 || _produto.CstIpi == CstIpi.Cst50 || _produto.CstIpi == CstIpi.Cst99))
             {
                 var result = Ipi.Calcula();
                 ValorIpi = result.Valor;
@@ -477,9 +515,7 @@ namespace MotorTributarioNet.Impostos
             Pis = new TributacaoPis(_produto, TipoDesconto);
             ValorPis = decimal.Zero;
             ValorBcPis = decimal.Zero;
-
-            if (_produto.CstPisCofins == CstPisCofins.Cst01
-               || _produto.CstPisCofins == CstPisCofins.Cst02)
+            if (CrtEmpresa != Crt.SimplesNacionalMei && (_produto.CstPisCofins == CstPisCofins.Cst01 || _produto.CstPisCofins == CstPisCofins.Cst02))
             {
                 var result = Pis.Calcula();
                 ValorPis = result.Valor;
@@ -493,14 +529,11 @@ namespace MotorTributarioNet.Impostos
             Cofins = new TributacaoCofins(_produto, TipoDesconto);
             ValorCofins = decimal.Zero;
             ValorBcCofins = decimal.Zero;
-
-            if (_produto.CstPisCofins == CstPisCofins.Cst01
-                || _produto.CstPisCofins == CstPisCofins.Cst02)
+            if (CrtEmpresa != Crt.SimplesNacionalMei && (_produto.CstPisCofins == CstPisCofins.Cst01 || _produto.CstPisCofins == CstPisCofins.Cst02))
             {
                 var result = Cofins.Calcula();
                 ValorCofins = result.Valor;
                 ValorBcCofins = result.BaseCalculo;
-
             }
             return Cofins;
         }
@@ -525,12 +558,12 @@ namespace MotorTributarioNet.Impostos
             TributacaoFcp = new TributacaoFcp(_produto, TipoDesconto);
             Fcp = decimal.Zero;
             ValorBcFcp = decimal.Zero;
-
-            var result = TributacaoFcp.Calcula();
-
-            Fcp = result.Valor;
-            ValorBcFcp = result.BaseCalculo;
-
+            if (CrtEmpresa != Crt.SimplesNacionalMei)
+            {
+                var result = TributacaoFcp.Calcula();
+                Fcp = result.Valor;
+                ValorBcFcp = result.BaseCalculo;
+            }
             return TributacaoFcp;
         }
 
@@ -539,28 +572,25 @@ namespace MotorTributarioNet.Impostos
             TributacaoFcpStRetido = new TributacaoFcpStRetido(_produto);
             FcpStRetido = decimal.Zero;
             ValorBcFcpStRetido = decimal.Zero;
-
-            var result = TributacaoFcpStRetido.Calcula();
-
-            FcpStRetido = result.ValorFcpSt;
-            ValorBcFcpStRetido = result.BaseCalculoFcpSt;
-
+            if (CrtEmpresa != Crt.SimplesNacionalMei)
+            {
+                var result = TributacaoFcpStRetido.Calcula();
+                FcpStRetido = result.ValorFcpSt;
+                ValorBcFcpStRetido = result.BaseCalculoFcpSt;
+            }
             return TributacaoFcp;
         }
 
         private TributacaoDifal CalcularDifal()
         {
-            var cstCson = (Crt.RegimeNormal == CrtEmpresa ? _produto.Cst.GetValue<int>() : _produto.Csosn.GetValue<int>());
+            var cstCson = CrtEmpresa == Crt.SimplesNacionalExecesso || CrtEmpresa == Crt.RegimeNormal ? _produto.Cst.GetValue<int>() : _produto.Csosn.GetValue<int>();
             Difal = new TributacaoDifal(_produto, TipoDesconto);
             ValorBcDifal = decimal.Zero;
             ValorDifal = decimal.Zero;
             ValorIcmsOrigem = decimal.Zero;
             ValorIcmsDestino = decimal.Zero;
-
-            if (Operacao == TipoOperacao.OperacaoInterestadual
-                   && CstGeraDifal(cstCson)
-                   && _produto.PercentualDifalInterna != 0
-                   && _produto.PercentualDifalInterestadual != 0)
+            if (CrtEmpresa != Crt.SimplesNacionalMei && Operacao == TipoOperacao.OperacaoInterestadual && CstGeraDifal(cstCson)
+                && _produto.PercentualDifalInterna != 0 && _produto.PercentualDifalInterestadual != 0)
             {
                 var result = Difal.Calcula();
                 ValorBcDifal = result.BaseCalculo;
@@ -573,19 +603,25 @@ namespace MotorTributarioNet.Impostos
 
         private TributacaoIbpt CalcularIbpt()
         {
-            Ibpt = new TributacaoIbpt(_produto,_produto);
-            var result = Ibpt.Calcula();
-            ValorTributacaoEstadual = result.TributacaoEstadual;
-            ValorTributacaoFederal = result.TributacaoFederal;
-            ValorTributacaoFederalImportados = result.TributacaoFederalImportados;
-            ValorTributacaoMunicipal = result.TributacaoMunicipal;
-            ValorTotalTributos = result.ValorTotalTributos;
+            Ibpt = new TributacaoIbpt(_produto, _produto);
+            ValorTributacaoEstadual = decimal.Zero;
+            ValorTributacaoFederal = decimal.Zero;
+            ValorTributacaoFederalImportados = decimal.Zero;
+            ValorTributacaoMunicipal = decimal.Zero;
+            ValorTotalTributos = decimal.Zero;
+            if (CrtEmpresa != Crt.SimplesNacionalMei)
+            {
+                var result = Ibpt.Calcula();
+                ValorTributacaoEstadual = result.TributacaoEstadual;
+                ValorTributacaoFederal = result.TributacaoFederal;
+                ValorTributacaoFederalImportados = result.TributacaoFederalImportados;
+                ValorTributacaoMunicipal = result.TributacaoMunicipal;
+                ValorTotalTributos = result.ValorTotalTributos;
+            }
             return Ibpt;
         }
 
         private bool CstGeraDifal(int cst)
-            => cst == 0 || cst == 20 || cst == 40 || cst == 41 || cst == 60 || cst ==102 || cst == 103 || cst == 400 || cst == 500 ;
-
-
+            => cst == 0 || cst == 20 || cst == 40 || cst == 41 || cst == 60 || cst == 102 || cst == 103 || cst == 400 || cst == 500;
     }
 }

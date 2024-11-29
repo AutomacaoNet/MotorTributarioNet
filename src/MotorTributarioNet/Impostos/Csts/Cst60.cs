@@ -50,24 +50,27 @@ namespace MotorTributarioNet.Impostos.Csts
 
         public override void Calcula(ITributavel tributavel)
         {
-            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
-            var resultadoCalculoIcms = facade.CalculaIcmsSt();
-            var resultadoCalculoIcmsEfetivo = facade.CalculaIcmsEfetivo();
+            if (tributavel.CalcularIcmsEfetivoeRetencaoParaSt)
+            {
+                var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+                var resultadoCalculoIcms = facade.CalculaIcmsSt();
+                var resultadoCalculoIcmsEfetivo = facade.CalculaIcmsEfetivo();
 
-            PercentualBcStRetido = tributavel.PercentualIcmsSt;
-            ValorBcStRetido = resultadoCalculoIcms.BaseCalculoIcmsSt;
-            ValorIcmsStRetido = resultadoCalculoIcms.ValorIcmsSt;
+                PercentualBcStRetido = tributavel.PercentualIcmsSt;
+                ValorBcStRetido = resultadoCalculoIcms.BaseCalculoIcmsSt;
+                ValorIcmsStRetido = resultadoCalculoIcms.ValorIcmsSt;
 
-            //ICMS Efetivo
-            ValorBcIcmsEfetivo = resultadoCalculoIcmsEfetivo.BaseCalculo;
-            PercentualIcmsEfetivo = tributavel.PercentualIcmsEfetivo;
-            PercentualReducaoIcmsEfetivo = tributavel.PercentualReducaoIcmsEfetivo;
-            ValorIcmsEfetivo = resultadoCalculoIcmsEfetivo.Valor;
-            PercentualFcpStRetido = tributavel.PercentualFcpStRetido;
+                //ICMS Efetivo
+                ValorBcIcmsEfetivo = resultadoCalculoIcmsEfetivo.BaseCalculo;
+                PercentualIcmsEfetivo = tributavel.PercentualIcmsEfetivo;
+                PercentualReducaoIcmsEfetivo = tributavel.PercentualReducaoIcmsEfetivo;
+                ValorIcmsEfetivo = resultadoCalculoIcmsEfetivo.Valor;
+                PercentualFcpStRetido = tributavel.PercentualFcpStRetido;
 
-            ValorCreditoOutorgadoOuPresumido = facade.CalculaIcmsCredito().Valor;
+                ValorCreditoOutorgadoOuPresumido = facade.CalculaIcmsCredito().Valor;
 
-			PercentualSt = tributavel.PercentualIcmsSt + tributavel.PercentualFcpSt;
+                PercentualSt = tributavel.PercentualIcmsSt + tributavel.PercentualFcpSt;
+            }
         }
     }
 }

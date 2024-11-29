@@ -12,6 +12,7 @@ namespace TestCalculosTributarios.Cst
         {
             var produto = new Produto
             {
+                CalcularIcmsEfetivoeRetencaoParaSt = true,
                 Documento = Documento.NFe,
                 QuantidadeProduto = 1.000m,
                 ValorProduto = 1000.00m,
@@ -30,6 +31,7 @@ namespace TestCalculosTributarios.Cst
         {
             var produtoFrete = new Produto
             {
+                CalcularIcmsEfetivoeRetencaoParaSt = true,
                 Documento = Documento.CTe,
                 QuantidadeProduto = 1.000m,
                 ValorProduto = 1000.00m,
@@ -50,6 +52,7 @@ namespace TestCalculosTributarios.Cst
         {
             var produto = new Produto
             {
+                CalcularIcmsEfetivoeRetencaoParaSt = true,
                 QuantidadeProduto = 1.000m,
                 ValorProduto = 1000.00m,
                 PercentualIcmsEfetivo = 20.00m,
@@ -57,7 +60,6 @@ namespace TestCalculosTributarios.Cst
             };
 
             var cst60 = new Cst60();
-
             cst60.Calcula(produto);
 
             Assert.Equal(800.00m, cst60.ValorBcIcmsEfetivo);
