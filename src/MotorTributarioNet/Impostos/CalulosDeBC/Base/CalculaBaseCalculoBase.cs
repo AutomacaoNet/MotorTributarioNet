@@ -31,9 +31,8 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC.Base
 
         protected decimal CalculaBaseDeCalculo()
         {
-            var baseCalculo = _tributavel.ValorProduto * _tributavel.QuantidadeProduto +
-                              _tributavel.Frete +
-                              _tributavel.Seguro + _tributavel.OutrasDespesas;
+            var baseCalculo = (_tributavel.ValorProduto * _tributavel.QuantidadeProduto) +
+                _tributavel.Frete + _tributavel.Seguro + _tributavel.OutrasDespesas;
 
             return baseCalculo;
         }

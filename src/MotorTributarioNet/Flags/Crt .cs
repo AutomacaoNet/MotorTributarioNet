@@ -32,7 +32,9 @@ namespace MotorTributarioNet.Flags
         SimplesNacionalExecesso = 2,
 
         [Description("3 - Regime Normal")]
-        RegimeNormal = 3 
+        RegimeNormal = 3,
 
+        [Description("4 - Simples Nacional MEI")]
+        SimplesNacionalMei = 4
     }
 }

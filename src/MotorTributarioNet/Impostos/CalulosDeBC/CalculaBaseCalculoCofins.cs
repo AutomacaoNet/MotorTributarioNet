@@ -39,21 +39,19 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
         {
             decimal valorIcms = new TributacaoIcms(_tributavel, _tipoDesconto).Calcula().Valor;
             var baseCalculo = _tributavel.DeduzIcmsDaBaseDePisCofins ? CalculaBaseDeCalculo() - valorIcms : CalculaBaseDeCalculo();
-            baseCalculo = baseCalculo - baseCalculo * _tributavel.PercentualReducaoCofins / 100;
+            baseCalculo -= baseCalculo * _tributavel.PercentualReducaoCofins / 100;
             return _tipoDesconto == TipoDesconto.Condincional ? CalculaIcmsComDescontoCondicional(baseCalculo) : CalculaIcmsComDescontoIncondicional(baseCalculo);
         }
 
         private decimal CalculaIcmsComDescontoIncondicional(decimal baseCalculoInicial)
         {
             var baseCalculo = baseCalculoInicial - _tributavel.Desconto;
-
             return baseCalculo;
         }
 
         private decimal CalculaIcmsComDescontoCondicional(decimal baseCalculoInicial)
         {
             var baseCalulo = baseCalculoInicial + _tributavel.Desconto;
-
             return baseCalulo;
         }
     }
