@@ -63,6 +63,7 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualIcmsMonofasicoDiferido { get; set; }
         public decimal QuantidadeBaseCalculoIcmsMonofasicoRetidoAnteriormente { get; set; }
         public decimal AliquotaAdRemIcmsRetidoAnteriormente { get; set; }
+        public bool CalcularIcmsEfetivoeRetencaoParaSt { get; set; }
         public decimal PercentualIcmsEfetivo { get; set; }
         public decimal PercentualReducaoIcmsEfetivo { get; set; }
     }

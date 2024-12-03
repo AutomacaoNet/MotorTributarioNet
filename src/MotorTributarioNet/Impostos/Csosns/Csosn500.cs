@@ -42,17 +42,19 @@ namespace MotorTributarioNet.Impostos.Csosns
 
         public override void Calcula(ITributavel tributavel)
         {
-            PercentualSt = tributavel.PercentualIcmsSt + tributavel.PercentualFcpSt;
+            if (tributavel.CalcularIcmsEfetivoeRetencaoParaSt)
+            {
+                PercentualSt = tributavel.PercentualIcmsSt + tributavel.PercentualFcpSt;
 
-            var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
-            var resultadoCalculoIcmsEfetivo = facade.CalculaIcmsEfetivo();
+                var facade = new FacadeCalculadoraTributacao(tributavel, TipoDesconto);
+                var resultadoCalculoIcmsEfetivo = facade.CalculaIcmsEfetivo();
 
-            ValorBcIcmsEfetivo = resultadoCalculoIcmsEfetivo.BaseCalculo;
-            PercentualIcmsEfetivo = tributavel.PercentualIcmsEfetivo;
-            PercentualReducaoIcmsEfetivo = tributavel.PercentualReducaoIcmsEfetivo;
-            ValorIcmsEfetivo = resultadoCalculoIcmsEfetivo.Valor;
-            PercentualFcpStRetido = tributavel.PercentualFcpStRetido;
+                ValorBcIcmsEfetivo = resultadoCalculoIcmsEfetivo.BaseCalculo;
+                PercentualIcmsEfetivo = tributavel.PercentualIcmsEfetivo;
+                PercentualReducaoIcmsEfetivo = tributavel.PercentualReducaoIcmsEfetivo;
+                ValorIcmsEfetivo = resultadoCalculoIcmsEfetivo.Valor;
+                PercentualFcpStRetido = tributavel.PercentualFcpStRetido;
+            }
         }
-
     }
 }
