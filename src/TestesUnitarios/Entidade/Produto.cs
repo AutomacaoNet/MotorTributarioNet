@@ -66,5 +66,8 @@ namespace TestCalculosTributarios.Entidade
         public bool CalcularIcmsEfetivoeRetencaoParaSt { get; set; }
         public decimal PercentualIcmsEfetivo { get; set; }
         public decimal PercentualReducaoIcmsEfetivo { get; set; }
+        public decimal PercentualIbsUF { get; set; }
+        public decimal PercentualIbsMunicipal { get; set; }
+        public decimal PercentualCbs { get; set; }
     }
 }
