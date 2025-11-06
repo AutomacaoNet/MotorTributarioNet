@@ -18,6 +18,7 @@
 // Você também pode obter uma copia da licença em:
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE
 
+using System;
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.CalulosDeBC.Base;
 using MotorTributarioNet.Impostos.Tributacoes;
@@ -148,7 +149,7 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
                     var tributacaoIssqn = new TributacaoIssqn(_tributavel, _tipoDesconto);
                     return tributacaoIssqn.Calcula(false).Valor;
                 }
-                catch
+                catch (Exception)
                 {
                     // Em caso de erro no cálculo, retorna 0 para não impactar o cálculo do IBS/CBS
                     return 0m;
