@@ -18,7 +18,6 @@
 // Você também pode obter uma copia da licença em:
 // https://github.com/AutomacaoNet/MotorTributarioNet/blob/master/LICENSE
 
-using System;
 using MotorTributarioNet.Flags;
 using MotorTributarioNet.Impostos.CalulosDeBC.Base;
 using MotorTributarioNet.Impostos.Tributacoes;
@@ -91,16 +90,8 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
         /// </summary>
         private decimal CalcularValorPis()
         {
-            try
-            {
-                var tributacaoPis = new TributacaoPis(_tributavel, _tipoDesconto);
-                return tributacaoPis.Calcula().Valor;
-            }
-            catch
-            {
-                // Em caso de erro no cálculo, retorna 0 para não impactar o cálculo do IBS/CBS
-                return 0m;
-            }
+            var tributacaoPis = new TributacaoPis(_tributavel, _tipoDesconto);
+            return tributacaoPis.Calcula().Valor;
         }
 
         /// <summary>
@@ -108,16 +99,8 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
         /// </summary>
         private decimal CalcularValorCofins()
         {
-            try
-            {
-                var tributacaoCofins = new TributacaoCofins(_tributavel, _tipoDesconto);
-                return tributacaoCofins.Calcula().Valor;
-            }
-            catch
-            {
-                // Em caso de erro no cálculo, retorna 0 para não impactar o cálculo do IBS/CBS
-                return 0m;
-            }
+            var tributacaoCofins = new TributacaoCofins(_tributavel, _tipoDesconto);
+            return tributacaoCofins.Calcula().Valor;
         }
 
         /// <summary>
@@ -125,16 +108,8 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
         /// </summary>
         private decimal CalcularValorIcms()
         {
-            try
-            {
-                var tributacaoIcms = new TributacaoIcms(_tributavel, _tipoDesconto);
-                return tributacaoIcms.Calcula().Valor;
-            }
-            catch
-            {
-                // Em caso de erro no cálculo, retorna 0 para não impactar o cálculo do IBS/CBS
-                return 0m;
-            }
+            var tributacaoIcms = new TributacaoIcms(_tributavel, _tipoDesconto);
+            return tributacaoIcms.Calcula().Valor;
         }
 
         /// <summary>
@@ -144,16 +119,8 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
         {
             if (_tributavel.IsServico && _tributavel.PercentualIssqn > 0)
             {
-                try
-                {
-                    var tributacaoIssqn = new TributacaoIssqn(_tributavel, _tipoDesconto);
-                    return tributacaoIssqn.Calcula(false).Valor;
-                }
-                catch (Exception)
-                {
-                    // Em caso de erro no cálculo, retorna 0 para não impactar o cálculo do IBS/CBS
-                    return 0m;
-                }
+                var tributacaoIssqn = new TributacaoIssqn(_tributavel, _tipoDesconto);
+                return tributacaoIssqn.Calcula(false).Valor;
             }
             return 0m;
         }
