@@ -206,7 +206,7 @@ namespace TestCalculosTributarios
         [Fact]
         public void CalculoCbsEIbsJuntos()
         {
-            // Teste para verificar que IBS e CBS podem ser calculados juntos
+            // Teste para verificar que IBS UF, IBS Municipal e CBS podem ser calculados juntos
             var produto = new Produto
             {
                 PercentualCbs = 8.00m,
@@ -222,10 +222,12 @@ namespace TestCalculosTributarios
             var facade = new FacadeCalculadoraTributacao(produto);
 
             var resultadoCalculoCbs = facade.CalculaCbs();
-            var resultadoCalculoIbs = facade.CalculaIbs();
+            var resultadoCalculoIbsUF = facade.CalculaIbs();
+            var resultadoCalculoIbsMunicipal = facade.CalculaIbsMunicipal();
 
-            // Ambos devem ter a mesma base de cálculo
-            Assert.Equal(resultadoCalculoIbs.BaseCalculo, resultadoCalculoCbs.BaseCalculo);
+            // Todos devem ter a mesma base de cálculo
+            Assert.Equal(resultadoCalculoIbsUF.BaseCalculo, resultadoCalculoCbs.BaseCalculo);
+            Assert.Equal(resultadoCalculoIbsMunicipal.BaseCalculo, resultadoCalculoCbs.BaseCalculo);
 
             // Base de cálculo: 1000 - PIS(16.50) - COFINS(76.00) - ICMS(180.00) = 727.50
             Assert.Equal(727.50m, resultadoCalculoCbs.BaseCalculo);
@@ -233,8 +235,15 @@ namespace TestCalculosTributarios
             // CBS = 727.50 × 8% = 58.20
             Assert.Equal(58.20m, resultadoCalculoCbs.Valor);
 
-            // IBS = 727.50 × 15% = 109.125 → 109.12 (banker's rounding)
-            Assert.Equal(109.12m, resultadoCalculoIbs.Valor);
+            // IBS UF = 727.50 × 10% = 72.75
+            Assert.Equal(72.75m, resultadoCalculoIbsUF.Valor);
+
+            // IBS Municipal = 727.50 × 5% = 36.38 (arredondado)
+            Assert.Equal(36.38m, resultadoCalculoIbsMunicipal.Valor);
+
+            // IBS Total = IBS UF + IBS Municipal = 72.75 + 36.38 = 109.13
+            var ibsTotal = resultadoCalculoIbsUF.Valor + resultadoCalculoIbsMunicipal.Valor;
+            Assert.Equal(109.13m, ibsTotal);
         }
     }
 }

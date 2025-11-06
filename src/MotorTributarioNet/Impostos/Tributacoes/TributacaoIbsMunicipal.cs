@@ -26,44 +26,44 @@ using MotorTributarioNet.Impostos.Implementacoes;
 namespace MotorTributarioNet.Impostos.Tributacoes
 {
     /// <summary>
-    /// Classe para cálculo do IBS UF (Imposto sobre Bens e Serviços - componente estadual)
+    /// Classe para cálculo do IBS Municipal (Imposto sobre Bens e Serviços - componente municipal)
     /// Reforma Tributária - LC 214/2025
     /// </summary>
-    public class TributacaoIbs
+    public class TributacaoIbsMunicipal
     {
         private readonly ITributavel _tributavel;
         private readonly CalculaBaseCalculoIbsCbs _calculaBaseCalculoIbsCbs;
 
-        public TributacaoIbs(ITributavel tributavel, TipoDesconto tipoDesconto)
+        public TributacaoIbsMunicipal(ITributavel tributavel, TipoDesconto tipoDesconto)
         {
             _tributavel = tributavel ?? throw new ArgumentNullException(nameof(tributavel));
             _calculaBaseCalculoIbsCbs = new CalculaBaseCalculoIbsCbs(_tributavel, tipoDesconto);
         }
 
         /// <summary>
-        /// Calcula o IBS UF (componente estadual)
+        /// Calcula o IBS Municipal (componente municipal)
         /// </summary>
-        public IResultadoCalculoIbs Calcula()
+        public IResultadoCalculoIbsMunicipal Calcula()
         {
-            return CalculaIbs();
+            return CalculaIbsMunicipal();
         }
 
-        private IResultadoCalculoIbs CalculaIbs()
+        private IResultadoCalculoIbsMunicipal CalculaIbsMunicipal()
         {
             var baseCalculo = _calculaBaseCalculoIbsCbs.CalculaBaseCalculo();
 
-            var valorIbsUF = CalculaIbsUF(baseCalculo);
+            var valorIbsMunicipal = CalculaIbsMunicipal(baseCalculo);
 
-            return new ResultadoCalculoIbs(baseCalculo, valorIbsUF);
+            return new ResultadoCalculoIbsMunicipal(baseCalculo, valorIbsMunicipal);
         }
 
         /// <summary>
-        /// Calcula o valor do IBS UF (componente estadual)
+        /// Calcula o valor do IBS Municipal (componente municipal)
         /// </summary>
-        private decimal CalculaIbsUF(decimal baseCalculo)
+        private decimal CalculaIbsMunicipal(decimal baseCalculo)
         {
-            // IBS UF = Base de Cálculo × Alíquota UF / 100
-            return baseCalculo * _tributavel.PercentualIbsUF / 100;
+            // IBS Municipal = Base de Cálculo × Alíquota Municipal / 100
+            return baseCalculo * _tributavel.PercentualIbsMunicipal / 100;
         }
     }
 }
