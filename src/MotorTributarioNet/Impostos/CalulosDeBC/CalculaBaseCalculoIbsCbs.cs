@@ -141,11 +141,18 @@ namespace MotorTributarioNet.Impostos.CalulosDeBC
         /// </summary>
         private decimal CalcularValorIssqn()
         {
-            // O ISSQN é calculado sobre serviços
             if (_tributavel.IsServico && _tributavel.PercentualIssqn > 0)
             {
-                var baseCalculoIssqn = (_tributavel.ValorProduto * _tributavel.QuantidadeProduto) - _tributavel.Desconto;
-                return baseCalculoIssqn * _tributavel.PercentualIssqn / 100;
+                try
+                {
+                    var tributacaoIssqn = new TributacaoIssqn(_tributavel, _tipoDesconto);
+                    return tributacaoIssqn.Calcula(false).Valor;
+                }
+                catch
+                {
+                    // Em caso de erro no cálculo, retorna 0 para não impactar o cálculo do IBS/CBS
+                    return 0m;
+                }
             }
             return 0m;
         }
