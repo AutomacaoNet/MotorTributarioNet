@@ -14,19 +14,28 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+    - name: Setup .NET 6
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
         
     - name: Restore dependencies Motor
       run: dotnet restore
       working-directory: 'src/'
       
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --configuration Release
       working-directory: 'src/'
-      
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+
+    - name: Test on .NET 6.0
+      run: dotnet test --no-build --verbosity normal --framework net6.0 --configuration Release
+      working-directory: 'src/'
+
+    - name: Test on .NET 8.0
+      run: dotnet test --no-build --verbosity normal --framework net8.0 --configuration Release
       working-directory: 'src/'

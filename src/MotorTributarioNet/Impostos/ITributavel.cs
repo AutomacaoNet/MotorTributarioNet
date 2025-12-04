@@ -84,5 +84,23 @@ namespace MotorTributarioNet.Impostos
         bool CalcularIcmsEfetivoeRetencaoParaSt { get; set; }
         decimal PercentualIcmsEfetivo { get; set; }
         decimal PercentualReducaoIcmsEfetivo { get; set; }
+
+        /// <summary>
+        /// Percentual do IBS UF (Imposto sobre Bens e Serviços - Componente Estadual)
+        /// Reforma Tributária - LC 214/2025
+        /// </summary>
+        decimal PercentualIbsUF { get; set; }
+
+        /// <summary>
+        /// Percentual do IBS Municipal (Imposto sobre Bens e Serviços - Componente Municipal)
+        /// Reforma Tributária - LC 214/2025
+        /// </summary>
+        decimal PercentualIbsMunicipal { get; set; }
+
+        /// <summary>
+        /// Percentual da CBS (Contribuição sobre Bens e Serviços)
+        /// Reforma Tributária - LC 214/2025
+        /// </summary>
+        decimal PercentualCbs { get; set; }
     }
 }

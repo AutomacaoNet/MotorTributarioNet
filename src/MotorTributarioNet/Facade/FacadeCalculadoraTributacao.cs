@@ -104,5 +104,29 @@ namespace MotorTributarioNet.Facade
         {
             return new TributacaoIcmsEfetivo(_tributavel, _tipoDesconto).Calcula();
         }
+
+        /// <summary>
+        /// Calcula o IBS UF (Imposto sobre Bens e Serviços - componente estadual) - Reforma Tributária LC 214/2025
+        /// </summary>
+        public IResultadoCalculoIbs CalculaIbs()
+        {
+            return new TributacaoIbs(_tributavel, _tipoDesconto).Calcula();
+        }
+
+        /// <summary>
+        /// Calcula o IBS Municipal (Imposto sobre Bens e Serviços - componente municipal) - Reforma Tributária LC 214/2025
+        /// </summary>
+        public IResultadoCalculoIbsMunicipal CalculaIbsMunicipal()
+        {
+            return new TributacaoIbsMunicipal(_tributavel, _tipoDesconto).Calcula();
+        }
+
+        /// <summary>
+        /// Calcula a CBS (Contribuição sobre Bens e Serviços) - Reforma Tributária LC 214/2025
+        /// </summary>
+        public IResultadoCalculoCbs CalculaCbs()
+        {
+            return new TributacaoCbs(_tributavel, _tipoDesconto).Calcula();
+        }
     }
 }
