@@ -102,5 +102,23 @@ namespace MotorTributarioNet.Impostos
         /// Reforma Tributária - LC 214/2025
         /// </summary>
         decimal PercentualCbs { get; set; }
+
+        /// <summary>
+        /// Percentual de redução da alíquota do IBS UF
+        /// Reforma Tributária - LC 214/2025
+        /// </summary>
+        decimal PercentualReducaoIbsUf { get; set; }
+
+        /// <summary>
+        /// Percentual de redução da alíquota do IBS Municipal
+        /// Reforma Tributária - LC 214/2025
+        /// </summary>
+        decimal PercentualReducaoIbsMunicipal { get; set; }
+
+        /// <summary>
+        /// Percentual de redução da alíquota da CBS
+        /// Reforma Tributária - LC 214/2025
+        /// </summary>
+        decimal PercentualReducaoCbs { get; set; }
     }
 }

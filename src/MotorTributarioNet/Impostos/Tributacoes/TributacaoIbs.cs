@@ -62,8 +62,10 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         /// </summary>
         private decimal CalculaIbsUF(decimal baseCalculo)
         {
-            // IBS UF = Base de Cálculo × Alíquota UF / 100
-            return baseCalculo * _tributavel.PercentualIbsUF / 100;
+            // Aplica redução na alíquota se houver
+            var aliquota = _tributavel.PercentualIbsUF * (1 - _tributavel.PercentualReducaoIbsUf / 100);
+            // IBS UF = Base de Cálculo × Alíquota com redução / 100
+            return baseCalculo * aliquota / 100;
         }
     }
 }

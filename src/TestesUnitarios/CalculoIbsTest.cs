@@ -234,5 +234,80 @@ namespace TestCalculosTributarios
             Assert.Equal(114.86m, resultadoCalculoIbs.BaseCalculo);
             Assert.Equal(9.76m, resultadoCalculoIbs.Valor);
         }
+
+        [Fact]
+        public void CalculoIbsComReducaoAliquota()
+        {
+            var produto = new Produto
+            {
+                PercentualIbsUF = 0.90m,
+                PercentualReducaoIbsUf = 50.00m, // 50% de redução
+                ValorProduto = 1000.00m,
+                QuantidadeProduto = 1.000m,
+                PercentualPis = 0.00m,
+                PercentualCofins = 0.00m,
+                PercentualIcms = 0.00m
+            };
+
+            var facade = new FacadeCalculadoraTributacao(produto);
+
+            var resultadoCalculoIbs = facade.CalculaIbs();
+
+            // Base de cálculo: 1000 (sem deduções)
+            // Alíquota com redução: 0.90 × (1 - 0.50) = 0.45%
+            // IBS UF = 1000 × 0.45% = 4.50
+            Assert.Equal(1000.00m, resultadoCalculoIbs.BaseCalculo);
+            Assert.Equal(4.50m, resultadoCalculoIbs.Valor);
+        }
+
+        [Fact]
+        public void CalculoIbsComReducaoAliquota100Porcento()
+        {
+            var produto = new Produto
+            {
+                PercentualIbsUF = 0.90m,
+                PercentualReducaoIbsUf = 100.00m, // 100% de redução = alíquota zero
+                ValorProduto = 1000.00m,
+                QuantidadeProduto = 1.000m,
+                PercentualPis = 0.00m,
+                PercentualCofins = 0.00m,
+                PercentualIcms = 0.00m
+            };
+
+            var facade = new FacadeCalculadoraTributacao(produto);
+
+            var resultadoCalculoIbs = facade.CalculaIbs();
+
+            // Base de cálculo: 1000 (sem deduções)
+            // Alíquota com redução: 0.90 × (1 - 1.00) = 0%
+            // IBS UF = 1000 × 0% = 0.00
+            Assert.Equal(1000.00m, resultadoCalculoIbs.BaseCalculo);
+            Assert.Equal(0.00m, resultadoCalculoIbs.Valor);
+        }
+
+        [Fact]
+        public void CalculoIbsSemReducaoAliquota()
+        {
+            var produto = new Produto
+            {
+                PercentualIbsUF = 0.90m,
+                PercentualReducaoIbsUf = 0.00m, // Sem redução
+                ValorProduto = 1000.00m,
+                QuantidadeProduto = 1.000m,
+                PercentualPis = 0.00m,
+                PercentualCofins = 0.00m,
+                PercentualIcms = 0.00m
+            };
+
+            var facade = new FacadeCalculadoraTributacao(produto);
+
+            var resultadoCalculoIbs = facade.CalculaIbs();
+
+            // Base de cálculo: 1000 (sem deduções)
+            // Alíquota sem redução: 0.90%
+            // IBS UF = 1000 × 0.90% = 9.00
+            Assert.Equal(1000.00m, resultadoCalculoIbs.BaseCalculo);
+            Assert.Equal(9.00m, resultadoCalculoIbs.Valor);
+        }
     }
 }

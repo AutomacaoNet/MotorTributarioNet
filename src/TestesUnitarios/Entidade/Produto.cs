@@ -69,5 +69,8 @@ namespace TestCalculosTributarios.Entidade
         public decimal PercentualIbsUF { get; set; }
         public decimal PercentualIbsMunicipal { get; set; }
         public decimal PercentualCbs { get; set; }
+        public decimal PercentualReducaoIbsUf { get; set; }
+        public decimal PercentualReducaoIbsMunicipal { get; set; }
+        public decimal PercentualReducaoCbs { get; set; }
     }
 }

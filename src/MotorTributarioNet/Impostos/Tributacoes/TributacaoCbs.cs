@@ -63,8 +63,10 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         /// </summary>
         private decimal CalculaCbs(decimal baseCalculo)
         {
-            // CBS = Base de Cálculo × Alíquota / 100
-            return baseCalculo * _tributavel.PercentualCbs / 100;
+            // Aplica redução na alíquota se houver
+            var aliquota = _tributavel.PercentualCbs * (1 - _tributavel.PercentualReducaoCbs / 100);
+            // CBS = Base de Cálculo × Alíquota com redução / 100
+            return baseCalculo * aliquota / 100;
         }
     }
 }

@@ -269,5 +269,80 @@ namespace TestCalculosTributarios
             var ibsTotal = resultadoIbsUF.Valor + resultadoIbsMunicipal.Valor;
             Assert.Equal(109.13m, ibsTotal);
         }
+
+        [Fact]
+        public void CalculoIbsMunicipalComReducaoAliquota()
+        {
+            var produto = new Produto
+            {
+                PercentualIbsMunicipal = 0.90m,
+                PercentualReducaoIbsMunicipal = 50.00m, // 50% de redução
+                ValorProduto = 1000.00m,
+                QuantidadeProduto = 1.000m,
+                PercentualPis = 0.00m,
+                PercentualCofins = 0.00m,
+                PercentualIcms = 0.00m
+            };
+
+            var facade = new FacadeCalculadoraTributacao(produto);
+
+            var resultadoCalculoIbsMunicipal = facade.CalculaIbsMunicipal();
+
+            // Base de cálculo: 1000 (sem deduções)
+            // Alíquota com redução: 0.90 × (1 - 0.50) = 0.45%
+            // IBS Municipal = 1000 × 0.45% = 4.50
+            Assert.Equal(1000.00m, resultadoCalculoIbsMunicipal.BaseCalculo);
+            Assert.Equal(4.50m, resultadoCalculoIbsMunicipal.Valor);
+        }
+
+        [Fact]
+        public void CalculoIbsMunicipalComReducaoAliquota100Porcento()
+        {
+            var produto = new Produto
+            {
+                PercentualIbsMunicipal = 0.90m,
+                PercentualReducaoIbsMunicipal = 100.00m, // 100% de redução = alíquota zero
+                ValorProduto = 1000.00m,
+                QuantidadeProduto = 1.000m,
+                PercentualPis = 0.00m,
+                PercentualCofins = 0.00m,
+                PercentualIcms = 0.00m
+            };
+
+            var facade = new FacadeCalculadoraTributacao(produto);
+
+            var resultadoCalculoIbsMunicipal = facade.CalculaIbsMunicipal();
+
+            // Base de cálculo: 1000 (sem deduções)
+            // Alíquota com redução: 0.90 × (1 - 1.00) = 0%
+            // IBS Municipal = 1000 × 0% = 0.00
+            Assert.Equal(1000.00m, resultadoCalculoIbsMunicipal.BaseCalculo);
+            Assert.Equal(0.00m, resultadoCalculoIbsMunicipal.Valor);
+        }
+
+        [Fact]
+        public void CalculoIbsMunicipalSemReducaoAliquota()
+        {
+            var produto = new Produto
+            {
+                PercentualIbsMunicipal = 0.90m,
+                PercentualReducaoIbsMunicipal = 0.00m, // Sem redução
+                ValorProduto = 1000.00m,
+                QuantidadeProduto = 1.000m,
+                PercentualPis = 0.00m,
+                PercentualCofins = 0.00m,
+                PercentualIcms = 0.00m
+            };
+
+            var facade = new FacadeCalculadoraTributacao(produto);
+
+            var resultadoCalculoIbsMunicipal = facade.CalculaIbsMunicipal();
+
+            // Base de cálculo: 1000 (sem deduções)
+            // Alíquota sem redução: 0.90%
+            // IBS Municipal = 1000 × 0.90% = 9.00
+            Assert.Equal(1000.00m, resultadoCalculoIbsMunicipal.BaseCalculo);
+            Assert.Equal(9.00m, resultadoCalculoIbsMunicipal.Valor);
+        }
     }
 }

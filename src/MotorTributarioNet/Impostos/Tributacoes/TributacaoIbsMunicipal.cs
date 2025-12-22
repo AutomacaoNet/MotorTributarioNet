@@ -62,8 +62,10 @@ namespace MotorTributarioNet.Impostos.Tributacoes
         /// </summary>
         private decimal CalculaIbsMunicipal(decimal baseCalculo)
         {
-            // IBS Municipal = Base de Cálculo × Alíquota Municipal / 100
-            return baseCalculo * _tributavel.PercentualIbsMunicipal / 100;
+            // Aplica redução na alíquota se houver
+            var aliquota = _tributavel.PercentualIbsMunicipal * (1 - _tributavel.PercentualReducaoIbsMunicipal / 100);
+            // IBS Municipal = Base de Cálculo × Alíquota com redução / 100
+            return baseCalculo * aliquota / 100;
         }
     }
 }
